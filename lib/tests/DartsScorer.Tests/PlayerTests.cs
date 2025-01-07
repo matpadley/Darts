@@ -2,20 +2,15 @@ namespace DartsScorer.Tests;
 
 public class PlayerTests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
-    public void PlayerInstansitation_Success()
+    public void Instansitation()
     {
         var player = new Player("John");
         Assert.That(player.Name, Is.EqualTo("John"));
     }
 
     [Test]
-    public void PlayerInstansitation_Fail()
+    public void Instansitation_Fail()
     {
         var player = new Player("John");
         Assert.That(player.Name, !Is.EqualTo("Steven"));
