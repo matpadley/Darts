@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Run tests
+      run: dotnet test --no-build --verbosity normal
+
+    - name: Update README with test results badge
+      run: |
+        BRANCH_NAME=$(echo $GITHUB_REF | sed 's/refs\/heads\///')
+        BADGE_URL="![CI](https://github.com/${{ github.repository }}/actions/workflows/build_library.yaml/badge.svg?branch=${BRANCH_NAME})"
+        if grep -q "!\[CI\]" README.md; then
+          sed -i "s|!\[CI\](.*)|${BADGE_URL}|" README.md
+        else
+          echo -e "${BADGE_URL}\n$(cat README.md)" > README.md
+        fi
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add README.md
+        git commit -m "Update README with test results badge"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
