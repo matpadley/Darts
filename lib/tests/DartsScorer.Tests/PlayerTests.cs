@@ -8,10 +8,17 @@ public class PlayerTests
     }
 
     [Test]
-    public void PlayerInstansitation()
+    public void PlayerInstansitation_Success()
     {
         var player = new Player("John");
         Assert.That(player.Name, Is.EqualTo("John"));
+    }
+
+    [Test]
+    public void PlayerInstansitation_Fail()
+    {
+        var player = new Player("John");
+        Assert.That(player.Name, !Is.EqualTo("Steven"));
     }
 }
 

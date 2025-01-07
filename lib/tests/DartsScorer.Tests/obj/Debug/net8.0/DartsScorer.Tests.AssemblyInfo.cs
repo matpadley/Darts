@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DartsScorer.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1c9a851d9db76e2136fb32741654b3f73f74dbe")]
 [assembly: System.Reflection.AssemblyProductAttribute("DartsScorer.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DartsScorer.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
