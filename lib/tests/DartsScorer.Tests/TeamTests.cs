@@ -57,16 +57,11 @@ public class TestTests
     }
 }
 
-public class Team
+public class Team(string name)
 {
-    public string Name { get; }
+    public string Name { get; } = name;
 
-    public List<Player> Players { get; } = new();
-
-    public Team(string name)
-    {
-        Name = name;
-    }
+    public List<Player> Players { get; } = [];
 
     public void AddPlayer(Player player)
     {

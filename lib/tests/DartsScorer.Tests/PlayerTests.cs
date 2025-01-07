@@ -22,12 +22,7 @@ public class PlayerTests
     }
 }
 
-public class Player
+public class Player(string name)
 {
-    public string Name { get; }
-
-    public Player(string name)
-    {
-        Name = name;
-    }
+    public string Name { get; } = name;
 }
