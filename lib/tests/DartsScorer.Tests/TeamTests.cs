@@ -46,7 +46,7 @@ public class TestTests
         team.AddNewPlayer(player1);
         team.AddNewPlayer(player2);
 
-        Assert.That(team.Players.Count, Is.EqualTo(2));
+        Assert.That(team.Count, Is.EqualTo(2));
         Assert.That(team.Players[0].Name, Is.EqualTo(player1.Name));
         Assert.That(team.Players[1].Name, Is.EqualTo(player2.Name));
     }
@@ -60,7 +60,7 @@ public class TestTests
         team.AddNewPlayer(player1);
         team.AddNewPlayer(player2);
 
-        Assert.That(team.Players.Count, Is.EqualTo(1));
+        Assert.That(team.Count, Is.EqualTo(1));
         Assert.That(team.Players[0].Name, Is.EqualTo(player1.Name));
     }
 }
@@ -70,6 +70,8 @@ public class Team(string name)
     public string Name { get; } = name;
 
     public List<Player> Players { get; } = [];
+
+    public int Count => Players.Count;
 
     public void AddNewPlayer(Player player)
     {
