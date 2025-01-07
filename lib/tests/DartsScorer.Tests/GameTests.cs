@@ -1,4 +1,4 @@
-using System;
+using DartsScorer.Main.Models.Variants;
 
 namespace DartsScorer.Tests;
 
@@ -24,45 +24,4 @@ public class GameTests
         var game = new Game(gameVariant);
         Assert.That(game.GameVariant, !Is.EqualTo(gameVariantToFail.VariantType));
     }
-}
-
-public abstract class GameVarient
-{
-    public abstract GameType VariantType { get; set; }
-}
-
-public class X01Varient: GameVarient
-{
-    public override GameType VariantType { get; set; } = GameType.x01;
-
-    public X01Varient()
-    {
-
-    }
-}
-
-public class KillerVarient: GameVarient
-{
-    public override GameType VariantType { get; set; } = GameType.Killer;
-    public KillerVarient()
-    {
-
-    }
-}
-
-public class Game
-{
-    public GameVarient GameVariant {get;}
-
-    public Game(GameVarient gameVariant)
-    {
-        GameVariant = gameVariant;
-    }
-}
-
-public enum GameType
-{
-    None,
-    x01,
-    Killer
 }

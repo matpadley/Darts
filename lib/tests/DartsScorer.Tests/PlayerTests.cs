@@ -1,5 +1,3 @@
-namespace DartsScorer.Tests;
-
 public class PlayerTests
 {
     [Test]
@@ -15,9 +13,4 @@ public class PlayerTests
         var player = new Player("John");
         Assert.That(player.Name, !Is.EqualTo("Steven"));
     }
-}
-
-public class Player(string name)
-{
-    public string Name { get; } = name;
 }
