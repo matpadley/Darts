@@ -1,23 +1,23 @@
 namespace DartsScorer.Tests;
 
-public class TestTests
+public class TeamTests
 {
     [Test]
-    public void Instansitation()
+    public void Team_Instansitation()
     {
         var team = new Team("Fancy New Team");
         Assert.That(team.Name, Is.EqualTo("Fancy New Team"));
     }
 
     [Test]
-    public void Instansitation_Fail()
+    public void Team_Instansitation_Fail()
     {
         var team = new Team("Fancy New Team");
         Assert.That(team.Players.Count, Is.EqualTo(0));
     }
 
     [Test]
-    public void AddSinglePlayer_Sucess()
+    public void Team_AddSinglePlayer_Sucess()
     {
         var team = new Team("Fancy New Team");
         var player = new Player("John");
@@ -28,7 +28,7 @@ public class TestTests
     }
 
     [Test]
-    public void AddSinglePlayer_PlayerCount_Fail()
+    public void Team_AddSinglePlayer_PlayerCount_Fail()
     {
         var team = new Team("Fancy New Team");
         var player = new Player("John");
@@ -38,7 +38,7 @@ public class TestTests
     }
 
     [Test]
-    public void AddMultiplePlayer_Sucess()
+    public void Team_AddMultiplePlayer_Sucess()
     {
         var team = new Team("Fancy New Team");
         var player1 = new Player("John");
@@ -52,7 +52,7 @@ public class TestTests
     }
 
     [Test]
-    public void AddMultiplePlayer_CannotAddDuplicates()
+    public void Team_AddMultiplePlayer_CannotAddDuplicates()
     {
         var team = new Team("Fancy New Team");
         var player1 = new Player("John");
