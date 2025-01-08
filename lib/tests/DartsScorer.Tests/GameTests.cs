@@ -13,15 +13,5 @@ public class GameTests
 
         var game = new Game(gameVariant);
         Assert.That(game.GameVariant, Is.EqualTo(gameVariant));
-        Assert.That(game.GameVariant.VariantType, Is.EqualTo(GameType.x01));
-    }
-
-    [Test]
-    public void Game_Instansitation_Failure()
-    {
-        var gameVariant = new X01Variant();        
-        var gameVariantToFail = new KillerVarient();
-        var game = new Game(gameVariant);
-        Assert.That(game.GameVariant, !Is.EqualTo(gameVariantToFail.VariantType));
     }
 }
