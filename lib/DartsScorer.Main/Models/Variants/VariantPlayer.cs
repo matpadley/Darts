@@ -2,7 +2,7 @@ namespace DartsScorer.Tests;
 
 public class VariantPlayer: Player
 {
-    public VariantPlayer(string name) : base(name)
+    public VariantPlayer(Player player) : base(player.Name)
     {
     }
 }
