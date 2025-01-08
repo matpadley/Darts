@@ -43,5 +43,4 @@ jobs:
         script: |
           const fs = require('fs');
           const testResults = fs.readFileSync('lib/tests/library_test_results.trx', 'utf8');
-          github.summary.addRaw(testResults);
-          await github.summary.write();
+          await github.summary.addRaw(testResults).write();
