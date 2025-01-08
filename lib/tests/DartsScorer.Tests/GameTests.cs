@@ -7,7 +7,7 @@ public class GameTests
     public GameType GameTypes { get; private set; }
 
     [Test]
-    public void Instansitation_Success()
+    public void Game_Instansitation_Success()
     {
         var gameVariant = new X01Variant();
 
@@ -17,7 +17,7 @@ public class GameTests
     }
 
     [Test]
-    public void Instansitation_Failure()
+    public void Game_Instansitation_Failure()
     {
         var gameVariant = new X01Variant();        
         var gameVariantToFail = new KillerVarient();

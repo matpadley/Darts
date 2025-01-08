@@ -4,7 +4,7 @@ public class VariantPlayerTests
 {
 
     [Test]
-    public void Instansitation()
+    public void VariantPlayer_Instansitation()
     {
         var player = new Player("Fancy New Team");
         var variantPlayer = new VariantPlayer(player);

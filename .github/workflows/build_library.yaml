@@ -9,6 +9,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
     - name: Checkout repository
@@ -35,16 +38,5 @@ jobs:
 
     - name: Run tests
       run: 
-        dotnet test --logger trx; trx 
+        dotnet test --logger trx; trx --output
       working-directory: lib
-
- #   - name: Upload test results
- #     uses: actions/upload-artifact@v4
- #     with:
- #       name: test-results
- #       path: lib/tests/library_test_results.trx
-
-#    - name: Output test results to GitHub Summary
-#      run: 
-#        cat tests/library_test_results.trx >> $GITHUB_STEP_SUMMARY
-#      working-directory: lib
