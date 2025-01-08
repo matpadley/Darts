@@ -32,16 +32,15 @@ jobs:
       working-directory: lib
 
     - name: Run tests
-      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=../../library_test_results.trx"
-      working-directory: lib
+      run: dotnet test --logger trx; trx 
 
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: lib/tests/library_test_results.trx
+ #   - name: Upload test results
+ #     uses: actions/upload-artifact@v4
+ #     with:
+ #       name: test-results
+ #       path: lib/tests/library_test_results.trx
 
-    - name: Output test results to GitHub Summary
-      run: 
-        cat tests/library_test_results.trx >> $GITHUB_STEP_SUMMARY
-      working-directory: lib
+#    - name: Output test results to GitHub Summary
+#      run: 
+#        cat tests/library_test_results.trx >> $GITHUB_STEP_SUMMARY
+#      working-directory: lib
