@@ -9,7 +9,7 @@ public class GameTests
     [Test]
     public void Instansitation_Success()
     {
-        var gameVariant = new X01Varient();
+        var gameVariant = new X01Variant();
 
         var game = new Game(gameVariant);
         Assert.That(game.GameVariant, Is.EqualTo(gameVariant));
@@ -19,7 +19,7 @@ public class GameTests
     [Test]
     public void Instansitation_Failure()
     {
-        var gameVariant = new X01Varient();        
+        var gameVariant = new X01Variant();        
         var gameVariantToFail = new KillerVarient();
         var game = new Game(gameVariant);
         Assert.That(game.GameVariant, !Is.EqualTo(gameVariantToFail.VariantType));

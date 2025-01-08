@@ -4,9 +4,9 @@ namespace DartsScorer.Tests;
 
 public class Game
 {
-    public GameVarient GameVariant {get;}
+    public GameVariant GameVariant {get;}
 
-    public Game(GameVarient gameVariant)
+    public Game(GameVariant gameVariant)
     {
         GameVariant = gameVariant;
     }
