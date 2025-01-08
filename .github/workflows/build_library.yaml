@@ -19,6 +19,10 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
+    # convert the trx file to markdown
+    - name: Convert test results to markdown
+      run: dotnet tool install -g dotnet-trx
+
     - name: Restore dependencies
       run: dotnet restore
       working-directory: lib
@@ -39,8 +43,5 @@ jobs:
 
     - name: Output test results to GitHub Summary
       run: 
-        ls -l
-        ls -l lib
-        ls -l lib/tests
-#cat lib/tests/library_test_results.trx >> $GITHUB_STEP_SUMMARY
+        cat tests/library_test_results.trx >> $GITHUB_STEP_SUMMARY
       working-directory: lib
