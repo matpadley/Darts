@@ -19,6 +19,12 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
+    # convert the trx file to markdown
+    - name: Install dotnet-trx
+      continue-on-error: true
+      run: 
+        dotnet tool install -g dotnet-trx
+
     - name: Restore dependencies
       run: dotnet restore
       working-directory: lib
@@ -29,8 +35,6 @@ jobs:
 
     - name: Run tests
       run: 
-        dotnet tool install -g dotnet-trx
-        trx --output
         dotnet test --logger trx; trx 
       working-directory: lib
 
