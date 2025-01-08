@@ -38,5 +38,9 @@ jobs:
         path: lib/tests/library_test_results.trx
 
     - name: Output test results to GitHub Summary
-      run: cat lib/tests/library_test_results.trx >> $GITHUB_STEP_SUMMARY
+      run: 
+        ls -l
+        ls -l lib
+        ls -l lib/tests
+#cat lib/tests/library_test_results.trx >> $GITHUB_STEP_SUMMARY
       working-directory: lib
