@@ -28,20 +28,20 @@ jobs:
       working-directory: lib
 
     - name: Run tests
-      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=test_results.trx"
+      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=../library_test_results.trx"
       working-directory: lib
 
     - name: Upload test results
       uses: actions/upload-artifact@v4
       with:
         name: test-results
-        path: lib/test_results.trx
+        path: lib/tests/TestResults/library_test_results.trx
 
     - name: Output test results to GitHub Summary
       uses: actions/github-script@v7
       with:
         script: |
           const fs = require('fs');
-          const testResults = fs.readFileSync('lib/test_results.trx', 'utf8');
+          const testResults = fs.readFileSync('lib/tests/TestResults/library_test_results.trx', 'utf8');
           github.summary.addRaw(testResults);
           await github.summary.write();
