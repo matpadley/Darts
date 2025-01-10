@@ -1,3 +1,5 @@
+using DartsScorer.Main.Scoring.Common;
+
 namespace DartsScorer.Main.Scoring;
 
 public class ThrowScore

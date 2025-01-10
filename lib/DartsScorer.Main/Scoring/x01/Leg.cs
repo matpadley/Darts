@@ -1,13 +1,7 @@
-using DartsScorer.Main.Scoring;
-
 namespace DartsScorer.Main.Scoring.x01;
+
 public class Leg: CommonLeg
 {
-    public int CurrentScore { get; internal set; }
-    public int NextThrow { get; internal set; } = 1;
-    public bool IsComplete { get; internal set; }
-
-    
     public override void ThrowFirst(ThrowScore throwScore)
     {
         if (NextThrow != 1)
