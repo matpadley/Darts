@@ -1,4 +1,4 @@
-using DartsScorer.Main.Scoring.Common;
+using DartsScorer.Main.Models.Scores;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Tests.Scoring;

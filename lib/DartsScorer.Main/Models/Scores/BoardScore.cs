@@ -1,4 +1,4 @@
-namespace DartsScorer.Main.Scoring.Common;
+namespace DartsScorer.Main.Models.Scores;
 
 public enum BoardScore
 {
