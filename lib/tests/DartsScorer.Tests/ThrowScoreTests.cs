@@ -1,3 +1,5 @@
+using DartsScorer.Main.Scoring;
+
 namespace DartsScorer.Tests;
 
 public class ThrowScoreTests
@@ -22,60 +24,4 @@ public class ThrowScoreTests
         var throwScore = new ThrowScore(multiplier, score);
         Assert.That(throwScore.Score, Is.EqualTo(result));
     }
-}
-
-public class ThrowScore
-{
-    public ThrowScore(Multiplier multiplier, BoardScore score)
-    {
-        int scoreValue = (int)score;
-        if (multiplier != Multiplier.Single && (score == BoardScore.BullsEye || score == BoardScore.OuterBull))
-        {
-            throw new ArgumentOutOfRangeException(nameof(score), score, "BullsEye can only be single");
-        }
-
-        Score = multiplier switch
-        {
-            Multiplier.Single => scoreValue,
-            Multiplier.Double => scoreValue * 2,
-            Multiplier.Triple => scoreValue * 3,
-            _ => throw new ArgumentOutOfRangeException(nameof(multiplier), multiplier, null),
-        };
-    }
-
-    public int Score {get; private set; }
-}
-
-public enum BoardScore
-{
-    // add valid darts scores
-    One = 1,
-    Two = 2,
-    Three = 3,
-    Four = 4,
-    Five = 5,
-    Six = 6,
-    Seven = 7,
-    Eight = 8,
-    Nine = 9,
-    Ten = 10,
-    Eleven = 11,
-    Twelve = 12,
-    Thirteen = 13,
-    Fourteen = 14,
-    Fifteen = 15,
-    Sixteen = 16,
-    Seventeen = 17,
-    Eighteen = 18,
-    Nineteen = 19,
-    Twenty = 20,
-    OuterBull = 25,
-    BullsEye = 50  
-}
-
-public enum Multiplier
-{
-    Single,
-    Double,
-    Triple
 }
