@@ -1,7 +1,7 @@
 using System;
 
 namespace DartsScorer.Tests;
-/*
+
 public class LegTests
 {
     [SetUp]
@@ -15,40 +15,29 @@ public class LegTests
         var leg = new Leg();
 
         // Act
-        leg.AddFirstDart(20);
-        leg.AddSecondDart(20);
-        leg.AddThirdDart(20);
+        leg.AddFirstDart(new ThrowScore(Multiplier.Single, BoardScore.Twenty));
 
         // Assert
-        Assert.That(leg.Score, Is.EqualTo(60));
+        Assert.That(leg.CurrentScore, Is.EqualTo(20));
     }
 }
 
 public class Leg
 {
-    public Leg()
+    public int CurrentScore { get; private set; }
+
+    public void AddFirstDart(ThrowScore throwScore)
     {
+        CurrentScore += throwScore.Score;
     }
 
-    public void AddFirstDart(int v)
+    public void AddSecondDart(ThrowScore throwScore)
     {
-      //  throw new NotImplementedException();
+        CurrentScore += throwScore.Score;
     }
 
-    public void AddSecondDart(int v)
+    public void AddThirdDart(ThrowScore throwScore)
     {
-        //throw new NotImplementedException();
-    }
-
-    public void AddThirdDart(int v)
-    {
-    //    throw new NotImplementedException();
-    }
-
-    internal int Score()
-    {
-
-        throw new NotImplementedException();
+        CurrentScore += throwScore.Score;
     }
 }
-*/
