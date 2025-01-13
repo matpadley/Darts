@@ -12,4 +12,9 @@ public abstract class CommonMatch
 
     // add a new array for the players
     public List<Player> Players { get; set; } = [];
+
+    public void AddPlayer(Player player)
+    {
+        Players.Add(player);
+    }
 }
