@@ -4,7 +4,7 @@ using DartsScorer.Main.Scoring;
 namespace DartsScorer.Tests.Scoring;
 
 public class ThrowScoreTests
-{       
+{
     [TestCase(BoardScore.BullsEye, Multiplier.Double)]
     [TestCase(BoardScore.BullsEye, Multiplier.Triple)]
     [TestCase(BoardScore.OuterBull, Multiplier.Double)]

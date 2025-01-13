@@ -1,6 +1,6 @@
 namespace DartsScorer.Main.Scoring.x01;
 
-public class Leg: CommonLeg
+public class Leg : CommonLeg
 {
     public override void ThrowFirst(ThrowScore throwScore)
     {
@@ -15,7 +15,7 @@ public class Leg: CommonLeg
     }
 
     public override void ThrowSecond(ThrowScore throwScore)
-    {        
+    {
         if (NextThrow != 2)
         {
             throw new InvalidOperationException("Second can only be thrown on the next throw of 2");
@@ -27,7 +27,7 @@ public class Leg: CommonLeg
     }
 
     public override void ThrowThird(ThrowScore throwScore)
-    {  
+    {
         if (NextThrow != 3)
         {
             throw new InvalidOperationException("Third can only be thrown on the next throw of 3");

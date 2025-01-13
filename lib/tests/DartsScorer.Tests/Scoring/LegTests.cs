@@ -8,7 +8,7 @@ public class LegTests
 {
     [SetUp]
     public void Setup()
-    {}
+    { }
 
     [Test]
     public void Instantiate_Leg()
@@ -17,8 +17,8 @@ public class LegTests
         var leg = new Leg();
 
         // Assert
-        Assert.That(leg.CurrentScore, Is.EqualTo(0)); 
-        Assert.That(leg.NextThrow, Is.EqualTo(1)); 
+        Assert.That(leg.CurrentScore, Is.EqualTo(0));
+        Assert.That(leg.NextThrow, Is.EqualTo(1));
         Assert.That(leg.IsComplete, Is.False);
     }
 
@@ -44,7 +44,7 @@ public class LegTests
     [Test]
     public void Test_LegScore_Array()
     {
-                // Arrange
+        // Arrange
         var leg = new Leg();
 
         // Act

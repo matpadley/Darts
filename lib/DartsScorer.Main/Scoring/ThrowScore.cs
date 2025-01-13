@@ -21,5 +21,5 @@ public class ThrowScore
         };
     }
 
-    public int Score {get; private set; }
+    public int Score { get; private set; }
 }
