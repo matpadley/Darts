@@ -1,20 +1,34 @@
+using DartsScorer.Main.Models;
+
 namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {
     public abstract MatchType MatchType { get; set; }
 
-    // add an abstract method to allow players to be added to a player arrary
-    //public abstract void AddPlayer(Player player);
+    private List<Player> players = new List<Player>();
 
-    // add an abstract method to allow players to be removed from a player arrary
-    //public abstract void RemovePlayer(Player player);
+    public IReadOnlyList<Player> Players => players.AsReadOnly();
 
-    // add a new array for the players
-    public List<Player> Players { get; set; } = [];
+    private List<Set> sets = new List<Set>();
+
+    public IReadOnlyList<Set> Sets => sets.AsReadOnly();
 
     public void AddPlayer(Player player)
     {
-        Players.Add(player);
+        players.Add(player);
     }
+
+    public void StartMatch()
+    {
+        // throw exception if no players
+        if (players.Count == 0)
+        {
+            throw new InvalidOperationException("Cannot start match with no players");
+        }
+
+        CurrentPlayer = players[0];
+    }
+
+    public Player? CurrentPlayer {get; private set;}
 }

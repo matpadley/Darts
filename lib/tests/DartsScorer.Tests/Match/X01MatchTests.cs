@@ -11,6 +11,7 @@ public class X01MatchTests
 
         Assert.That(match.MatchType, Is.EqualTo(Main.Match.MatchType.x01));
         Assert.That(match.Players.Count, Is.EqualTo(0));
+        Assert.That(match.Sets.Count, Is.EqualTo(0));
     }
 
     [Test]
@@ -51,5 +52,27 @@ public class X01MatchTests
         match.AddPlayer(player);
 
         Assert.That(match.Players.Count, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Match_Throws_Exception_If_Match_Started_With_No_Players()
+    {
+        var match = new Match();
+
+        Assert.Throws<InvalidOperationException>(() => match.StartMatch());
+    }
+
+    [Test]
+    public void Match_Start_Match_With_Correct_Player()
+    {
+        var match = new Match();
+        var player1 = new Player("Player 1");
+        var player2 = new Player("Player 2");
+        match.AddPlayer(player1);
+        match.AddPlayer(player2);
+
+        match.StartMatch();
+        
+        Assert.That(match.CurrentPlayer, Is.EqualTo(player1));
     }
 }

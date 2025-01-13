@@ -1,17 +1,10 @@
-using DartsScorer.Main.Scoring;
+using DartsScorer.Main.Models;
 using DartsScorer.Main.Scoring.x01;
 
 namespace DartsScorer.Tests.Scoring;
 
 public class SetTests
 {
-    /// <summary>
-    /// Tests the instantiation of the <see cref="Set"/> class.
-    /// </summary>
-    /// <remarks>
-    /// This test verifies that a new instance of the <see cref="Set"/> class is created
-    /// and that its <see cref="Set.SetLegs"/> collection is initialized with a count of zero.
-    /// </remarks>
     [Test]
     public void Instantiate()
     {
@@ -29,17 +22,5 @@ public class SetTests
         set.AddLeg(leg);
 
         Assert.That(set.SetLegs.Count, Is.EqualTo(1));
-    }
-}
-
-public class Set
-{
-    private ICollection<CommonLeg> Legs { get; } = new List<CommonLeg>();
-
-    public CommonLeg[] SetLegs => Legs.ToArray();
-
-    internal void AddLeg(Leg leg)
-    {
-        Legs.Add(leg);
     }
 }
