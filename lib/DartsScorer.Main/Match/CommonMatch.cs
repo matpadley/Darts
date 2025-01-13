@@ -6,13 +6,15 @@ public abstract class CommonMatch
 {
     public abstract MatchType MatchType { get; set; }
 
-    private List<MatchPlayer> players = new List<MatchPlayer>();
+    private readonly List<MatchPlayer> players = [];
 
     public IReadOnlyList<MatchPlayer> Players => players.AsReadOnly();
 
-    private List<Set> sets = new List<Set>();
+    private List<Set> sets = [];
 
     public IReadOnlyList<Set> Sets => sets.AsReadOnly();
+
+    public Set CurrentSet = new();
 
     public void AddPlayer(Player player)
     {

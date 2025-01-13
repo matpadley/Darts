@@ -76,4 +76,18 @@ public class X01MatchTests
         
         Assert.That(match.CurrentPlayer?.Name, Is.EqualTo("Player 1"));
     }
+
+    [Test]
+    public void Match_Start_Match_With_First_Set()
+    {
+        var match = new Match();
+        var player1 = new Player("Player 1");
+        var player2 = new Player("Player 2");
+        match.AddPlayer(player1);
+        match.AddPlayer(player2);
+
+        match.StartMatch();
+        
+        Assert.That(match.Sets, Is.Not.Null);
+    }
 }
