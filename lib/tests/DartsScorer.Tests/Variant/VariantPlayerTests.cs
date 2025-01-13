@@ -1,4 +1,4 @@
-using DartsScorer.Main.Models;
+using DartsScorer.Main.Match;
 
 namespace DartsScorer.Tests;
 

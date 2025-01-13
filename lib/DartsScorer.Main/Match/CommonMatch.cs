@@ -1,4 +1,4 @@
-namespace DartsScorer.Main.Models.Variants;
+namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {

@@ -1,9 +1,9 @@
-namespace DartsScorer.Main.Models.Variants;
+namespace DartsScorer.Main.Match.Killer;
 
-public class KillerVarient : CommonMatch
+public class Match : CommonMatch
 {
     public override MatchType MatchType { get; set; } = MatchType.Killer;
-    public KillerVarient()
+    public Match()
     {
 
     }

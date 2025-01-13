@@ -1,4 +1,4 @@
-namespace DartsScorer.Tests;
+namespace DartsScorer.Main.Match;
 
 public class MatchPlayer : Player
 {
