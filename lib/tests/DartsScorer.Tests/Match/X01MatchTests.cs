@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.x01;
 
 namespace DartsScorer.Tests;
@@ -73,6 +74,6 @@ public class X01MatchTests
 
         match.StartMatch();
         
-        Assert.That(match.CurrentPlayer, Is.EqualTo(player1));
+        Assert.That(match.CurrentPlayer?.Name, Is.EqualTo("Player 1"));
     }
 }
