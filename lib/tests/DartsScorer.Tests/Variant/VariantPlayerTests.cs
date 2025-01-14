@@ -1,3 +1,5 @@
+using DartsScorer.Main.Models;
+
 namespace DartsScorer.Tests;
 
 public class VariantPlayerTests
@@ -7,7 +9,7 @@ public class VariantPlayerTests
     public void VariantPlayer_Instansitation()
     {
         var player = new Player("Fancy New Team");
-        var variantPlayer = new VariantPlayer(player);
+        var variantPlayer = new MatchPlayer(player);
         Assert.That(variantPlayer.Name, Is.EqualTo("Fancy New Team")); // Corrected the variable name
     }
 }
