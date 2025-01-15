@@ -6,7 +6,7 @@ namespace DartsScorer.Tests.Scoring;
 public class SetTests
 {
     [Test]
-    public void Instantiate()
+    public void Scoring_Set_Instantiate()
     {
         var set = new Set();
 
@@ -14,7 +14,7 @@ public class SetTests
     }
 
     [Test]
-    public void Can_Add_Leg()
+    public void Scoring_Set_Can_Add_Leg()
     {
         var set = new Set();
         var leg = new Leg();
