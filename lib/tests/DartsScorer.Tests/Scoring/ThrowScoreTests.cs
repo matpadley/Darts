@@ -1,16 +1,16 @@
-using DartsScorer.Main.Models.Scores;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Tests.Scoring;
 
-public class ThrowScoreTests
-{       
+public class Scoring_Throw_Tests
+{
     [TestCase(BoardScore.BullsEye, Multiplier.Double)]
     [TestCase(BoardScore.BullsEye, Multiplier.Triple)]
     [TestCase(BoardScore.OuterBull, Multiplier.Double)]
     [TestCase(BoardScore.OuterBull, Multiplier.Triple)]
     public void ThrowScore_Fails_With_Invalid_Multiplier_For_Special_Scores(BoardScore score, Multiplier multiplier)
     {
+        // ReSharper disable once ObjectCreationAsStatement
         Assert.Throws<ArgumentOutOfRangeException>(() => new ThrowScore(multiplier, score));
     }
 

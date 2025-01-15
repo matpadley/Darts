@@ -1,8 +1,8 @@
-namespace DartsScorer.Main.Models;
+namespace DartsScorer.Main.Match;
 
 public enum DartsMatchType
 {
     None,
-    x01,
+    X01,
     Killer
 }

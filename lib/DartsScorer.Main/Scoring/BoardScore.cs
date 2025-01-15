@@ -1,4 +1,4 @@
-namespace DartsScorer.Main.Models.Scores;
+namespace DartsScorer.Main.Scoring;
 
 public enum BoardScore
 {
@@ -24,5 +24,5 @@ public enum BoardScore
     Nineteen = 19,
     Twenty = 20,
     OuterBull = 25,
-    BullsEye = 50  
+    BullsEye = 50
 }

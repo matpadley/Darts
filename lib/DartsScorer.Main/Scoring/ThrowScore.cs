@@ -1,5 +1,3 @@
-using DartsScorer.Main.Models.Scores;
-
 namespace DartsScorer.Main.Scoring;
 
 public class ThrowScore
@@ -21,5 +19,5 @@ public class ThrowScore
         };
     }
 
-    public int Score {get; private set; }
+    public int Score { get; private set; }
 }

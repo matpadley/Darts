@@ -1,5 +1,4 @@
-using DartsScorer.Main.Scoring.x01;
-using DartsScorer.Main.Models.Scores;
+using DartsScorer.Main.Match.x01;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Tests.Scoring;
@@ -8,23 +7,23 @@ public class LegTests
 {
     [SetUp]
     public void Setup()
-    {}
+    { }
 
     [Test]
-    public void Instantiate_Leg()
+    public void Scoring_Instantiate()
     {
         // Arrange
         var leg = new Leg();
 
         // Assert
-        Assert.That(leg.CurrentScore, Is.EqualTo(0)); 
-        Assert.That(leg.NextThrow, Is.EqualTo(1)); 
+        Assert.That(leg.CurrentScore, Is.EqualTo(0));
+        Assert.That(leg.NextThrow, Is.EqualTo(1));
         Assert.That(leg.IsComplete, Is.False);
     }
 
     [TestCase(BoardScore.Twenty, Multiplier.Single, 20)]
     [TestCase(BoardScore.BullsEye, Multiplier.Single, 50)]
-    public void InstatiateLeg_Check_Simple_Throw(BoardScore boardScore, Multiplier multiplier, int expectedScore)
+    public void Scoring_Leg_Instantiation_Check_Simple_Throw(BoardScore boardScore, Multiplier multiplier, int expectedScore)
     {
         // Arrange
         var leg = new Leg();
@@ -42,9 +41,9 @@ public class LegTests
     }
 
     [Test]
-    public void Test_LegScore_Array()
+    public void Scoring_Leg_Score_Array()
     {
-                // Arrange
+        // Arrange
         var leg = new Leg();
 
         // Act
@@ -59,7 +58,7 @@ public class LegTests
     }
 
     [Test]
-    public void Ensure_First_Throw_Cannot_Be_Thrown_Twice()
+    public void Scoring_Leg_Ensure_First_Throw_Cannot_Be_Thrown_Twice()
     {
         // Arrange
         var leg = new Leg();
@@ -72,7 +71,7 @@ public class LegTests
     }
 
     [Test]
-    public void Ensure_Second_Throw_Cannot_Be_Thrown_Before_First()
+    public void Scoring_Leg_Ensure_Second_Throw_Cannot_Be_Thrown_Before_First()
     {
         // Arrange
         var leg = new Leg();
@@ -82,7 +81,7 @@ public class LegTests
     }
 
     [Test]
-    public void Ensure_Third_Throw_Cannot_Be_Thrown_Before_Second()
+    public void Scoring_Leg_Ensure_Third_Throw_Cannot_Be_Thrown_Before_Second()
     {
         // Arrange
         var leg = new Leg();
