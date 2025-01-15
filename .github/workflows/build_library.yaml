@@ -47,14 +47,3 @@ jobs:
       with:
         name: test-results
         path: lib/TestResults/*.trx
-      
-    - name: Post comment on pull request
-      # Add a comment to the pull request with a link to the test results
-      if: github.event_name == 'pull_request'
-      uses: peter-evans/create-or-update-comment@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        issue-number: ${{ github.event.pull_request.number }}
-        body: |
-          ### Test Results
-          The test results can be downloaded [here](${{ steps.upload-test-results.outputs.download-url }}).
