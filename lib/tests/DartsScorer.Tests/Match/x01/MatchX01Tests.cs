@@ -39,7 +39,7 @@ public class MatchX01Tests
     }
 
     [Test]
-    public void MMatch_X01_Instantiation_Custom_Score_Must_Be_Between_One_and_Five()
+    public void Match_X01_Instantiation_Custom_Score_Must_Be_Between_One_and_Five()
     {
         Assert.Throws<ArgumentException>(() => new Main.Match.x01.Match(12));
     }
