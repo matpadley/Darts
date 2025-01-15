@@ -6,7 +6,7 @@ public class Match : CommonMatch
 
     public Match()
     {
-        DartsMatchType = DartsMatchType.x01;
+        DartsMatchType = DartsMatchType.X01;
     }
 
     public Match(int requiredScore = 5)

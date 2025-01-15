@@ -10,6 +10,7 @@ public class ThrowScoreTests
     [TestCase(BoardScore.OuterBull, Multiplier.Triple)]
     public void ThrowScore_Fails_With_Invalid_Multiplier_For_Special_Scores(BoardScore score, Multiplier multiplier)
     {
+        // ReSharper disable once ObjectCreationAsStatement
         Assert.Throws<ArgumentOutOfRangeException>(() => new ThrowScore(multiplier, score));
     }
 

@@ -6,30 +6,30 @@ public abstract class CommonMatch
 {
     public DartsMatchType DartsMatchType { get; set; }
 
-    private readonly List<Player.MatchPlayer> players = [];
+    private readonly List<Player.MatchPlayer> _players = [];
 
-    public IReadOnlyList<Player.MatchPlayer> Players => players.AsReadOnly();
+    public IReadOnlyList<Player.MatchPlayer> Players => _players.AsReadOnly();
 
-    private List<Set> sets = [];
+    private List<Set> _sets = [];
 
-    public IReadOnlyList<Set> Sets => sets.AsReadOnly();
+    public IReadOnlyList<Set> Sets => _sets.AsReadOnly();
 
     public Set CurrentSet = new();
 
     public void AddPlayer(Player.Player player)
     {
-        players.Add(new Player.MatchPlayer(player));
+        _players.Add(new Player.MatchPlayer(player));
     }
 
     public void StartMatch()
     {
         // throw exception if no players
-        if (players.Count == 0)
+        if (_players.Count == 0)
         {
             throw new InvalidOperationException("Cannot start match with no players");
         }
 
-        CurrentPlayer = players[0];
+        CurrentPlayer = _players[0];
     }
 
     public Player.Player? CurrentPlayer { get; private set; }

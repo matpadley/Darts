@@ -2,20 +2,20 @@ using DartsScorer.Main.Match;
 
 namespace DartsScorer.Tests.Match.x01;
 
-public class X01MatchTests
+public class MatchX01Tests
 {
     [Test]
-    public void Match_Instantiate_X01_Match_Success()
+    public void Match_X01_Instantiation()
     {
         var match = new Main.Match.x01.Match();
 
-        Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.x01));
+        Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.X01));
         Assert.That(match.Players.Count, Is.EqualTo(0));
         Assert.That(match.Sets.Count, Is.EqualTo(0));
     }
 
     [Test]
-    public void Match_Instantiate_Match_X01_Fail()
+    public void Match_X01_Instantiation_Fail()
     {
         var match = new Main.Match.x01.Match();
 
@@ -23,7 +23,7 @@ public class X01MatchTests
     }
 
     [Test]
-    public void Match_Instantiate_Match_501_Success()
+    public void Match_X01_Instantiation_501_Success()
     {
         var match = new Main.Match.x01.Match();
 
@@ -31,7 +31,7 @@ public class X01MatchTests
     }
 
     [Test]
-    public void Match_Instantiate_Match_Custom_Score_Success()
+    public void Match_X01_Instantiation_Custom_Score_Success()
     {
         var match = new Main.Match.x01.Match(1);
 
@@ -39,13 +39,13 @@ public class X01MatchTests
     }
 
     [Test]
-    public void Match_Instantiate_Match_Custom_Score_Must_Be_Between_One_and_Five()
+    public void MMatch_X01_Instantiation_Custom_Score_Must_Be_Between_One_and_Five()
     {
         Assert.Throws<ArgumentException>(() => new Main.Match.x01.Match(12));
     }
 
     [Test]
-    public void Match_Can_Add_Player()
+    public void Match_X01_Instantiation_Can_Add_Player()
     {
         var match = new Main.Match.x01.Match();
         var player = new Main.Player.Player("Player 1");
@@ -55,7 +55,7 @@ public class X01MatchTests
     }
 
     [Test]
-    public void Match_Throws_Exception_If_Match_Started_With_No_Players()
+    public void Match_X01_Instantiation_Throws_Exception_If_Match_Started_With_No_Players()
     {
         var match = new Main.Match.x01.Match();
 
@@ -63,7 +63,7 @@ public class X01MatchTests
     }
 
     [Test]
-    public void Match_Start_Match_With_Correct_Player()
+    public void Match_X01_Instantiation_Start_Match_With_Correct_Player()
     {
         var match = new Main.Match.x01.Match();
         var player1 = new Main.Player.Player("Player 1");
@@ -77,7 +77,7 @@ public class X01MatchTests
     }
 
     [Test]
-    public void Match_Start_Match_With_First_Set()
+    public void Match_X01_Instantiation_Start_Match_With_First_Set()
     {
         var match = new Main.Match.x01.Match();
         var player1 = new Main.Player.Player("Player 1");
