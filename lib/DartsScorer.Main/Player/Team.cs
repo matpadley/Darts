@@ -1,3 +1,5 @@
+namespace DartsScorer.Main.Player;
+
 public class Team(string name)
 {
     public string Name { get; } = name;

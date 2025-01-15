@@ -1,6 +1,6 @@
 namespace DartsScorer.Main.Match;
 
-public enum MatchType
+public enum DartsMatchType
 {
     None,
     x01,

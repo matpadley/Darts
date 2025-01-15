@@ -1,5 +1,5 @@
-using DartsScorer.Main.Models;
-using DartsScorer.Main.Scoring.x01;
+using DartsScorer.Main.Match.x01;
+using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Tests.Scoring;
 

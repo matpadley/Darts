@@ -1,11 +1,13 @@
-
 namespace DartsScorer.Main.Match.x01;
 
 public class Match : CommonMatch
 {
-    public int RequiredScore { get; private set; }
+    public int RequiredScore { get; private set; } = 501;
 
-    public override MatchType MatchType { get; set; } = MatchType.x01;
+    public Match()
+    {
+        DartsMatchType = DartsMatchType.x01;
+    }
 
     public Match(int requiredScore = 5)
     {

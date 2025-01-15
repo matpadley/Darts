@@ -1,7 +1,6 @@
-using DartsScorer.Main.Scoring;
-using DartsScorer.Main.Scoring.x01;
+using DartsScorer.Main.Match.x01;
 
-namespace DartsScorer.Main.Models
+namespace DartsScorer.Main.Scoring
 {
     public class Set
     {

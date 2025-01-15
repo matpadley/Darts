@@ -1,14 +1,14 @@
-using DartsScorer.Main.Models;
+using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {
-    public abstract MatchType MatchType { get; set; }
+    public DartsMatchType DartsMatchType { get; set; }
 
-    private readonly List<MatchPlayer> players = [];
+    private readonly List<Player.MatchPlayer> players = [];
 
-    public IReadOnlyList<MatchPlayer> Players => players.AsReadOnly();
+    public IReadOnlyList<Player.MatchPlayer> Players => players.AsReadOnly();
 
     private List<Set> sets = [];
 
@@ -16,9 +16,9 @@ public abstract class CommonMatch
 
     public Set CurrentSet = new();
 
-    public void AddPlayer(Player player)
+    public void AddPlayer(Player.Player player)
     {
-        players.Add(new MatchPlayer(player));
+        players.Add(new Player.MatchPlayer(player));
     }
 
     public void StartMatch()
@@ -32,5 +32,5 @@ public abstract class CommonMatch
         CurrentPlayer = players[0];
     }
 
-    public Player? CurrentPlayer {get; private set;}
+    public Player.Player? CurrentPlayer { get; private set; }
 }

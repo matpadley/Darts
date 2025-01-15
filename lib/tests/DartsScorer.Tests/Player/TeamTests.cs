@@ -1,4 +1,6 @@
-namespace DartsScorer.Tests;
+using DartsScorer.Main.Player;
+
+namespace DartsScorer.Tests.Player;
 
 public class TeamTests
 {
@@ -20,7 +22,7 @@ public class TeamTests
     public void Team_AddSinglePlayer_Sucess()
     {
         var team = new Team("Fancy New Team");
-        var player = new Player("John");
+        var player = new Main.Player.Player("John");
         team.AddNewPlayer(player);
 
         Assert.That(team.Players.Count, Is.EqualTo(1));
@@ -31,7 +33,7 @@ public class TeamTests
     public void Team_AddSinglePlayer_PlayerCount_Fail()
     {
         var team = new Team("Fancy New Team");
-        var player = new Player("John");
+        var player = new Main.Player.Player("John");
         team.AddNewPlayer(player);
 
         Assert.That(team.Players.Count, !Is.EqualTo(0));
@@ -41,8 +43,8 @@ public class TeamTests
     public void Team_AddMultiplePlayer_Sucess()
     {
         var team = new Team("Fancy New Team");
-        var player1 = new Player("John");
-        var player2 = new Player("Jane");
+        var player1 = new Main.Player.Player("John");
+        var player2 = new Main.Player.Player("Jane");
         team.AddNewPlayer(player1);
         team.AddNewPlayer(player2);
 
@@ -55,8 +57,8 @@ public class TeamTests
     public void Team_AddMultiplePlayer_CannotAddDuplicates()
     {
         var team = new Team("Fancy New Team");
-        var player1 = new Player("John");
-        var player2 = new Player("John");
+        var player1 = new Main.Player.Player("John");
+        var player2 = new Main.Player.Player("John");
         team.AddNewPlayer(player1);
         team.AddNewPlayer(player2);
 
