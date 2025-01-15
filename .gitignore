@@ -404,3 +404,6 @@ FodyWeavers.xsd
 
 // ignore the .vscode folder
 .vscode
+
+// ignore the .idea folder
+.idea
