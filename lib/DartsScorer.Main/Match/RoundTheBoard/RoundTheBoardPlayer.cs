@@ -1,4 +1,3 @@
-using DartsScorer.Main.Match.x01;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Match.RoundTheBoard;
@@ -6,9 +5,9 @@ namespace DartsScorer.Main.Match.RoundTheBoard;
 public class RoundTheBoardPlayer(string name) : Player.Player(name)
 {
     public  int RequiredBoardNumber { get; private set; } = 1;
-    public  ICollection<Leg> Legs { get; set; } = new List<Leg>();
+    public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
-    private Leg _currentLeg;
+    private Leg? _currentLeg;
     
     public void StartThrow()
     {
@@ -19,7 +18,7 @@ public class RoundTheBoardPlayer(string name) : Player.Player(name)
     {
         var newThrow = new ThrowScore(single, one);
 
-        switch (_currentLeg.NextThrow)
+        switch (_currentLeg?.NextThrow)
         {
             case 1: 
                 _currentLeg.ThrowFirst(newThrow);
