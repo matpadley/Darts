@@ -1,5 +1,3 @@
-using System;
-
 namespace DartsScorer.Main.Scoring;
 
 public abstract class CommonLeg

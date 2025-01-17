@@ -1,4 +1,4 @@
-using DartsScorer.Main.Match.x01;
+using DartsScorer.Main.Match;
 
 namespace DartsScorer.Main.Scoring
 {

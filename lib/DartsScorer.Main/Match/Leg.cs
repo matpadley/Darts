@@ -1,6 +1,6 @@
 using DartsScorer.Main.Scoring;
 
-namespace DartsScorer.Main.Match.x01;
+namespace DartsScorer.Main.Match;
 
 public class Leg : CommonLeg
 {

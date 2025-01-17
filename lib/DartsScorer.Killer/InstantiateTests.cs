@@ -1,15 +1,16 @@
 using DartsScorer.Main.Match;
+using DartsScorer.Main.Match.Killer;
 
-namespace DartsScorer.Tests.Match.Killer
+namespace DartsScorer.Killer
 {
-    public class MatchKillerTests
+    public class InstantiateTests
     {
         CommonMatch? _match;
 
         [SetUp]
         public void Setup()
         {
-            _match = new Main.Match.Killer.Match();
+            _match = new Match();
         }
 
         [Test]
