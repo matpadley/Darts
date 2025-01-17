@@ -1,4 +1,4 @@
-using MatchPlayer = DartsScorer.Main.Match.MatchPlayer;
+using MatchPlayer = DartsScorer.Main.Player.MatchPlayer;
 
 namespace DartsScorer.Tests.Match;
 

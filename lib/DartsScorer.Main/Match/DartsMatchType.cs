@@ -4,5 +4,6 @@ public enum DartsMatchType
 {
     None,
     X01,
-    Killer
+    Killer,
+    RoundTheBoard
 }
