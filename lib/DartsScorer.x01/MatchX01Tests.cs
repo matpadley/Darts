@@ -1,6 +1,6 @@
 using DartsScorer.Main.Match;
 
-namespace DartsScorer.Tests.Match.x01;
+namespace DartsScorer.x01;
 
 public class MatchX01Tests
 {

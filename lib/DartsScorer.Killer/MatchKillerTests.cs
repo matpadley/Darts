@@ -1,6 +1,6 @@
 using DartsScorer.Main.Match;
 
-namespace DartsScorer.Tests.Match.Killer
+namespace DartsScorer.Killer
 {
     public class MatchKillerTests
     {
