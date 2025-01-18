@@ -6,4 +6,6 @@ public class Match : CommonMatch
     {
         DartsMatchType = DartsMatchType.RoundTheBoard;
     }
+
+    public override string Name { get; } = "Round The Board";
 }

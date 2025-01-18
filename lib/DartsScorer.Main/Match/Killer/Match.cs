@@ -7,4 +7,6 @@ public class Match: CommonMatch
     {
         DartsMatchType = DartsMatchType.Killer;
     }
+
+    public override string Name { get; } = "Killer";
 }

@@ -13,6 +13,7 @@ public class MatchX01Tests
         Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.X01));
         Assert.That(match.Players.Count, Is.EqualTo(0));
         Assert.That(match.Sets.Count, Is.EqualTo(0));
+        Assert.That(match.Name, Is.EqualTo("x01"));
     }
 
     [Test]

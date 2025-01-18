@@ -7,6 +7,8 @@ public abstract class CommonMatch
     public DartsMatchType DartsMatchType { get; set; }
 
     private readonly List<Player.MatchPlayer> _players = [];
+    
+    public abstract string Name { get; }
 
     public IReadOnlyList<Player.MatchPlayer> Players => _players.AsReadOnly();
 
