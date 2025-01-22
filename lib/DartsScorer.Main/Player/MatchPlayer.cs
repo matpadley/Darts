@@ -1,3 +1,3 @@
 namespace DartsScorer.Main.Player;
 
-public class MatchPlayer(Player player) : Player(player.Name);
+public abstract class MatchPlayer(Player player) : Player(player.Name);

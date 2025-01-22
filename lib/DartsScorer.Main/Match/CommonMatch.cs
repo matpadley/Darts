@@ -18,9 +18,9 @@ public abstract class CommonMatch
 
     public Set CurrentSet = new();
 
-    public void AddPlayer(Player.Player player)
+    public void AddPlayer(Player.MatchPlayer player)
     {
-        _players.Add(new Player.MatchPlayer(player));
+        _players.Add(player);
     }
 
     public void StartMatch()

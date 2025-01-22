@@ -50,8 +50,7 @@ public class MatchX01Tests
     public void Match_X01_Instantiation_Can_Add_Player()
     {
         var match = new Match();
-        var player = new Main.Player.Player("Player 1");
-        match.AddPlayer(player);
+        match.AddPlayer(new X01TheBoardPlayer("Player 1"));
 
         Assert.That(match.Players.Count, Is.EqualTo(1));
     }
@@ -68,8 +67,8 @@ public class MatchX01Tests
     public void Match_X01_Instantiation_Start_Match_With_Correct_Player()
     {
         var match = new Match();
-        var player1 = new Main.Player.Player("Player 1");
-        var player2 = new Main.Player.Player("Player 2");
+        var player1 = new X01TheBoardPlayer("Player 1");
+        var player2 = new X01TheBoardPlayer("Player 2");
         match.AddPlayer(player1);
         match.AddPlayer(player2);
 
@@ -82,8 +81,8 @@ public class MatchX01Tests
     public void Match_X01_Instantiation_Start_Match_With_First_Set()
     {
         var match = new Match();
-        var player1 = new Main.Player.Player("Player 1");
-        var player2 = new Main.Player.Player("Player 2");
+        var player1 = new X01TheBoardPlayer("Player 1");
+        var player2 = new X01TheBoardPlayer("Player 2");
         match.AddPlayer(player1);
         match.AddPlayer(player2);
 
