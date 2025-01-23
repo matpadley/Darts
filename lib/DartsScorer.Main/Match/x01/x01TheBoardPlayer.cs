@@ -10,12 +10,12 @@ public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name
 
     private Leg? _currentLeg;
     
-    public void StartThrow()
+    public override void StartThrow()
     {
         _currentLeg = new Leg();
     }
 
-    public void Throw(BoardScore one, Multiplier single)
+    public override void Throw(BoardScore one, Multiplier single)
     {
         var newThrow = new ThrowScore(single, one);
 
@@ -48,5 +48,10 @@ public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name
         {
             Legs.Add(_currentLeg);
         }
+    }
+
+    public override void EndThrow()
+    {
+        throw new NotImplementedException();
     }
 }

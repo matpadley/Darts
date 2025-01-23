@@ -86,72 +86,75 @@ if (newMatch.Players.Count > 0)
             RoundTheBoardPlayer => new RoundTheBoardPlayer(newMatch.Players[0].Name),
             _ => throw new InvalidOperationException("Match type not found")
         };
-        
-        // get three throws from the user
         matchPlayer.StartThrow();
-        
-        // ask for inputs 1-20, outerbull or bullseye
-        var throw1 = AnsiConsole.Ask<int>("Enter the first throw: ");
-        
-        // if the throw is not between 1 and 20 throw an error
-        do
-        {
-            throw1 = AnsiConsole.Ask<int>("Enter the first throw (1-20): ");
-            if (throw1 < 1 || throw1 > 20)
-            {
-                AnsiConsole.MarkupLine("[red]Throw must be between 1 and 20[/]");
-            }
-        } while (throw1 < 1 || throw1 > 20);
-        
-        // convert the input to the board score enum
-        var boardScore1 = throw1 switch
-        {
-            1 => BoardScore.One,
-            2 => BoardScore.Two,
-            3 => BoardScore.Three,
-            4 => BoardScore.Four,
-            5 => BoardScore.Five,
-            6 => BoardScore.Six,
-            7 => BoardScore.Seven,
-            8 => BoardScore.Eight,
-            9 => BoardScore.Nine,
-            10 => BoardScore.Ten,
-            11 => BoardScore.Eleven,
-            12 => BoardScore.Twelve,
-            13 => BoardScore.Thirteen,
-            14 => BoardScore.Fourteen,
-            15 => BoardScore.Fifteen,
-            16 => BoardScore.Sixteen,
-            17 => BoardScore.Seventeen,
-            18 => BoardScore.Eighteen,
-            19 => BoardScore.Nineteen,
-            20 => BoardScore.Twenty,
-            _ => throw new InvalidOperationException("Board score not found")
-        };
-        
-        // get the multiplier from the input, single, double, triple
-        var multiplier1 = AnsiConsole.Ask<Multiplier>("Enter the multiplier: ");
-        // add a table with the multiplier options
-        var table1 = new Table();
-        table1.AddColumn("Index");
-        table1.AddColumn("Multiplier");
-        table1.AddRow("1", "Single");
-        table1.AddRow("2", "Double");
-        table1.AddRow("3", "Triple");
-        AnsiConsole.Render(table1);
-        
-        // convert the input to the multiplier enum
-        var multiplier = multiplier1 switch
-        {
-            1 => Multiplier.Single,
-            2 => Multiplier.Double,
-            3 => Multiplier.Triple,
-            _ => throw new InvalidOperationException("Multiplier not found")
-        };
-        
-        
-        matchPlayer.Throw(boardScore1, multiplier);
-        
+        HandleThrow(matchPlayer);
+        HandleThrow(matchPlayer);
+        HandleThrow(matchPlayer);
         matchPlayer.EndThrow();
     }
 }
+
+static void HandleThrow(MatchPlayer matchPlayer)
+{
+    
+
+    // ask for inputs 1-20, outerbull or bullseye
+    var dartThrow = AnsiConsole.Ask<int>("Enter the first throw (1-20): ");
+
+    // if the throw is not between 1 and 20 throw an error
+    do
+    {
+        if (dartThrow < 1 || dartThrow > 20)
+        {
+            dartThrow = AnsiConsole.Ask<int>("[red]Throw must be between 1 and 20[/]");
+        }
+    } while (dartThrow < 1 || dartThrow > 20);
+
+    // convert the input to the board score enum
+    var boardScore1 = dartThrow switch
+    {
+        1 => BoardScore.One,
+        2 => BoardScore.Two,
+        3 => BoardScore.Three,
+        4 => BoardScore.Four,
+        5 => BoardScore.Five,
+        6 => BoardScore.Six,
+        7 => BoardScore.Seven,
+        8 => BoardScore.Eight,
+        9 => BoardScore.Nine,
+        10 => BoardScore.Ten,
+        11 => BoardScore.Eleven,
+        12 => BoardScore.Twelve,
+        13 => BoardScore.Thirteen,
+        14 => BoardScore.Fourteen,
+        15 => BoardScore.Fifteen,
+        16 => BoardScore.Sixteen,
+        17 => BoardScore.Seventeen,
+        18 => BoardScore.Eighteen,
+        19 => BoardScore.Nineteen,
+        20 => BoardScore.Twenty,
+        _ => throw new InvalidOperationException("Board score not found")
+    };
+
+    // get the multiplier from the input, single, double, triple
+    var multiplier1 = AnsiConsole.Ask<int>("Enter the multiplier: ");
+    // add a table with the multiplier options
+    var table1 = new Table();
+    table1.AddColumn("Index");
+    table1.AddColumn("Multiplier");
+    table1.AddRow("1", "Single");
+    table1.AddRow("2", "Double");
+    table1.AddRow("3", "Triple");
+    AnsiConsole.Render(table1);
+
+    // convert the input to the multiplier enum
+    var multiplier = multiplier1 switch
+    {
+        1 => Multiplier.Single,
+        2 => Multiplier.Double,
+        3 => Multiplier.Triple,
+        _ => throw new InvalidOperationException("Multiplier not found")
+    };
+
+    matchPlayer.Throw(boardScore1, multiplier);
+}// get three throws from the user

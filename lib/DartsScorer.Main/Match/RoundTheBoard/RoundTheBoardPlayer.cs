@@ -10,7 +10,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
 
     private Leg? _currentLeg;
     
-    public void StartThrow()
+    public override void StartThrow()
     {
         // a check to make sure that the last leg has finished
         if (_currentLeg != null)
@@ -20,7 +20,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         _currentLeg = new Leg();
     }
 
-    public void Throw(BoardScore one, Multiplier single)
+    public override void Throw(BoardScore one, Multiplier single)
     {
         var newThrow = new ThrowScore(single, one);
         
@@ -63,7 +63,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     }
     
     // add method to end the throw and add the leg to the list of legs
-    public void EndThrow()
+    public override void EndThrow()
     {
         if (_currentLeg == null)
         {
