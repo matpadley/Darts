@@ -1,3 +1,4 @@
+using DartsScorer.Main.Player;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Match;
@@ -6,7 +7,7 @@ public abstract class CommonMatch
 {
     public DartsMatchType DartsMatchType { get; set; }
 
-    private readonly List<Player.MatchPlayer> _players = [];
+    private  List<Player.MatchPlayer> _players = new();
     
     public abstract string Name { get; }
 
@@ -32,6 +33,30 @@ public abstract class CommonMatch
         }
 
         CurrentPlayer = _players[0];
+    }
+    
+    // hpdate the current player with the one with the updates numbers
+    public void UpdatePlayer(Player.MatchPlayer player)
+    {
+        var currentInd = _players.FindIndex(p => Equals(p, player));
+        if (currentInd != -1)
+        {
+            // Create a temporary list to store the updated players
+            var updatedPlayers = new List<Player.MatchPlayer>(_players);
+        
+            // Replace the player at the found index with the new player
+            updatedPlayers[currentInd] = player;
+        
+            // Replace the original list with the updated list
+            _players = updatedPlayers;
+        }
+
+        // Get the next player
+        var nextInd = currentInd + 1;
+        if (nextInd < _players.Count)
+        {
+            CurrentPlayer = _players[nextInd];
+        }
     }
 
     public Player.Player? CurrentPlayer { get; private set; }

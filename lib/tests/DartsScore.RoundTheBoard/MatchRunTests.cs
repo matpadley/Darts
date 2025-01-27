@@ -15,7 +15,7 @@ public class MatchRunTests
     }
 
     [Test]
-    public void SinglePlayerRunTHrough()
+    public void SinglePlayerRunThrough()
     {
         var player = new RoundTheBoardPlayer("new player");
 
@@ -29,20 +29,17 @@ public class MatchRunTests
             return;
         }
 
-        var firstPlayer = _match.Players[0];
-        if (firstPlayer is RoundTheBoardPlayer matchCurrentPlayer)
+        foreach (var matchPlayer in _match.Players)
         {
-            matchCurrentPlayer.StartThrow();
-            matchCurrentPlayer.Throw(BoardScore.Five, Multiplier.Single);
-            matchCurrentPlayer.Throw(BoardScore.Seventeen, Multiplier.Single);
-            matchCurrentPlayer.Throw(BoardScore.Eight, Multiplier.Single);
-            matchCurrentPlayer.EndThrow();
-            Console.WriteLine(matchCurrentPlayer.Legs.First().CurrentScore);
+           var roundTheBoardPlayer = matchPlayer as RoundTheBoardPlayer;
+           roundTheBoardPlayer.StartThrow();
+           roundTheBoardPlayer.Throw(BoardScore.Five, Multiplier.Single);
+           roundTheBoardPlayer.Throw(BoardScore.Seventeen, Multiplier.Single);
+           roundTheBoardPlayer.Throw(BoardScore.Eight, Multiplier.Single);
+           roundTheBoardPlayer.EndThrow();
+           Console.WriteLine(roundTheBoardPlayer.Legs.Last().CurrentScore);
+           _match.UpdatePlayer(roundTheBoardPlayer);
+           
         }
-        else
-        {
-            Console.WriteLine("The first player is not a RoundTheBoardPlayer.");
-        }
-        
     }
 }

@@ -11,7 +11,7 @@ public class Leg : CommonLeg
             throw new InvalidOperationException("First throw already thrown");
         }
 
-        CurrentScore += throwScore.Score;
+        CurrentScore = throwScore.Score;
         NextThrow = 2;
         Throws.Add(throwScore);
     }
@@ -23,7 +23,7 @@ public class Leg : CommonLeg
             throw new InvalidOperationException("Second can only be thrown on the next throw of 2");
         }
 
-        CurrentScore += throwScore.Score;
+        CurrentScore = throwScore.Score;
         NextThrow = 3;
         Throws.Add(throwScore);
     }
@@ -35,7 +35,7 @@ public class Leg : CommonLeg
             throw new InvalidOperationException("Third can only be thrown on the next throw of 3");
         }
 
-        CurrentScore += throwScore.Score;
+        CurrentScore = throwScore.Score;
         Throws.Add(throwScore);
         IsComplete = true;
     }

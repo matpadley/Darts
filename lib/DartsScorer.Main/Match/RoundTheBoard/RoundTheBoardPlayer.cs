@@ -5,6 +5,7 @@ namespace DartsScorer.Main.Match.RoundTheBoard;
 
 public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(name))
 {
+    public bool Finished { get; private set; } = false;
     public  int RequiredBoardNumber { get; private set; } = 1;
     public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
@@ -20,9 +21,9 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         _currentLeg = new Leg();
     }
 
-    public override void Throw(BoardScore one, Multiplier single)
+    public override void Throw(BoardScore boardScore, Multiplier multiplier)
     {
-        var newThrow = new ThrowScore(single, one);
+        var newThrow = new ThrowScore(multiplier, boardScore);
         
         // a check to make sure that the leg has started and the leg is not null
         if (_currentLeg == null)
@@ -42,6 +43,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
                 _currentLeg.ThrowFirst(newThrow);
                 if (newThrow.Score == RequiredBoardNumber)
                 {
+                    
                     RequiredBoardNumber ++;
                 }
                 break;
@@ -59,6 +61,11 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
                     RequiredBoardNumber ++;
                 }
                 break;
+        }
+
+        if (RequiredBoardNumber == 20)
+        {
+            Finished = true;
         }
     }
     

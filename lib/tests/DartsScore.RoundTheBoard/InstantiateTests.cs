@@ -16,7 +16,7 @@ public class InstantiateTests
         var match = new Match();
         
         Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.RoundTheBoard));
-        Assert.That(match?.Name, Is.EqualTo("Killer"));
+        Assert.That(match?.Name, Is.EqualTo("Round The Board"));
     }
     
     [Test]

@@ -1,4 +1,6 @@
 using DartsScorer.Main.Match.RoundTheBoard;
+using DartsScorer.Main.Player;
+using DartsScorer.Main.Scoring;
 
 namespace DartsScore.RoundTheBoard;
 
@@ -23,5 +25,15 @@ public class PlayerTests
         roundTheBoard.AddPlayer(roundTheBoardPlayer);
         
         Assert.That(roundTheBoard.Players.Count, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Player_Equality_Tests()
+    {
+        var player1 = new Player("myName");
+        var player2 = new Player("myName");
+
+        
+        Assert.That(player1.Equals(player2));
     }
 }

@@ -15,9 +15,9 @@ public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name
         _currentLeg = new Leg();
     }
 
-    public override void Throw(BoardScore one, Multiplier single)
+    public override void Throw(BoardScore one, Multiplier multiplier)
     {
-        var newThrow = new ThrowScore(single, one);
+        var newThrow = new ThrowScore(multiplier, one);
 
         switch (_currentLeg?.NextThrow)
         {
