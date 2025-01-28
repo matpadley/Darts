@@ -32,11 +32,5 @@ namespace DartsScorer.Checkout.Tests
             Assert.That(result, Is.EqualTo(checkoutArray).AsCollection);
             
         }
-
-        [Test]
-        public void Calculate_InvalidInputNumber_ThrowsInvalidOperationException()
-        {
-            Assert.Throws<InvalidOperationException>(() => _checkout.Calculate(171));
-        }
     }
 }

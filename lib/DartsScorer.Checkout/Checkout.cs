@@ -20,7 +20,7 @@ namespace DartsScorer.Checkout
         {
             if (number < 2 || number > 170)
             {
-                throw new ArgumentOutOfRangeException(nameof(number), "Number is out of range");
+                throw new ArgumentOutOfRangeException(nameof(number), "NNo checkout available for the given number");
             }
 
             if (_checkouts.TryGetValue(number, out var checkout))
