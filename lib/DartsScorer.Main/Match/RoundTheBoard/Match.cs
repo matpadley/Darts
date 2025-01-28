@@ -1,6 +1,4 @@
-﻿using DartsScorer.Main.Player;
-
-namespace DartsScorer.Main.Match.RoundTheBoard;
+﻿namespace DartsScorer.Main.Match.RoundTheBoard;
 
 public class Match : CommonMatch
 {

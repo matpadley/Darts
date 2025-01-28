@@ -1,4 +1,3 @@
-using DartsScorer.Main.Player;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Match;

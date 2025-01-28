@@ -1,6 +1,5 @@
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Player;
-using DartsScorer.Main.Scoring;
 
 namespace DartsScore.RoundTheBoard;
 

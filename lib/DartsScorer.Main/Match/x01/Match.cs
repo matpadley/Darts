@@ -1,5 +1,3 @@
-using DartsScorer.Main.Player;
-
 namespace DartsScorer.Main.Match.x01;
 
 public class Match : CommonMatch

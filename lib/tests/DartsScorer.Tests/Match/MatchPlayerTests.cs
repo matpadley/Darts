@@ -1,5 +1,3 @@
-using MatchPlayer = DartsScorer.Main.Player.MatchPlayer;
-
 namespace DartsScorer.Tests.Match;
 
 public class MatchPlayerTests

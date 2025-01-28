@@ -1,5 +1,3 @@
-using DartsScorer.Main.Player;
-
 namespace DartsScorer.Main.Match.Killer;
 
 public class Match: CommonMatch

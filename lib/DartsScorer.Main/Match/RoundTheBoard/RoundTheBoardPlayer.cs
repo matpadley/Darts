@@ -41,25 +41,15 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         {
             case 1:
                 _currentLeg.ThrowFirst(newThrow);
-                if (newThrow.Score == RequiredBoardNumber)
-                {
-                    
-                    RequiredBoardNumber ++;
-                }
+                UpdateRequiredBoardNumber(newThrow);
                 break;
             case 2:
                 _currentLeg.ThrowSecond(newThrow);
-                if (newThrow.Score == RequiredBoardNumber)
-                {
-                    RequiredBoardNumber ++;
-                }
+                UpdateRequiredBoardNumber(newThrow);
                 break;
             case 3:
                 _currentLeg.ThrowThird(newThrow);
-                if (newThrow.Score == RequiredBoardNumber)
-                {
-                    RequiredBoardNumber ++;
-                }
+                UpdateRequiredBoardNumber(newThrow);
                 break;
         }
 
@@ -68,7 +58,16 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
             Finished = true;
         }
     }
-    
+
+    private void UpdateRequiredBoardNumber(ThrowScore newThrow)
+    {
+        if (newThrow.NumberScore == RequiredBoardNumber)
+        {
+            RequiredBoardNumber = newThrow.Score + 1;
+        }
+    }
+
+
     // add method to end the throw and add the leg to the list of legs
     public override void EndThrow()
     {
