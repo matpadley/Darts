@@ -1,6 +1,4 @@
-using System;
 using NUnit.Framework;
-using DartsScorer.Checkout;
 
 namespace DartsScorer.Checkout.Tests
 {
@@ -22,14 +20,17 @@ namespace DartsScorer.Checkout.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => _checkout.Calculate(171));
         }
 
-        [Test]
-        public void Calculate_ValidInputNumber_ReturnsCheckoutArray()
+        // add an nunit testcase that has the first parameter of an integer and the second of an arrary
+        // the array should be the expected result
+        [TestCase(2, new []{"D1"})]
+        [TestCase(170, new []{"T20", "T20", "DB"})]
+        [TestCase(138, new [] {"T20", "T14", "D18" })]
+        public void Calculate_ValidInputNumber_ReturnsCheckoutArray(int requiredScore, string[] checkoutArray)
         {
-            var result = _checkout.Calculate(2);
-            Assert.AreEqual(new[] { "D1" }, result);
-
-            result = _checkout.Calculate(170);
-            Assert.AreEqual(new[] { "T56", "2" }, result);
+            var result = _checkout.Calculate(requiredScore);
+            
+            Assert.That(result, Is.EqualTo(checkoutArray).AsCollection);
+            
         }
 
         [Test]
