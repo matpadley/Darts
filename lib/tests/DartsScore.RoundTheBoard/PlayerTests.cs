@@ -9,7 +9,6 @@ public class PlayerTests
     public void RoundTheBoard_Can_Create_Player()
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
-        
         Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo( 1));
         Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo( 0));
     }
