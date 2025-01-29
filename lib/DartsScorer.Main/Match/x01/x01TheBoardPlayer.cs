@@ -54,4 +54,9 @@ public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name
     {
         throw new NotImplementedException();
     }
+
+    public override bool Finished()
+    {
+        throw new NotImplementedException();
+    }
 }
