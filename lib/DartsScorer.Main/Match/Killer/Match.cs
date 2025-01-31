@@ -11,7 +11,10 @@ public class Match: CommonMatch
     public override string Name { get; } = "Killer";
     public override void StartMatch()
     {
-        throw new NotImplementedException();
+        if (CanStartMatch())
+        {
+            
+        }
     }
 
     public override bool IsMatchComplete { get; }

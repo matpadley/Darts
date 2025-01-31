@@ -72,6 +72,7 @@ public class MatchX01Tests
         match.AddPlayer(player1);
         match.AddPlayer(player2);
 
+        // Assert that match.starts throws method or operation not implemented
         match.StartMatch();
 
         Assert.That(match.CurrentPlayer?.Name, Is.EqualTo("Player 1"));
