@@ -81,17 +81,42 @@ if (newMatch.Players.Count > 0)
         AnsiConsole.MarkupLine("Game Started");
         
         // get the match player type dependeing on the match type
-        var matchPlayer = newMatch.Players[0] switch
+        //var matchPlayer = newMatch.Players[0] switch
+        //{
+        //    RoundTheBoardPlayer => new RoundTheBoardPlayer(newMatch.Players[0].Name),
+        //    _ => throw new InvalidOperationException("Match type not found")
+        //};
+        
+        while (newMatch.Players.Count(d => d.Finished()) == 0)
         {
-            RoundTheBoardPlayer => new RoundTheBoardPlayer(newMatch.Players[0].Name),
-            _ => throw new InvalidOperationException("Match type not found")
-        };
-        matchPlayer.StartThrow();
-        HandleThrow(matchPlayer);
-        HandleThrow(matchPlayer);
-        HandleThrow(matchPlayer);
-        matchPlayer.EndThrow();
+            foreach (var matchPlayer in newMatch.Players)
+            {
+                // write the name of the current player to the screen in green
+                var roundTheBoardPlayer = matchPlayer as RoundTheBoardPlayer;
+                
+                AnsiConsole.MarkupLine($"[red]Current Player: {matchPlayer.Name}S core: {roundTheBoardPlayer.RequiredBoardNumber}[/]");
+                // write a line under the above line
+                AnsiConsole.MarkupLine("[red]--------------------------------[/]");
+                
+                if (!newMatch.IsMatchComplete)
+                {
+                    roundTheBoardPlayer.StartThrow();
+                    HandleThrow(roundTheBoardPlayer);
+                    HandleThrow(roundTheBoardPlayer);
+                    HandleThrow(roundTheBoardPlayer);
+                    roundTheBoardPlayer.EndThrow();
+                }
+                newMatch.UpdatePlayer(roundTheBoardPlayer);
+                
+                //write the name and the score of the current player
+                AnsiConsole.MarkupLine($"[green]Player: {roundTheBoardPlayer.Name} Score: {roundTheBoardPlayer.RequiredBoardNumber}[/]");
+                
+            }
+        }
     }
+    
+    // write out the name of the winner of the match in red
+    AnsiConsole.MarkupLine($"[red]Winner: {newMatch.Players.FirstOrDefault(d => d.Finished()).Name}[/]");
 }
 
 return;

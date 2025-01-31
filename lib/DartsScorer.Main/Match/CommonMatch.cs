@@ -64,7 +64,8 @@ public abstract class CommonMatch
     }
 
     public Player.Player? CurrentPlayer { get; private set; }
-    
+    public abstract bool IsMatchComplete { get; }
+
     public void SetCurrentPlayer(Player.Player player)
     {
         CurrentPlayer = player;

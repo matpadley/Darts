@@ -24,4 +24,6 @@ public class Match : CommonMatch
     {
         throw new NotImplementedException();
     }
+
+    public override bool IsMatchComplete { get; }
 }
