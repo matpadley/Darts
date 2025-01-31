@@ -22,7 +22,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DartsScorer.Main\DartsScorer.Main.csproj" />
+      <None Remove="checkout.json" />
+      <Content Include="checkout.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
