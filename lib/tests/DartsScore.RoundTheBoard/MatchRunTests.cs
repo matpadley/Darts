@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using DartsScore.RoundTheBoard.TestCases;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Scoring;
@@ -29,20 +30,23 @@ public class MatchRunTests
         {
             var roundTheBoardPlayer = matchPlayer as RoundTheBoardPlayer;
 
+            Debug.Assert(roundTheBoardPlayer != null, nameof(roundTheBoardPlayer) + " != null");
+            
+            var dartsToThrow = throwCase!.First();
+            
             roundTheBoardPlayer.StartThrow();
-            roundTheBoardPlayer.Throw(throwCase.First().FirstThrow.BoardScore,
-                throwCase.First().FirstThrow.Multiplier); // next score == 3
-            roundTheBoardPlayer.Throw(throwCase.First().SecondThrow.BoardScore,
-                throwCase.First().SecondThrow.Multiplier); // next score == 7
-            roundTheBoardPlayer.Throw(throwCase.First().ThirdThrow.BoardScore,
-                throwCase.First().ThirdThrow.Multiplier); // next score == 8
+            roundTheBoardPlayer.Throw(dartsToThrow.FirstThrow.BoardScore,
+                dartsToThrow.FirstThrow.Multiplier); // next score == 3
+            roundTheBoardPlayer.Throw(dartsToThrow.SecondThrow.BoardScore,
+                dartsToThrow.SecondThrow.Multiplier); // next score == 7
+            roundTheBoardPlayer.Throw(dartsToThrow.ThirdThrow.BoardScore,
+                dartsToThrow.ThirdThrow.Multiplier); // next score == 8
             roundTheBoardPlayer.EndThrow();
             _match.UpdatePlayer(roundTheBoardPlayer);
 
             Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo(expectedScore));
-            Assert.That((_match
-                    .Players
-                    .Where(p => p.Equals(matchPlayer)).First() as RoundTheBoardPlayer)
+            Assert.That(((_match
+                    .Players.First(p => p.Equals(matchPlayer)) as RoundTheBoardPlayer)!)
                 .RequiredBoardNumber,
                 Is.EqualTo(expectedScore));
         }
@@ -66,26 +70,26 @@ public class MatchRunTests
                 var roundTheBoardPlayer = matchPlayer as RoundTheBoardPlayer;
                 
                 // convert roundtheboardplayer requiredscore to an equivalent BoardScor
-                Enum.TryParse(roundTheBoardPlayer.RequiredBoardNumber.ToString(), out BoardScore boardScore1);
-                Enum.TryParse((roundTheBoardPlayer.RequiredBoardNumber + 1).ToString(), out BoardScore boardScore2);
-                Enum.TryParse((roundTheBoardPlayer.RequiredBoardNumber + 2).ToString(), out BoardScore boardScore3);
+                Enum.TryParse(roundTheBoardPlayer?.RequiredBoardNumber.ToString(), out BoardScore boardScore1);
+                Enum.TryParse((roundTheBoardPlayer?.RequiredBoardNumber + 1).ToString(), out BoardScore boardScore2);
+                Enum.TryParse((roundTheBoardPlayer?.RequiredBoardNumber + 2).ToString(), out BoardScore boardScore3);
 
                 if (!_match.IsMatchComplete)
                 {
-                    roundTheBoardPlayer.StartThrow();
-                    roundTheBoardPlayer.Throw(boardScore1, Multiplier.Single);
-                    roundTheBoardPlayer.Throw(boardScore2, Multiplier.Single);
-                    roundTheBoardPlayer.Throw(boardScore3, Multiplier.Single);
-                    roundTheBoardPlayer.EndThrow();
+                    roundTheBoardPlayer?.StartThrow();
+                    roundTheBoardPlayer?.Throw(boardScore1, Multiplier.Single);
+                    roundTheBoardPlayer?.Throw(boardScore2, Multiplier.Single);
+                    roundTheBoardPlayer?.Throw(boardScore3, Multiplier.Single);
+                    roundTheBoardPlayer?.EndThrow();
                 
                 }
-                _match.UpdatePlayer(roundTheBoardPlayer);
+                _match.UpdatePlayer(roundTheBoardPlayer!);
                 
             }
         }
         
-        Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer).Name == "new player").Finished(), Is.True);
-        Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer).Name == "second player").Finished(), Is.False);
+        Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "new player").Finished(), Is.True);
+        Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "second player").Finished(), Is.False);
         Assert.That(_match.Winner.Name, Is.EqualTo("new player"));
     }
 

@@ -1,16 +1,14 @@
-using NUnit.Framework;
-
-namespace DartsScorer.Checkout.Tests
+namespace DartsScorer.Tests
 {
     [TestFixture]
     public class CheckoutTests
     {
-        private Checkout _checkout;
+        private Main.Checkout _checkout;
 
         [SetUp]
         public void Setup()
         {
-            _checkout = new Checkout();
+            _checkout = new Main.Checkout();
         }
 
         [Test]
