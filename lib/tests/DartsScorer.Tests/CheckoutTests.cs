@@ -1,4 +1,4 @@
-namespace DartsScorer.Checkout.Tests
+namespace DartsScorer.Tests
 {
     [TestFixture]
     public class CheckoutTests

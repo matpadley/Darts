@@ -3,14 +3,15 @@ namespace DartsScorer.Main.Player;
 public class Player(string name)
 {
     public string Name { get; } = name;
-
-    protected bool Equals(Player other)
+    
+    // add an equality override to check on the name
+    public override bool Equals(object? obj)
     {
-        return Name == other.Name;
-    }
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
 
-    public override int GetHashCode()
-    {
-        return Name.GetHashCode();
+        return Name == ((Player)obj).Name;
     }
 }
