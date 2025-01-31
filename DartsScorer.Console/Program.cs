@@ -17,11 +17,12 @@ var types = Assembly.GetAssembly(typeof(CommonMatch))?.GetTypes()
 var matchTuple = new List<(int index, string Name)>();
 
 // write the name of the class that inherits CommonMatch to screen
-for (int i = 0; i < types.Count; i++)
-{
-    var match = (CommonMatch)Activator.CreateInstance(types[i]);
-    matchTuple.Add((i, match.Name));
-}
+if (types != null)
+    for (var i = 0; i < types.Count; i++)
+    {
+        var match = (CommonMatch)Activator.CreateInstance(types[i]);
+        matchTuple.Add((i, match.Name));
+    }
 
 AnsiConsole.MarkupLine("[yellow]Pick your game[/]");
 
@@ -42,7 +43,7 @@ AnsiConsole.Write(table);
 var input = AnsiConsole.Ask<int>("Enter the number of the match you want to use: ");
 
 // instantiate a match and display the description
-var newMatch = (CommonMatch)Activator.CreateInstance(types[input]);
+var newMatch = (CommonMatch)Activator.CreateInstance(types[input])!;
 AnsiConsole.MarkupLine($"You have picked: [bold yellow]{newMatch.Name}[/]");
 
 // add the name of the first user

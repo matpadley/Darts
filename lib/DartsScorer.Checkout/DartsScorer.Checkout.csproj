@@ -23,9 +23,6 @@
 
     <ItemGroup>
       <None Remove="checkout.json" />
-      <Content Include="checkout.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
     </ItemGroup>
 
 </Project>

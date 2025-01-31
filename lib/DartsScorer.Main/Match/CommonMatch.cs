@@ -12,7 +12,7 @@ public abstract class CommonMatch
 
     public IReadOnlyList<Player.MatchPlayer> Players => _players.AsReadOnly();
 
-    private List<Set> _sets = [];
+    private readonly List<Set> _sets = [];
 
     public IReadOnlyList<Set> Sets => _sets.AsReadOnly();
 

@@ -9,7 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\DartsScorer.Checkout\DartsScorer.Checkout.csproj" />
       <ProjectReference Include="..\..\DartsScorer.Main\DartsScorer.Main.csproj" />
     </ItemGroup>
     <ItemGroup>

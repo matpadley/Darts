@@ -44,7 +44,7 @@ public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name
                 break;
         }
         
-        if (_currentLeg.IsComplete)
+        if (_currentLeg is { IsComplete: true })
         {
             Legs.Add(_currentLeg);
         }

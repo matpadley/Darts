@@ -15,7 +15,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartsScorer.x01", "DartsScorer.x01\DartsScorer.x01.csproj", "{F0AA1A6B-BD11-4C4B-91FF-C04A922AF0C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartsScorer.Console", "..\DartsScorer.Console\DartsScorer.Console.csproj", "{A26C0818-8D74-4CC6-9A96-AFD7ECC5E2FC}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartsScorer.Checkout", "DartsScorer.Checkout\DartsScorer.Checkout.csproj", "{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartsScorer.Checkout.Tests", "tests\DartsScorer.Checkout.Tests\DartsScorer.Checkout.Tests.csproj", "{53E042A3-1554-48FD-9A58-C3C181A032C7}"
 EndProject
@@ -52,10 +51,6 @@ Global
 		{A26C0818-8D74-4CC6-9A96-AFD7ECC5E2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A26C0818-8D74-4CC6-9A96-AFD7ECC5E2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A26C0818-8D74-4CC6-9A96-AFD7ECC5E2FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1B2C3D4-E5F6-7890-1234-56789ABCDEF0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{53E042A3-1554-48FD-9A58-C3C181A032C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{53E042A3-1554-48FD-9A58-C3C181A032C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53E042A3-1554-48FD-9A58-C3C181A032C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
