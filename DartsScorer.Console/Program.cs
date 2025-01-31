@@ -94,12 +94,12 @@ if (newMatch.Players.Count > 0)
     }
 }
 
+return;
+
 static void HandleThrow(MatchPlayer matchPlayer)
 {
-    
-
     // ask for inputs 1-20, outerbull or bullseye
-    var dartThrow = AnsiConsole.Ask<int>("Enter the first throw (1-20): ");
+    var dartThrow = AnsiConsole.Ask<int>("Enter the throw (1-20) score: ");
 
     // if the throw is not between 1 and 20 throw an error
     do
@@ -137,6 +137,7 @@ static void HandleThrow(MatchPlayer matchPlayer)
     };
 
     // get the multiplier from the input, single, double, triple
+    /*
     var multiplier1 = AnsiConsole.Ask<int>("Enter the multiplier: ");
     // add a table with the multiplier options
     var table1 = new Table();
@@ -148,13 +149,19 @@ static void HandleThrow(MatchPlayer matchPlayer)
     AnsiConsole.Render(table1);
 
     // convert the input to the multiplier enum
+
     var multiplier = multiplier1 switch
     {
         1 => Multiplier.Single,
         2 => Multiplier.Double,
         3 => Multiplier.Triple,
         _ => throw new InvalidOperationException("Multiplier not found")
-    };
+    };*/
 
-    matchPlayer.Throw(boardScore1, multiplier);
+    matchPlayer.Throw(boardScore1, Multiplier.Single);
+    
+    var currentUser = matchPlayer as RoundTheBoardPlayer;
+    
+    // write to the screen in green the current score of the user
+    AnsiConsole.MarkupLine($"[green]Current Score: {currentUser.RequiredBoardNumber}[/]");
 }// get three throws from the user

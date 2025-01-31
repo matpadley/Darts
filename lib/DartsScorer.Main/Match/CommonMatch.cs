@@ -23,15 +23,20 @@ public abstract class CommonMatch
         _players.Add(player);
     }
 
-    public void StartMatch()
+    public abstract void StartMatch();
+
+    public bool CanStartMatch()
     {
+        
         // throw exception if no players
-        if (_players.Count == 0)
+        if (Players.Count == 0)
         {
             throw new InvalidOperationException("Cannot start match with no players");
         }
 
-        CurrentPlayer = _players[0];
+        SetCurrentPlayer(Players[0]);
+
+        return true;
     }
     
     // hpdate the current player with the one with the updates numbers
@@ -59,4 +64,9 @@ public abstract class CommonMatch
     }
 
     public Player.Player? CurrentPlayer { get; private set; }
+    
+    public void SetCurrentPlayer(Player.Player player)
+    {
+        CurrentPlayer = player;
+    }
 }

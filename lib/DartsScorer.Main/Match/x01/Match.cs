@@ -20,4 +20,8 @@ public class Match : CommonMatch
     }
 
     public override string Name { get; } = "x01";
+    public override void StartMatch()
+    {
+        throw new NotImplementedException();
+    }
 }
