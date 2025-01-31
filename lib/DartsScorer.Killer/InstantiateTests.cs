@@ -17,6 +17,7 @@ namespace DartsScorer.Killer
         public void Match_Killer_Instantiation()
         {
             Assert.That(_match?.DartsMatchType, Is.EqualTo(DartsMatchType.Killer));
+            Assert.That(_match?.Name, Is.EqualTo("Killer"));
         }
         [Test]
         public void Match_Killer_Instantiation_Failure()

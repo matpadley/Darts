@@ -13,9 +13,10 @@ public class InstantiateTests
     [Test]
     public void RoundTheBoard_Instantiate()
     {
-        var roundTheBoard = new Match();
+        var match = new Match();
         
-        Assert.That(roundTheBoard.DartsMatchType, Is.EqualTo(DartsMatchType.RoundTheBoard));
+        Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.RoundTheBoard));
+        Assert.That(match?.Name, Is.EqualTo("Round The Board"));
     }
     
     [Test]

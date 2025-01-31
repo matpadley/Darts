@@ -7,4 +7,15 @@ public class Match: CommonMatch
     {
         DartsMatchType = DartsMatchType.Killer;
     }
+
+    public override string Name { get; } = "Killer";
+    public override void StartMatch()
+    {
+        if (CanStartMatch())
+        {
+            
+        }
+    }
+
+    public override bool IsMatchComplete { get; }
 }

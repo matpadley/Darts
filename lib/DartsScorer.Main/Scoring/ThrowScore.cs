@@ -17,7 +17,11 @@ public class ThrowScore
             Multiplier.Triple => scoreValue * 3,
             _ => throw new ArgumentOutOfRangeException(nameof(multiplier), multiplier, null),
         };
+
+        NumberScore = scoreValue;
     }
+
+    public int NumberScore { get; private set; }
 
     public int Score { get; private set; }
 }

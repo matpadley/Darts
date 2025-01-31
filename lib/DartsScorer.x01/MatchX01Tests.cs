@@ -13,6 +13,7 @@ public class MatchX01Tests
         Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.X01));
         Assert.That(match.Players.Count, Is.EqualTo(0));
         Assert.That(match.Sets.Count, Is.EqualTo(0));
+        Assert.That(match.Name, Is.EqualTo("x01"));
     }
 
     [Test]
@@ -49,8 +50,7 @@ public class MatchX01Tests
     public void Match_X01_Instantiation_Can_Add_Player()
     {
         var match = new Match();
-        var player = new Main.Player.Player("Player 1");
-        match.AddPlayer(player);
+        match.AddPlayer(new X01TheBoardPlayer("Player 1"));
 
         Assert.That(match.Players.Count, Is.EqualTo(1));
     }
@@ -67,11 +67,12 @@ public class MatchX01Tests
     public void Match_X01_Instantiation_Start_Match_With_Correct_Player()
     {
         var match = new Match();
-        var player1 = new Main.Player.Player("Player 1");
-        var player2 = new Main.Player.Player("Player 2");
+        var player1 = new X01TheBoardPlayer("Player 1");
+        var player2 = new X01TheBoardPlayer("Player 2");
         match.AddPlayer(player1);
         match.AddPlayer(player2);
 
+        // Assert that match.starts throws method or operation not implemented
         match.StartMatch();
 
         Assert.That(match.CurrentPlayer?.Name, Is.EqualTo("Player 1"));
@@ -81,8 +82,8 @@ public class MatchX01Tests
     public void Match_X01_Instantiation_Start_Match_With_First_Set()
     {
         var match = new Match();
-        var player1 = new Main.Player.Player("Player 1");
-        var player2 = new Main.Player.Player("Player 2");
+        var player1 = new X01TheBoardPlayer("Player 1");
+        var player2 = new X01TheBoardPlayer("Player 2");
         match.AddPlayer(player1);
         match.AddPlayer(player2);
 

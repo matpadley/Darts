@@ -18,4 +18,15 @@ public class Match : CommonMatch
 
         RequiredScore = requiredScore * 100 + 1;
     }
+
+    public override string Name { get; } = "x01";
+    public override void StartMatch()
+    {
+        if (CanStartMatch())
+        {
+            
+        }
+    }
+
+    public override bool IsMatchComplete { get; }
 }
