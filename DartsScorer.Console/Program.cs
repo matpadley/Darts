@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text.RegularExpressions;
 using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Player;
@@ -23,6 +24,7 @@ newMatch.AddPlayer(new RoundTheBoardPlayer(player1));
 
 // add a loop so people can add new players
 var addPlayer = true;
+
 while (addPlayer)
 {
     var add = AnsiConsole.Confirm("Do you want to add another player?");
@@ -37,9 +39,9 @@ while (addPlayer)
     }
 }
 
-foreach (var se in newMatch.Players.ToList().Select(f => f.Name))
+foreach (var player in newMatch.Players.ToList().Select(f => f.Name))
 {
-    AnsiConsole.MarkupLine($"Player: [underline]{se}[/]");
+    AnsiConsole.MarkupLine($"Player: [underline]{player}[/]");
 }
 
 // add an option to sytart the game if a player has been added to the match
@@ -57,9 +59,9 @@ if (newMatch.Players.Count > 0)
         {
             var player = newMatch.CurrentPlayer as RoundTheBoardPlayer;
 
-            AnsiConsole.MarkupLine($"[red]Current Player: {player.Name}S core: {player.RequiredBoardNumber}[/]");
+            AnsiConsole.MarkupLine($"[blue]Current Player - {player.Name} - Score: {player.RequiredBoardNumber}[/]");
             // write a line under the above line
-            AnsiConsole.MarkupLine("[red]--------------------------------[/]");
+            AnsiConsole.MarkupLine("[blue]--------------------------------[/]");
 
             player.StartThrow();
             HandleThrow(player);
@@ -70,9 +72,9 @@ if (newMatch.Players.Count > 0)
             newMatch.UpdatePlayer(player!);
 
             //write the name and the score of the current player
-            AnsiConsole.MarkupLine($"[green]Player: {player.Name} Score: {player.RequiredBoardNumber}[/]");
+            AnsiConsole.MarkupLine($"[green]Player: - {player.Name} - Score: {player.RequiredBoardNumber}[/]");
+            AnsiConsole.MarkupLine("[green]--------------------------------[/]");
         }
-
     }
 
     AnsiConsole.MarkupLine($"[red]Winner: {newMatch.Players.FirstOrDefault(d => d.Finished()).Name}[/]");
@@ -82,20 +84,34 @@ return;
 
 static void HandleThrow(MatchPlayer matchPlayer)
 {
+    var regexString = "^(1[0-9]|20|[1-9])(S|D|T)$|^(25|50)$";
+    var regEx = new Regex(regexString);
+    
     // ask for inputs 1-20, outerbull or bullseye
-    var dartThrow = AnsiConsole.Ask<int>("Enter the throw (1-20) score: ");
-
+    var dartThrow = AnsiConsole.Ask<string>($"[yellow]Enter the throw: 1-20 and S,D or T or 25 or 50 score:[/]");
+    var regExMatch = regEx.Match(dartThrow);
+    
     // if the throw is not between 1 and 20 throw an error
     do
     {
-        if (dartThrow < 1 || dartThrow > 20)
-        {
-            dartThrow = AnsiConsole.Ask<int>("[red]Throw must be between 1 and 20[/]");
-        }
-    } while (dartThrow < 1 || dartThrow > 20);
-
+        if (regExMatch.Success) continue;
+        dartThrow = AnsiConsole.Ask<string>("[red]Enter the throw: 1-20 and S,D or T or 25 or 50 score:[/]");
+        regExMatch = regEx.Match(dartThrow);
+    } while (!regExMatch.Success);
+    
+    // if the first part of the throw is 25 or 50 set the multiplier to single
+    if (dartThrow == "25" || dartThrow == "50")
+    {
+        matchPlayer.Throw(dartThrow == "25" ? BoardScore.OuterBull : BoardScore.BullsEye, Multiplier.Single);
+        return;
+    }
+    
+    // if the throw is not 25 or 50 split the string and get the board score
+    var score = int.Parse(dartThrow[0].ToString());
+    var multiplier = dartThrow[1].ToString();
+    
     // convert the input to the board score enum
-    var boardScore1 = dartThrow switch
+    var boardScore = score switch
     {
         1 => BoardScore.One,
         2 => BoardScore.Two,
@@ -119,36 +135,23 @@ static void HandleThrow(MatchPlayer matchPlayer)
         20 => BoardScore.Twenty,
         _ => throw new InvalidOperationException("Board score not found")
     };
-
-    // get the multiplier from the input, single, double, triple
-    /*
-    var multiplier1 = AnsiConsole.Ask<int>("Enter the multiplier: ");
-    // add a table with the multiplier options
-    var table1 = new Table();
-    table1.AddColumn("Index");
-    table1.AddColumn("Multiplier");
-    table1.AddRow("1", "Single");
-    table1.AddRow("2", "Double");
-    table1.AddRow("3", "Triple");
-    AnsiConsole.Render(table1);
-
+    
     // convert the input to the multiplier enum
 
-    var multiplier = multiplier1 switch
+    var boardMultiplier = multiplier switch
     {
-        1 => Multiplier.Single,
-        2 => Multiplier.Double,
-        3 => Multiplier.Triple,
+        "S" => Multiplier.Single,
+        "D" => Multiplier.Double,
+        "T" => Multiplier.Triple,
         _ => throw new InvalidOperationException("Multiplier not found")
-    };*/
-
-    matchPlayer.Throw(boardScore1, Multiplier.Single);
+    };
+    
+    matchPlayer.Throw(boardScore, boardMultiplier);
     
     var currentUser = matchPlayer as RoundTheBoardPlayer;
     
-    // write to the screen in green the current score of the user
     AnsiConsole.MarkupLine($"[green]Current Score: {currentUser.RequiredBoardNumber}[/]");
-}// get three throws from the user
+}
 
 static Type[] GetAndDisplayMatchTypes()
 {

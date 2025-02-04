@@ -84,6 +84,8 @@ public class MatchRunTests
         Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "second player").Finished(), Is.False);
         Assert.That(_match.Winner.Name, Is.EqualTo("new player"));
     }
+    
+    /// add test for bust - if the player goes over the required number[Test]
 
     /// <summary>
     /// Test cases for different dart throws and their expected scores.
