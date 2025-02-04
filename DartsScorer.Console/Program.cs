@@ -91,6 +91,7 @@ static void HandleThrow(MatchPlayer matchPlayer)
     var dartThrow = AnsiConsole.Ask<string>($"[yellow]Enter the throw: 1-20 and S,D or T or 25 or 50 score:[/]");
     var regExMatch = regEx.Match(dartThrow);
     
+    
     // if the throw is not between 1 and 20 throw an error
     do
     {
@@ -107,8 +108,8 @@ static void HandleThrow(MatchPlayer matchPlayer)
     }
     
     // if the throw is not 25 or 50 split the string and get the board score
-    var score = int.Parse(dartThrow[0].ToString());
-    var multiplier = dartThrow[1].ToString();
+    var score = int.Parse(regExMatch.Groups[1].Value);
+    var multiplier = regExMatch.Groups[2].Value;
     
     // convert the input to the board score enum
     var boardScore = score switch
