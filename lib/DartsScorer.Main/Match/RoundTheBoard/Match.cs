@@ -12,7 +12,7 @@ public class Match : CommonMatch
     {
         if (CanStartMatch())
         {
-            
+            SetCurrentPlayer(Players.First());
         }
     }
 
