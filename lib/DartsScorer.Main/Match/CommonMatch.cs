@@ -55,8 +55,14 @@ public abstract class CommonMatch
             _players = updatedPlayers;
         }
 
+        if (player.Finished())
+        {
+            return;
+        }
+
         // Get the next player
-        var nextInd = currentInd + 1;
+        
+        var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;
         if (nextInd < _players.Count)
         {
             CurrentPlayer = _players[nextInd];
