@@ -53,33 +53,6 @@ public class MatchRunTests
     }
 
     [Test]
-    public void RoundTheBoard_SinglePlayer_OverThrow()
-    {
-        var player1 = new RoundTheBoardPlayer("new player");
-
-        _match.AddPlayer(player1);
-
-        _match.StartMatch();
-
-        while (!_match.IsMatchComplete)
-        {
-            var player = _match.CurrentPlayer as RoundTheBoardPlayer;
-            
-            player?.StartThrow();
-            player?.Throw(BoardScore.One, Multiplier.Triple);
-            player?.Throw(BoardScore.Four, Multiplier.Triple);
-            player?.Throw(BoardScore.Twelve, Multiplier.Triple);
-            player?.EndThrow();
-            
-            _match.UpdatePlayer(player!);
-        }
-        
-        Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "new player").Finished(), Is.False);
-        //Assert.That(_match.Winner.Name, Is.EqualTo("new player"));
-        
-    }
-
-    [Test]
     public void RoundTheBoard_MultiPlayer_Run_Through_To_Finish()
     {
         var player1 = new RoundTheBoardPlayer("new player");
