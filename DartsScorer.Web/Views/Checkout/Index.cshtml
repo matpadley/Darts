@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Checkout</h1>
+    // add an input for a number between 1 and 100 and post back to the server
+    <form asp-action="CheckoutResult">
+        <div class="form-group">
+            <label for="score">Score</label>
+            <input class="form-control" id="score" name="score" type="number" min="2" max="170" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

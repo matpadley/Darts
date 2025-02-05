@@ -2,8 +2,13 @@ namespace DartsScorer.Main.Scoring;
 
 public class ThrowScore
 {
+    public BoardScore BoardScore;
+    public Multiplier Multiplier { get; }
+
     public ThrowScore(Multiplier multiplier, BoardScore score)
     {
+        BoardScore = score;
+        Multiplier = multiplier;
         int scoreValue = (int)score;
         if (multiplier != Multiplier.Single && (score == BoardScore.BullsEye || score == BoardScore.OuterBull))
         {

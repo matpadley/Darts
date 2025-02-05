@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Checkout</h1>
+    <p>Score: @Model.Score</p>
+    <ul>
+        @foreach (var checkoutOption in Model.CheckoutOptions)
+        {
+            <li>@checkoutOption.Score - @checkoutOption.CheckoutOption</li>
+        }</ul>
+</div>
