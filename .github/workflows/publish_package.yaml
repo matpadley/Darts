@@ -29,8 +29,11 @@ jobs:
         working-directory: lib
 
       - name: Pack
-        run: dotnet pack --configuration Release --output ./nupkgs
+        run: dotnet pack --configuration Release --output ./nupkgs /p:PackageVersion=${{ github.event.release.tag_name }}
         working-directory: lib
 
+      - name: Add GitHub NuGet source
+        run: dotnet nuget add source --username matpadley --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/matpadley/index.json"
+
       - name: Publish to GitHub Packages
-        run: dotnet nuget push ./nupkgs/*.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push ./lib/nupkgs/DartsScorer.Main.${{ github.event.release.tag_name }}.nupkg --source "github" --api-key ${{ secrets.GITHUB_TOKEN }}
