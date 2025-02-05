@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using DartsScorer.Main.Player;
 using DartsScorer.Main.Scoring;
 
@@ -10,11 +11,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
     private Leg? _currentLeg;
-
     private bool HasWon { get; set; }
-    
-    
-    
     public override void StartThrow()
     {
         // a check to make sure that the last leg has finished
@@ -68,10 +65,11 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     {
         if (newThrow.NumberScore == RequiredBoardNumber && !HasWon)
         {
-            RequiredBoardNumber = newThrow.Score + 1;
+            var nextNumber = newThrow.Score + 1;
+            RequiredBoardNumber = nextNumber > 20 ? RequiredBoardNumber : nextNumber;
         }
         
-        HasWon = RequiredBoardNumber == 20;
+        HasWon = newThrow.NumberScore == 20 && RequiredBoardNumber == 20;
     }
 
 

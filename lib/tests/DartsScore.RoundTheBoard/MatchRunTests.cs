@@ -143,6 +143,19 @@ public class MatchRunTests
                     }
                 },
                 1
+            },
+            new object[]
+            {
+                new ThrowCase[]
+                {
+                    new()
+                    {
+                        FirstThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.One, Multiplier.Triple),
+                        SecondThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Four, Multiplier.Triple),
+                        ThirdThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Sixteen, Multiplier.Triple)
+                    }
+                },
+                13
             }
         };
 }
