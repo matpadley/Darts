@@ -2,8 +2,8 @@ namespace DartsScorer.Main.Scoring;
 
 public class ThrowScore
 {
-    public BoardScore BoardScore;
-    public Multiplier Multiplier { get; }
+    public readonly BoardScore BoardScore;
+    public readonly Multiplier Multiplier;
 
     public ThrowScore(Multiplier multiplier, BoardScore score)
     {
@@ -29,4 +29,23 @@ public class ThrowScore
     public int NumberScore { get; private set; }
 
     public int Score { get; private set; }
+    
+    // override the ToString method to return the score and the board score
+    public override string ToString()
+    {
+        var multiplier = Multiplier switch
+        {
+            Multiplier.Single => "",
+            Multiplier.Double => "D",
+            Multiplier.Triple => "T",
+            _ => throw new ArgumentOutOfRangeException()
+        };
+        
+        if (BoardScore == BoardScore.BullsEye || BoardScore == BoardScore.OuterBull)
+        {
+            return BoardScore == BoardScore.BullsEye ? "Bulls Eye" : "Outer Bull" ;
+        }
+        
+        return $"{multiplier}{(int)BoardScore}";
+    }
 }

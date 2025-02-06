@@ -17,14 +17,14 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
             return;
         }
         
-        var regexString = "^(1[0-9]|20|[1-9])(S|D|T)$|^(25|50)$";
+        var regexString = "^(S|D|T)(1[0-9]|20|[1-9])$|^(25|50)$";
         var regEx = new Regex(regexString);
         
         var regExMatch = regEx.Match(dartThrow);
     
         // if the throw is not 25 or 50 split the string and get the board score
-        var score = int.Parse(regExMatch.Groups[1].Value);
-        var multiplier = regExMatch.Groups[2].Value;
+        var score = int.Parse(regExMatch.Groups[2].Value);
+        var multiplier = regExMatch.Groups[1].Value;
     
         // convert the input to the board score enum
         var boardScore = score switch

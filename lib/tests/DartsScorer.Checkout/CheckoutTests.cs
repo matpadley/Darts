@@ -1,3 +1,4 @@
+using DartsScorer.Main.Checkout;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Checkout;
@@ -14,24 +15,36 @@ public class CheckoutTests
     {
         var inputScore = 170;
 
-        var newCalc = new CheckoutCalc();
-        
+        var newCalc = new CheckoutCalculator();
+
         var first = new ThrowScore(Multiplier.Triple, BoardScore.Twenty);
         var second = new ThrowScore(Multiplier.Triple, BoardScore.Twenty);
         var third = new ThrowScore(Multiplier.Double, BoardScore.Eighteen);
 
         var result = newCalc.Calculate(inputScore);
 
-        Assert.That(result[0], Is.EqualTo(first));
-        Assert.That(result[1], Is.EqualTo(second));
-        Assert.That(result[2], Is.EqualTo(third));
+        Assert.That(result[0].BoardScore, Is.EqualTo(first.BoardScore));
+        Assert.That(result[0].Multiplier, Is.EqualTo(first.Multiplier));
+        Assert.That(result[1].BoardScore, Is.EqualTo(second.BoardScore));
+        Assert.That(result[1].Multiplier, Is.EqualTo(second.Multiplier));
+        Assert.That(result[2].BoardScore, Is.EqualTo(third.BoardScore));
+        Assert.That(result[2].Multiplier, Is.EqualTo(third.Multiplier));
     }
-}
 
-public class CheckoutCalc
-{
-    public ThrowScore[] Calculate(int inputScore)
+    [Test]
+    public void Checkout_CheckData_Valus()
     {
-        throw new NotImplementedException();
+        var data = new CheckoutData();
+
+        foreach (var checkout in data.Scores)
+        {
+            if (checkout.Key != checkout.Value.Sum(f => f.Score))
+            {
+                int i = 0;
+            }
+            
+            Assert.That(checkout.Key, 
+                Is.EqualTo(checkout.Value.Sum(f => f.Score)));
+        }
     }
 }

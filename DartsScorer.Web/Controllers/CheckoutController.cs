@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using DartsScorer.Main.Scoring;
 using Microsoft.AspNetCore.Mvc;
 using DartsScorer.Web.Models;
 using DartsScorer.Web.Views.Checkout;
@@ -21,24 +22,22 @@ public class CheckoutController : Controller
     
     public IActionResult CheckoutResult(int score)
     {
-        var calculator = new DartsScorer.Main.Checkout();
-        string[] result = new string[] { };
-        
-        try 
+        var calculator = new Main.Checkout.CheckoutCalculator();
+        try
         {
-            result = calculator.Calculate(score);
+            var model = new CheckoutResultModel
+            {
+                Score = score,
+                Results = calculator.Calculate(score)
+            };
+        
+            return View(model);
         }
-        catch (ArgumentException)
+        catch (Exception e)
         {
+            ViewBag.Exception = e;
+            return View("NoCheckout");
         }
-        
-        var model = new CheckoutResultModel()
-        {
-            Score = score,
-            Result = result
-        };
-        
-        return View(model);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
