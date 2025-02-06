@@ -21,15 +21,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <!-- Views/Shared/_Layout.cshtml -->
+                            @await Html.PartialAsync("_GameTypeSelector")
                         </li>
                     </ul>   
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <form asp-action="CheckoutResult" class="needs-validation row g-3" novalidate>
+                            <form asp-controller="Checkout" asp-action="CheckoutResult" class="needs-validation row g-3" novalidate>
                                 <div class="col-auto">
                                     <input class="form-control" id="score" name="score" type="number" min="2" max="170" required />
                                     <div class="invalid-feedback">

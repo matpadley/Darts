@@ -2,7 +2,6 @@ using System.Diagnostics;
 using DartsScorer.Main.Scoring;
 using Microsoft.AspNetCore.Mvc;
 using DartsScorer.Web.Models;
-using DartsScorer.Web.Views.Checkout;
 
 namespace DartsScorer.Web.Controllers;
 

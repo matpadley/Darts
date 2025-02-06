@@ -1,6 +1,6 @@
 using DartsScorer.Main.Scoring;
 
-namespace DartsScorer.Web.Views.Checkout;
+namespace DartsScorer.Web.Models;
 
 public class CheckoutResultModel
 {
