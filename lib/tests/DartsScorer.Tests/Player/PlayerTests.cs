@@ -31,9 +31,9 @@ public class PlayerTests
         var matchPlayer = (match.CurrentPlayer as RoundTheBoardPlayer);
             
         matchPlayer.StartThrow();
-        matchPlayer.Throw("1S");
-        matchPlayer.Throw("1S");
-        matchPlayer.Throw("2S");
+        matchPlayer.Throw("S1");
+        matchPlayer.Throw("S1");
+        matchPlayer.Throw("S2");
         matchPlayer.EndThrow();
         
         Assert.That(matchPlayer.Legs.Count, Is.EqualTo(1));

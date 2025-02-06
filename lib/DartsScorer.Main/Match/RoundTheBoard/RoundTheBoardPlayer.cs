@@ -27,6 +27,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         // if the leg is finished return
         if (HasWon)
         {
+            EndThrow();
             return;
         }
         

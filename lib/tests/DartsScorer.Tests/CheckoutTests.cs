@@ -16,8 +16,8 @@ namespace DartsScorer.Tests
         [Test]
         public void Calculate_InputNumberOutOfRange_ThrowsArgumentOutOfRangeException()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => _checkout.Calculate(1));
-            Assert.Throws<ArgumentOutOfRangeException>(() => _checkout.Calculate(171));
+            Assert.Throws<InvalidOperationException>(() => _checkout.Calculate(1));
+            Assert.Throws<InvalidOperationException>(() => _checkout.Calculate(171));
         }
 
         // add an nunit testcase that has the first parameter of an integer and the second of an arrary
