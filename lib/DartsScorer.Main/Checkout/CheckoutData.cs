@@ -9,392 +9,392 @@ public class CheckoutData
     public CheckoutData()
     {
 Scores.Add(170, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.BullsEye)
 ]);
 Scores.Add(167, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Single, BoardScore.BullsEye)
 ]);
 Scores.Add(164, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Single, BoardScore.BullsEye)
 ]);
 Scores.Add(161, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
     ,    new ThrowScore(Multiplier.Single, BoardScore.BullsEye)
 ]);
 Scores.Add(160, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(158, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Nineteen)
 ]);
 Scores.Add(157, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(156, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(155, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Nineteen)
 ]);
 Scores.Add(154, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(153, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(152, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(151, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(150, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(149, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(148, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(147, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(146, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(145, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Fifteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(144, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(143, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(142, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Fourteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Fourteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(141, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Fifteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(140, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(139, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Thirteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Thirteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(138, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Fourteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Fourteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(137, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Fifteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(136, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(135, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(134, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Fourteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Fourteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(133, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(132, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(131, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Thirteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Thirteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(130, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Five)
 ]);
 Scores.Add(129, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Six)
 ]);
 Scores.Add(128, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Four)
 ]);
 Scores.Add(127, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(126, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Six)
 ]);
 Scores.Add(125, [
     new ThrowScore(Multiplier.Double, BoardScore.Fifteen)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Nineteen)
 ]);
 Scores.Add(124, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(123, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Nine)
 ]);
 Scores.Add(122, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Four)
 ]);
 Scores.Add(121, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Fifteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(120, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(119, [
     new ThrowScore(Multiplier.Single, BoardScore.Nineteen)
-,    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+,    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
     
 ]);
 Scores.Add(118, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(117, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(116, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(115, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(114, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Fourteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(113, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Thirteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(112, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(111, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(110, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(109, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(108, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(107, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(106, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Fourteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(105, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Thirteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(104, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(103, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Eleven)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(102, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Ten)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(101, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(100, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(99, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Single, BoardScore.Ten)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(98, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Nineteen)
 ]);
 Scores.Add(97, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(96, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(95, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Nineteen)
 ]);
 Scores.Add(94, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(93, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(92, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(91, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(90, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Fifteen)
 ]);
 Scores.Add(89, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(88, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(87, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(86, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(85, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Fifteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(84, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(83, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(82, [
@@ -403,47 +403,47 @@ Scores.Add(82, [
     new ThrowScore(Multiplier.Double, BoardScore.Twenty)
 ]);
 Scores.Add(81, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(80, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Ten)
 ]);
 Scores.Add(79, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eleven)
 ]);
 Scores.Add(78, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Eighteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Eighteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(77, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Fifteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(76, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Twenty)
+    new ThrowScore(Multiplier.Treble, BoardScore.Twenty)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(75, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(74, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Fourteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Fourteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(73, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(72, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(71, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Thirteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Thirteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(70, [
@@ -453,39 +453,39 @@ Scores.Add(70, [
     
 ]);
 Scores.Add(69, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Six)
 ]);
 Scores.Add(68, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Ten)
 ]);
 Scores.Add(67, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Seventeen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Seventeen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(66, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Ten)
+    new ThrowScore(Multiplier.Treble, BoardScore.Ten)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eighteen)
 ]);
 Scores.Add(65, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Nineteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Nineteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Four)
 ]);
 Scores.Add(64, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Sixteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Sixteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(63, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Thirteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Thirteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Twelve)
 ]);
 Scores.Add(62, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Ten)
+    new ThrowScore(Multiplier.Treble, BoardScore.Ten)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Sixteen)
 ]);
 Scores.Add(61, [
-    new ThrowScore(Multiplier.Triple, BoardScore.Fifteen)
+    new ThrowScore(Multiplier.Treble, BoardScore.Fifteen)
 ,    new ThrowScore(Multiplier.Double, BoardScore.Eight)
 ]);
 Scores.Add(60, [

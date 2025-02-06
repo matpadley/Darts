@@ -36,7 +36,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         // a check to make sure that the leg has started and the leg is not null
         if (_currentLeg == null)
         {
-            throw new InvalidOperationException("The leg has not started.");
+            _currentLeg = new Leg();
         }
         
         // if a new throw is attempted after the thrird throw throw and error
@@ -58,6 +58,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
             case 3:
                 _currentLeg.ThrowThird(newThrow);
                 UpdateRequiredBoardNumber(newThrow);
+                EndThrow();
                 break;
         }
     }

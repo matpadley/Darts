@@ -34,6 +34,15 @@
                         <button type="submit" class="btn btn-primary">Throw</button>
                     </div>
                 </form>
+
+                var legs = (Model.CurrentPlayer as RoundTheBoardPlayer).Legs;
+                
+                for(var leg = 0; leg < legs.Count; leg++)
+                {
+                    <h4>Leg @(leg + 1)</h4>
+                    @string.Join(", ", legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))
+                    
+                }
             }
         }
     </div>

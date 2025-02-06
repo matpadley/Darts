@@ -19,7 +19,7 @@ public class ThrowScore
         {
             Multiplier.Single => scoreValue,
             Multiplier.Double => scoreValue * 2,
-            Multiplier.Triple => scoreValue * 3,
+            Multiplier.Treble => scoreValue * 3,
             _ => throw new ArgumentOutOfRangeException(nameof(multiplier), multiplier, null),
         };
 
@@ -37,7 +37,7 @@ public class ThrowScore
         {
             Multiplier.Single => "",
             Multiplier.Double => "D",
-            Multiplier.Triple => "T",
+            Multiplier.Treble => "T",
             _ => throw new ArgumentOutOfRangeException()
         };
         

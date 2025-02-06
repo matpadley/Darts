@@ -150,9 +150,9 @@ public class MatchRunTests
                 {
                     new()
                     {
-                        FirstThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.One, Multiplier.Triple),
-                        SecondThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Four, Multiplier.Triple),
-                        ThirdThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Sixteen, Multiplier.Triple)
+                        FirstThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.One, Multiplier.Treble),
+                        SecondThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Four, Multiplier.Treble),
+                        ThirdThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Sixteen, Multiplier.Treble)
                     }
                 },
                 13

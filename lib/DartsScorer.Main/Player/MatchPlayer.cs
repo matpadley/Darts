@@ -58,7 +58,7 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
         {
             "S" => Multiplier.Single,
             "D" => Multiplier.Double,
-            "T" => Multiplier.Triple,
+            "T" => Multiplier.Treble,
             _ => throw new InvalidOperationException("Multiplier not found")
         };
         
