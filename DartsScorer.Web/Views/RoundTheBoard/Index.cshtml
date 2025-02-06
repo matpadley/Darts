@@ -1,3 +1,5 @@
+@using DartsScorer.Main.Match.RoundTheBoard
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model DartsScorer.Main.Match.RoundTheBoard.Match
 @{
     ViewData["Title"] = "Round the Board";
@@ -15,7 +17,8 @@
                     <button type="submit" class="btn btn-primary">Start Match</button>
                 </form>
             }
-        }</div>
+        }
+        </div>
     <div class="flex-fill">
         @{
             if (Model.CurrentPlayer == null)
@@ -28,6 +31,17 @@
                     </div>
                 </form>
             }
+            else
+            {   
+                <h2>Current Player: @Model.CurrentPlayer.Name</h2>
+                <p>Score Needed: 
+                    @{
+                        var player = Model.CurrentPlayer as RoundTheBoardPlayer;
+                            <player>@player.RequiredBoardNumber</player>
+                    }</p>
+                    }
+        
         }
+        
     </div>
 </div>

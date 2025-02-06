@@ -1,0 +1,14 @@
+@using DartsScorer.Main.Match.RoundTheBoard
+@model DartsScorer.Main.Player.Player
+
+@{
+    if (Model != null)
+    {
+        
+        <h2>Current Player: @Model.Name</h2>
+        <p>Score Needed: @{
+                             var player = Model as RoundTheBoardPlayer;
+                             <player>@player.RequiredBoardNumber</player>
+                         }</p>
+    } 
+}
