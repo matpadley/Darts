@@ -31,4 +31,11 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
         dartsMatchService.StartMatch();
         return RedirectToAction("Index");
     }
+    
+    [HttpPost]
+    public IActionResult Throw(string throwValue)
+    {
+        dartsMatchService.Throw(throwValue);
+        return RedirectToAction("Index");
+    }
 }

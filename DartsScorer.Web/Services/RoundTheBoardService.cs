@@ -11,6 +11,7 @@ public interface IRoundTheBoardService
     void AddPlayer(string playerName);
     
     Main.Match.RoundTheBoard.Match StartMatch();
+    void Throw(string throwValue);
 }
 
 public class RoundTheBoardService : IRoundTheBoardService
@@ -52,7 +53,22 @@ public class RoundTheBoardService : IRoundTheBoardService
     {
         var match = _cache.Get("currentMatch") as Main.Match.RoundTheBoard.Match;
         match.StartMatch();
+        (match.CurrentPlayer as RoundTheBoardPlayer).StartThrow();
         _cache.Set("currentMatch", match);
         return match;
+    }
+
+    public void Throw(string throwValue)
+    {
+        try
+        {
+            var match = _cache.Get("currentMatch") as Main.Match.RoundTheBoard.Match;
+            (match.CurrentPlayer as RoundTheBoardPlayer).Throw(throwValue);
+            _cache.Set("currentMatch", match);
+        }
+        catch (Exception e)
+        {
+
+        }
     }
 }

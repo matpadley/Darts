@@ -5,7 +5,7 @@
     ViewData["Title"] = "Round the Board";
 }
 
-<p>Play Round the Board</p>
+<h1>@ViewBag.Title</h1>
 
 <div class="d-flex">
     <div class="flex-fill">
@@ -23,25 +23,18 @@
         @{
             if (Model.CurrentPlayer == null)
             {
-                <h2>Add Player</h2>
-                <form asp-action="AddPlayer" method="post">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="playerName" name="playerName" required/>
-                        <button type="submit" class="btn btn-primary">Add Player</button>
-                    </div>
-                </form>
+                @Html.Partial("AddPlayer")
             }
             else
             {   
-                <h2>Current Player: @Model.CurrentPlayer.Name</h2>
-                <p>Score Needed: 
-                    @{
-                        var player = Model.CurrentPlayer as RoundTheBoardPlayer;
-                            <player>@player.RequiredBoardNumber</player>
-                    }</p>
-                    }
-        
+                @Html.Partial("PlayerScore", Model.CurrentPlayer)
+                <form asp-action="Throw" method="post">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="throwValue" name="throwValue" required/>
+                        <button type="submit" class="btn btn-primary">Throw</button>
+                    </div>
+                </form>
+            }
         }
-        
     </div>
 </div>
