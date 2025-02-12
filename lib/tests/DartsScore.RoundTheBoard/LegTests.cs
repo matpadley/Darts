@@ -79,8 +79,6 @@ public class LegTests
         Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(0));
     }
     
-    
-
     [Test]
     public void RoundTheBoard_Player_Leg_Missed_Last_ThrowTest()
     {

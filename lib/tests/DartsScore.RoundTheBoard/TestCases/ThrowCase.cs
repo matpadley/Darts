@@ -4,7 +4,7 @@ namespace DartsScore.RoundTheBoard.TestCases;
 
 internal class ThrowCase
 {
-    //add a new initialise a Tuple for BoardScore and Multiplier
+    // add a new initialise a Tuple for BoardScore and Multiplier
     // Use named tuples for BoardScore and Multiplier
     public (BoardScore BoardScore, Multiplier Multiplier) FirstThrow { get; set; }
     public (BoardScore BoardScore, Multiplier Multiplier) SecondThrow { get; set; }

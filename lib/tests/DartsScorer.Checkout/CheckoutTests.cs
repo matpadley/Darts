@@ -5,15 +5,10 @@ namespace DartsScorer.Checkout;
 
 public class CheckoutTests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
     public void Test1()
     {
-        var inputScore = 170;
+        const int inputScore = 170;
 
         var newCalc = new CheckoutCalculator();
 
@@ -38,11 +33,6 @@ public class CheckoutTests
 
         foreach (var checkout in data.Scores)
         {
-            if (checkout.Key != checkout.Value.Sum(f => f.Score))
-            {
-                int i = 0;
-            }
-            
             Assert.That(checkout.Key, 
                 Is.EqualTo(checkout.Value.Sum(f => f.Score)));
         }

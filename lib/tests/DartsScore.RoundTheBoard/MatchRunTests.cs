@@ -112,7 +112,6 @@ public class MatchRunTests
         Assert.That(_match.Winner, Is.Null);
     }
     
-    
     [Test]
     public void RoundTheBoard_Single_Player_Finish()
     {
@@ -128,6 +127,7 @@ public class MatchRunTests
         Enum.TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore2);
         Enum.TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore3);
         
+        //first throw
         player?.StartThrow();
         player?.Throw(boardScore1, Multiplier.Treble);
         player?.Throw(boardScore2, Multiplier.Treble);
@@ -136,8 +136,7 @@ public class MatchRunTests
         
         _match.UpdatePlayer(player!);
         
-        
-        
+        //second throw
         player?.StartThrow();
         player?.Throw(BoardScore.Thirteen, Multiplier.Single);
         player?.Throw(BoardScore.Fourteen, Multiplier.Single);
@@ -146,7 +145,7 @@ public class MatchRunTests
         
         _match.UpdatePlayer(player!);
         
-        
+        // third throw
         player?.StartThrow();
         player?.Throw(BoardScore.Sixteen, Multiplier.Single);
         player?.Throw(BoardScore.Seventeen, Multiplier.Single);
@@ -154,7 +153,6 @@ public class MatchRunTests
         player?.EndThrow();
         
         _match.UpdatePlayer(player!);
-        
         
         player?.StartThrow();
         player?.Throw(BoardScore.Nineteen, Multiplier.Single);
@@ -165,7 +163,7 @@ public class MatchRunTests
         _match.UpdatePlayer(player!);
         
         Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "new player").Finished(), Is.True);
-        Assert.That(_match.Winner.Name, Is.EqualTo("new player"));ter
+        Assert.That(_match.Winner.Name, Is.EqualTo("new player"));
     }
 
     
