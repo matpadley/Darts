@@ -133,7 +133,7 @@ static Type[] GetAndDisplayMatchTypes()
         BorderStyle = new Style(Color.Purple)
     };
     table.AddColumn("Index");
-    table.AddColumn("Match Name");
+    table.AddColumn("Match Name");  
 
     foreach (var (index, Name) in matchTuple)
     {

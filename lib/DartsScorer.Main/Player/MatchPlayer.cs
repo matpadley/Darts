@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Player;
@@ -9,8 +10,13 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
     public abstract void Throw(BoardScore one, Multiplier multiplier);
     public abstract void EndThrow();
     public abstract bool Finished();
+
+    protected Leg? _currentLeg;
+    public Leg? CurrentLeg => _currentLeg;
     public void Throw(string dartThrow)
     {
+        if (int.TryParse(dartThrow, out _)) dartThrow = "S" + dartThrow;
+        
         if (dartThrow == "25" || dartThrow == "50")
         {
             Throw(dartThrow == "25" ? BoardScore.OuterBull : BoardScore.BullsEye, Multiplier.Single);

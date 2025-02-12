@@ -10,7 +10,6 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
 
     public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
-    private Leg? _currentLeg;
     private bool HasWon { get; set; }
     public override void StartThrow()
     {
@@ -34,10 +33,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         var newThrow = new ThrowScore(multiplier, boardScore);
         
         // a check to make sure that the leg has started and the leg is not null
-        if (_currentLeg == null)
-        {
-            _currentLeg = new Leg();
-        }
+        _currentLeg ??= new Leg();
         
         // if a new throw is attempted after the thrird throw throw and error
         if (_currentLeg.Throws.Count == 3)
@@ -50,15 +46,17 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
             case 1:
                 _currentLeg.ThrowFirst(newThrow);
                 UpdateRequiredBoardNumber(newThrow);
+                if (HasWon) EndThrow();
                 break;
             case 2:
                 _currentLeg.ThrowSecond(newThrow);
                 UpdateRequiredBoardNumber(newThrow);
+                if (HasWon) EndThrow();
                 break;
             case 3:
                 _currentLeg.ThrowThird(newThrow);
                 UpdateRequiredBoardNumber(newThrow);
-                EndThrow();
+                if (HasWon) EndThrow();
                 break;
         }
     }
@@ -78,17 +76,17 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     // add method to end the throw and add the leg to the list of legs
     public override void EndThrow()
     {
-        if (_currentLeg == null)
-        {
-            throw new InvalidOperationException("The leg has not started.");
-        }
+        //if (_currentLeg == null)
+        //{
+        //    throw new InvalidOperationException("The leg has not started.");
+        //}
         
         // a check to make sure that 3 throws have happened
-        if (_currentLeg.Throws.Count != 3 && !HasWon)
-        {
-            throw new InvalidOperationException("The leg has not been completed.");
-        }
-
+        //if (_currentLeg.Throws.Count != 3 && !HasWon)
+        //{
+        //    throw new InvalidOperationException("The leg has not been completed.");
+        //}
+        
         Legs.Add(_currentLeg);
         _currentLeg = null;
     }

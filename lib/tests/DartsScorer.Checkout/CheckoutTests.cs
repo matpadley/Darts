@@ -19,7 +19,7 @@ public class CheckoutTests
 
         var first = new ThrowScore(Multiplier.Treble, BoardScore.Twenty);
         var second = new ThrowScore(Multiplier.Treble, BoardScore.Twenty);
-        var third = new ThrowScore(Multiplier.Double, BoardScore.Eighteen);
+        var third = new ThrowScore(Multiplier.Single, BoardScore.BullsEye);
 
         var result = newCalc.Calculate(inputScore);
 

@@ -61,7 +61,6 @@ public abstract class CommonMatch
         }
 
         // Get the next player
-        
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;
         if (nextInd < _players.Count)
         {
