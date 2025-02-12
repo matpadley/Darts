@@ -8,6 +8,8 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
 {
     public int RequiredBoardNumber { get; private set; } = 1;
 
+    public int WinningNumber { get; private set; } = 20;
+
     public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
     private bool HasWon { get; set; }
@@ -36,10 +38,10 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         _currentLeg ??= new Leg();
         
         // if a new throw is attempted after the thrird throw throw and error
-        if (_currentLeg.Throws.Count == 3)
-        {
-            throw new InvalidOperationException("The leg has been completed.");
-        }
+        //if (_currentLeg.Throws.Count == 3)
+        //{
+        //    throw new InvalidOperationException("The leg has been completed.");
+        //}
 
         switch (_currentLeg?.NextThrow)
         {
@@ -63,8 +65,9 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
 
     private void UpdateRequiredBoardNumber(ThrowScore newThrow)
     {
-        if (newThrow.NumberScore == RequiredBoardNumber && !HasWon)
+        if (newThrow.NumberScore == RequiredBoardNumber && !HasWon && WinningNumber != RequiredBoardNumber)
         {
+            
             var nextNumber = newThrow.Score + 1;
             RequiredBoardNumber = nextNumber > 20 ? RequiredBoardNumber : nextNumber;
         }
