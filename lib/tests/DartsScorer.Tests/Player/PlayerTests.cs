@@ -1,5 +1,4 @@
 using DartsScorer.Main.Match.RoundTheBoard;
-using DartsScorer.Main.Player;
 
 namespace DartsScorer.Tests.Player;
 

@@ -10,7 +10,8 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
     public abstract void Throw(BoardScore one, Multiplier multiplier);
     public abstract void EndThrow();
     public abstract bool Finished();
-
+    protected bool HasFinishedLeg { get; set; }
+    
     protected Leg? _currentLeg;
     public Leg? CurrentLeg => _currentLeg;
     public void Throw(string dartThrow)

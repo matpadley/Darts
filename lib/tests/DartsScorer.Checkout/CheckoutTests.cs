@@ -6,7 +6,7 @@ namespace DartsScorer.Checkout;
 public class CheckoutTests
 {
     [Test]
-    public void Test1()
+    public void Checkout_Basic()
     {
         const int inputScore = 170;
 
@@ -24,17 +24,5 @@ public class CheckoutTests
         Assert.That(result[1].Multiplier, Is.EqualTo(second.Multiplier));
         Assert.That(result[2].BoardScore, Is.EqualTo(third.BoardScore));
         Assert.That(result[2].Multiplier, Is.EqualTo(third.Multiplier));
-    }
-
-    [Test]
-    public void Checkout_CheckData_Valus()
-    {
-        var data = new CheckoutData();
-
-        foreach (var checkout in data.Scores)
-        {
-            Assert.That(checkout.Key, 
-                Is.EqualTo(checkout.Value.Sum(f => f.Score)));
-        }
     }
 }

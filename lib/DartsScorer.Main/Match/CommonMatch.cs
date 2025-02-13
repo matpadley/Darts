@@ -16,8 +16,6 @@ public abstract class CommonMatch
 
     public IReadOnlyList<Set> Sets => _sets.AsReadOnly();
 
-    public Set CurrentSet = new();
-
     public void AddPlayer(Player.MatchPlayer player)
     {
         _players.Add(player);
@@ -25,7 +23,7 @@ public abstract class CommonMatch
 
     public abstract void StartMatch();
 
-    public bool CanStartMatch()
+    protected bool CanStartMatch()
     {
         
         // throw exception if no players
@@ -39,7 +37,7 @@ public abstract class CommonMatch
         return true;
     }
     
-    // hpdate the current player with the one with the updates numbers
+    // update the current player with the one with the updates numbers
     public void UpdatePlayer(Player.MatchPlayer player)
     {
         var currentInd = _players.FindIndex(p => Equals(p, player));
@@ -62,6 +60,7 @@ public abstract class CommonMatch
 
         // Get the next player
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;
+        
         if (nextInd < _players.Count)
         {
             CurrentPlayer = _players[nextInd];
@@ -69,10 +68,11 @@ public abstract class CommonMatch
     }
 
     public Player.Player? CurrentPlayer { get; private set; }
-    public abstract bool IsMatchComplete { get; }
 
-    public void SetCurrentPlayer(Player.Player player)
+    protected void SetCurrentPlayer(Player.Player player)
     {
         CurrentPlayer = player;
     }
+    
+    
 }

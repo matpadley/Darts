@@ -62,17 +62,8 @@ public class RoundTheBoardService : IRoundTheBoardService
         var match = _cache.Get("currentMatch") as Match;
         var player = match.CurrentPlayer as RoundTheBoardPlayer;
         
-        //try
-        //{
-            player.Throw(throwValue);
-            match.UpdatePlayer(player);
-            _cache.Set("currentMatch", match);
-        //}
-        //catch (Exception e)
-       // {
-       //     player.EndThrow();
-       //     match.UpdatePlayer(player);
-       //     _cache.Set("currentMatch", match);
-       // }
+        player.Throw(throwValue);
+        match.UpdatePlayer(player);
+        _cache.Set("currentMatch", match);
     }
 }

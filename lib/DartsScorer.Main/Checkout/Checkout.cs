@@ -1,17 +1,10 @@
 using DartsScorer.Main.Scoring;
-using Newtonsoft.Json;
 
 namespace DartsScorer.Main.Checkout
 {
     public class CheckoutCalculator
     {
-        private readonly Dictionary<int, ThrowScore[]> _checkouts;
-
-        public CheckoutCalculator()
-        {
-            var checkoutData = new CheckoutData();
-            _checkouts = checkoutData.Scores;
-        }
+        private readonly Dictionary<int, ThrowScore[]> _checkouts = CheckoutData.Scores;
 
         public ThrowScore[] Calculate(int number)
         {
@@ -24,5 +17,7 @@ namespace DartsScorer.Main.Checkout
 
             throw new InvalidOperationException("No checkout available for the given number");
         }
+        
+        
     }
 }
