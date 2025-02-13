@@ -12,11 +12,18 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     private bool HasWon { get; set; }
     public override void StartThrow()
     {
-        // a check to make sure that the last leg has finished
-        //if (_currentLeg != null)
-        //{
-        //    throw new InvalidOperationException("The last leg has not finished.");
-        //}
+        if (Legs.Any())
+        {
+            if (Legs.Last().IsComplete == false)
+            {
+                throw new InvalidOperationException("The last leg has not finished.");
+            }
+        }
+        else if (Legs.Count != 0 && _currentLeg == null)
+        {
+            throw new InvalidOperationException("The last leg has not finished.");
+        }
+        
         _currentLeg = new Leg();
     }
 
