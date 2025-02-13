@@ -82,12 +82,12 @@ jobs:
           path: code-coverage-results.md
 
 
-    # - name: Upload Test Result Files
-    #   uses: actions/upload-artifact@v4
-    #   with:
-    #     name: test-results
-    #     path: ${{ github.workspace }}/**/TestResults/**/*
-    #     retention-days: 5
+    - name: Upload Test Result Files
+      uses: actions/upload-artifact@v4
+      with:
+         name: test-results
+         path: ${{ github.workspace }}/**/TestResults/**/*
+         retention-days: 5
 
     # - name: Publish Test Results
     #   uses: EnricoMi/publish-unit-test-result-action@v2.18.0
