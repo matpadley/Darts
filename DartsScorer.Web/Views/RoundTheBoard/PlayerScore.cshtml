@@ -7,8 +7,9 @@
         var player = Model as RoundTheBoardPlayer;
         <h2>Current Player: @Model.Name</h2>
         <h3>Throw: @player.CurrentLeg.NextThrow</h3>
-        <p>Score Needed: @{
-                             <player>@player.RequiredBoardNumber</player>
-                         }</p>
+        <p>Score Needed: 
+        @{
+             <player>@player.RequiredBoardNumber</player>
+         }</p>
     } 
 }
