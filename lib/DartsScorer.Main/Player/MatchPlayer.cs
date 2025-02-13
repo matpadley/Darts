@@ -11,6 +11,7 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
     public abstract void EndThrow();
     public abstract bool Finished();
     protected bool HasFinishedLeg { get; set; } = false;
+    protected  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
     
     protected Leg? _currentLeg;
     public Leg? CurrentLeg => _currentLeg;

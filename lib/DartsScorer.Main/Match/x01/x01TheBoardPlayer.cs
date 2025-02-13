@@ -5,8 +5,7 @@ namespace DartsScorer.Main.Match.x01;
 
 public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name))
 {
-    public  int RequiredBoardNumber { get; private set; } = 1;
-    public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
+    public int RequiredBoardNumber { get; private set; } = 1;
 
     private Leg? _currentLeg;
     

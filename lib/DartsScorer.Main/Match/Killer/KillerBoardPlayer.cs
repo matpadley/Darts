@@ -6,9 +6,6 @@ namespace DartsScorer.Main.Match.Killer;
 public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name))
 {
     public  int RequiredBoardNumber { get; private set; } = 1;
-    public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
-
-    private Leg? _currentLeg;
     
     public override void StartThrow()
     {
