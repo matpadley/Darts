@@ -38,7 +38,7 @@ jobs:
 
     - name: Run tests and Coverage
       run: 
-        ddotnet test --configuration Release --verbosity normal --logger trx --collect:"XPlat Code Coverage"
+        dotnet test --configuration Release --verbosity normal --logger trx --collect:"XPlat Code Coverage"
       working-directory: lib
 
     # Upload test results as an artifact
