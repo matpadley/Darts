@@ -1,0 +1,60 @@
+@using DartsScorer.Main.Match.RoundTheBoard
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model DartsScorer.Main.Match.RoundTheBoard.Match
+@{
+    ViewData["Title"] = "Round the Board";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="d-flex">
+    <div class="flex-fill">
+        
+        @{
+            if (Model.Winner != null)
+            {
+                <h2>Winner: @Model.Winner.Name</h2>
+            }
+        }
+        
+        @Html.Partial("MatchPlayers", Model.Players)
+        @{
+            if (Model.Players.Any())
+            {
+                <form asp-action="StartMatch" method="post">
+                    <button type="submit" class="btn btn-primary">Start Match</button>
+                </form>
+            }
+        }
+    </div>
+    <div class="flex-fill">
+        @{
+            if (Model.CurrentPlayer == null)
+            {
+                @Html.Partial("AddPlayer")
+            }
+            else
+            {   
+                @Html.Partial("PlayerScore", Model.CurrentPlayer)
+
+                var currentPlayer = Model.CurrentPlayer as RoundTheBoardPlayer;
+                
+                @if (!currentPlayer.Finished())
+                {
+                    <form asp-action="Throw" method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="throwValue" name="throwValue" required/>
+                            <button type="submit" class="btn btn-primary">Throw</button>
+                        </div>
+                    </form>
+                }
+                
+                for(var leg = 0; leg < currentPlayer.Legs.Count; leg++)
+                {
+                    <h4>Leg @(leg + 1)</h4>
+                    @string.Join(", ", currentPlayer.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))
+                }
+            }
+        }
+    </div>
+</div>

@@ -5,11 +5,6 @@ namespace DartsScore.RoundTheBoard;
 
 public class InstantiateTests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
     public void RoundTheBoard_Instantiate()
     {

@@ -1,0 +1,18 @@
+﻿@model DartsScorer.Web.Models.CheckoutResultModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Checkout</h1>
+    <form asp-action="CheckoutResult" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <input class="form-control" id="score" name="score" type="number" min="2" max="170" required />
+            <div class="invalid-feedback">
+                Please enter a valid score between 2 and 170.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>

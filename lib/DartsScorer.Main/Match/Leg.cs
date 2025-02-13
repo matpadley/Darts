@@ -4,6 +4,10 @@ namespace DartsScorer.Main.Match;
 
 public class Leg : CommonLeg
 {
+    public Leg()
+    {
+        NextThrow = 1;
+    }
     public override void ThrowFirst(ThrowScore throwScore)
     {
         if (NextThrow != 1)
@@ -37,6 +41,7 @@ public class Leg : CommonLeg
 
         CurrentScore += throwScore.Score;
         Throws.Add(throwScore);
+        NextThrow = 1;
         IsComplete = true;
     }
 }

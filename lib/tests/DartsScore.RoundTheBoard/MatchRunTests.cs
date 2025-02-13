@@ -35,18 +35,28 @@ public class MatchRunTests
             var dartsToThrow = throwCase!.First();
             
             roundTheBoardPlayer.StartThrow();
+            Assert.That(roundTheBoardPlayer?.CurrentLeg.NextThrow, Is.EqualTo(1));
             roundTheBoardPlayer.Throw(dartsToThrow.FirstThrow.BoardScore,
                 dartsToThrow.FirstThrow.Multiplier); // next score == 3
+            _match.UpdatePlayer(roundTheBoardPlayer);
+            
+            Assert.That(roundTheBoardPlayer?.CurrentLeg.NextThrow, Is.EqualTo(2));
             roundTheBoardPlayer.Throw(dartsToThrow.SecondThrow.BoardScore,
                 dartsToThrow.SecondThrow.Multiplier); // next score == 7
+            _match.UpdatePlayer(roundTheBoardPlayer);
+            
+            Assert.That(roundTheBoardPlayer?.CurrentLeg.NextThrow, Is.EqualTo(3));
             roundTheBoardPlayer.Throw(dartsToThrow.ThirdThrow.BoardScore,
                 dartsToThrow.ThirdThrow.Multiplier); // next score == 8
+            _match.UpdatePlayer(roundTheBoardPlayer);
+            
             roundTheBoardPlayer.EndThrow();
             _match.UpdatePlayer(roundTheBoardPlayer);
 
             Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo(expectedScore));
-            Assert.That(((_match
-                    .Players.First(p => p.Equals(matchPlayer)) as RoundTheBoardPlayer)!)
+            
+            Assert.That((_match
+                    .Players.First(p => p.Equals(matchPlayer)) as RoundTheBoardPlayer)!
                 .RequiredBoardNumber,
                 Is.EqualTo(expectedScore));
         }
@@ -72,9 +82,21 @@ public class MatchRunTests
             Enum.TryParse((player?.RequiredBoardNumber + 2).ToString(), out BoardScore boardScore3);
             
             player?.StartThrow();
+            
             player?.Throw(boardScore1, Multiplier.Single);
+            _match.UpdatePlayer(player);
+            player = _match.CurrentPlayer as RoundTheBoardPlayer;
+            
             player?.Throw(boardScore2, Multiplier.Single);
+            //Assert.That(player.NextThrow, Is.EqualTo(2));
+            _match.UpdatePlayer(player);
+            player = _match.CurrentPlayer as RoundTheBoardPlayer;
+            
             player?.Throw(boardScore3, Multiplier.Single);
+           // Assert.That(player.NextThrow, Is.EqualTo(3));
+            _match.UpdatePlayer(player);
+            player = _match.CurrentPlayer as RoundTheBoardPlayer;
+            
             player?.EndThrow();
             
             _match.UpdatePlayer(player!);
@@ -84,6 +106,103 @@ public class MatchRunTests
         Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "second player").Finished(), Is.False);
         Assert.That(_match.Winner.Name, Is.EqualTo("new player"));
     }
+
+    [Test]
+    public void RoundTheBoard_Single_Player_Not_Finish()
+    {
+        var player1 = new RoundTheBoardPlayer("new player");
+
+        _match.AddPlayer(player1);
+
+        _match.StartMatch();
+
+        var player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        
+        Enum.TryParse(player?.RequiredBoardNumber.ToString(), out BoardScore boardScore1);
+        Enum.TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore2);
+        Enum.TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore3);
+        
+        player?.StartThrow();
+        Assert.That(player?.CurrentLeg.NextThrow, Is.EqualTo(1));
+        player?.Throw(boardScore1, Multiplier.Treble);
+        Assert.That(player?.CurrentLeg.NextThrow, Is.EqualTo(2));
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(boardScore2, Multiplier.Treble);
+        Assert.That(player?.CurrentLeg.NextThrow, Is.EqualTo(3));
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(boardScore3, Multiplier.Treble);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.EndThrow();
+        
+        _match.UpdatePlayer(player!);
+        
+        Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "new player").Finished(), Is.False);
+        Assert.That(_match.Winner, Is.Null);
+    }
+    
+    [Test]
+    public void RoundTheBoard_Single_Player_Finish()
+    {
+        var player1 = new RoundTheBoardPlayer("new player");
+
+        _match.AddPlayer(player1);
+
+        _match.StartMatch();
+
+        var player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        
+        Enum.TryParse(player?.RequiredBoardNumber.ToString(), out BoardScore boardScore1);
+        Enum.TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore2);
+        Enum.TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore3);
+        
+        //first throw
+        player?.StartThrow();
+        player?.Throw(boardScore1, Multiplier.Treble);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(boardScore2, Multiplier.Treble);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(boardScore3, Multiplier.Single);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.EndThrow();
+        
+        _match.UpdatePlayer(player!);
+        
+        //second throw
+        player?.StartThrow();
+        player?.Throw(BoardScore.Thirteen, Multiplier.Single);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(BoardScore.Fourteen, Multiplier.Single);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(BoardScore.Fifteen, Multiplier.Single);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.EndThrow();
+        
+        _match.UpdatePlayer(player!);
+        
+        // third throw
+        player?.StartThrow();
+        player?.Throw(BoardScore.Sixteen, Multiplier.Single);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(BoardScore.Seventeen, Multiplier.Single);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.Throw(BoardScore.Eighteen, Multiplier.Single);
+        player = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player?.EndThrow();
+        
+        _match.UpdatePlayer(player!);
+        
+        player?.StartThrow();
+        player?.Throw(BoardScore.Nineteen, Multiplier.Single);
+        player?.Throw(BoardScore.Twenty, Multiplier.Single);
+        player?.Throw(BoardScore.Eighteen, Multiplier.Single);
+        player?.EndThrow();
+        
+        _match.UpdatePlayer(player!);
+        
+        Assert.That(_match.Players.First(f => (f as RoundTheBoardPlayer)?.Name == "new player").Finished(), Is.True);
+        Assert.That(_match.Winner.Name, Is.EqualTo("new player"));
+    }
+
     
     /// add test for bust - if the player goes over the required number[Test]
 
@@ -150,9 +269,9 @@ public class MatchRunTests
                 {
                     new()
                     {
-                        FirstThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.One, Multiplier.Triple),
-                        SecondThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Four, Multiplier.Triple),
-                        ThirdThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Sixteen, Multiplier.Triple)
+                        FirstThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.One, Multiplier.Treble),
+                        SecondThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Four, Multiplier.Treble),
+                        ThirdThrow = new ValueTuple<BoardScore, Multiplier>(BoardScore.Sixteen, Multiplier.Treble)
                     }
                 },
                 13

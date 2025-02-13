@@ -28,5 +28,5 @@ public class Match : CommonMatch
         }
     }
 
-    public override bool IsMatchComplete { get; }
+    public virtual bool IsMatchComplete { get; }
 }

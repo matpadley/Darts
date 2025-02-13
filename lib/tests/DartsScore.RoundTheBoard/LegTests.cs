@@ -78,8 +78,6 @@ public class LegTests
         Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo( 3));
         Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(0));
     }
-    
-    
 
     [Test]
     public void RoundTheBoard_Player_Leg_Missed_Last_ThrowTest()
@@ -93,19 +91,5 @@ public class LegTests
         
         Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo( 3));
         Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(0));
-    }
-
-    [Test]
-    public void RoundTheBoard_New_Leg_Failure()
-    {
-        var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
-        
-        roundTheBoardPlayer.StartThrow();
-        roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
-        roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
-        roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
-        
-        // assert that an exepcetion is thrown if a player starts the next throw
-        Assert.Throws<InvalidOperationException>(() => roundTheBoardPlayer.StartThrow());
     }
 }

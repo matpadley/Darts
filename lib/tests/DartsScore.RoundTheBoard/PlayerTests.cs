@@ -30,7 +30,6 @@ public class PlayerTests
     {
         var player1 = new Player("myName");
         var player2 = new Player("myName");
-
         
         Assert.That(player1.Equals(player2));
     }

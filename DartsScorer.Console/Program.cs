@@ -84,7 +84,7 @@ return;
 
 static void HandleThrow(MatchPlayer matchPlayer)
 {
-    var regexString = "^(1[0-9]|20|[1-9])(S|D|T)$|^(25|50)$";
+    var regexString = "^((S|D|T)1[0-9]|20|[1-9])$|^(25|50)$";
     var regEx = new Regex(regexString);
     
     // ask for inputs 1-20, outerbull or bullseye
@@ -133,7 +133,7 @@ static Type[] GetAndDisplayMatchTypes()
         BorderStyle = new Style(Color.Purple)
     };
     table.AddColumn("Index");
-    table.AddColumn("Match Name");
+    table.AddColumn("Match Name");  
 
     foreach (var (index, Name) in matchTuple)
     {

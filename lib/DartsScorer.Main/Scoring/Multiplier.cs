@@ -4,5 +4,5 @@ public enum Multiplier
 {
     Single,
     Double,
-    Triple
+    Treble
 }

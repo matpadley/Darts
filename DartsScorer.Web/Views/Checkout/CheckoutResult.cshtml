@@ -1,0 +1,13 @@
+@model DartsScorer.Web.Models.CheckoutResultModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Checkout for @Model.Score</h1>
+    <p>
+        @string.Join(", ", Model.Results.Select(checkout => checkout.ToString()))
+    </p>
+
+    <a href="/Checkout/Index" class="btn btn-secondary">Back to Checkout Calculator</a>
+</div>

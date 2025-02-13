@@ -1,0 +1,9 @@
+@model IEnumerable<DartsScorer.Main.Player.MatchPlayer>
+
+<h2>Match Players</h2>
+<dl>
+    @foreach (var player in Model)
+    {
+        <dt>@player.Name</dt>
+    }
+</dl>
