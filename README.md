@@ -11,9 +11,21 @@ dotnet run --project DartsScorer.Console.csproj
 ### From a container
 
 ```sh
-docker build -t dartsscorer-console .
+docker build -f Dockerfile.console -t dartsscorer-console .
 ```
 
 ```sh
 docker run -it dartsscorer-console
+```
+
+## Running the Web App
+
+### From a container
+
+```sh
+docker build -f Dockerfile.web -t dartsscorer-web .
+```
+
+```sh
+ docker run -it -p 8080:5000 dartsscorer-web
 ```
