@@ -31,16 +31,13 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
-      working-directory: lib
 
     - name: Build
       run: dotnet build --no-restore
-      working-directory: lib
 
     - name: Run tests and Coverage
       run: 
         dotnet test --configuration Release --verbosity normal --logger trx --collect:"XPlat Code Coverage"
-      working-directory: lib
 
     # Upload test results as an artifact
     - name: Combine Coverage Reports # This is because one report is produced per project, and we want one result for all of them.
