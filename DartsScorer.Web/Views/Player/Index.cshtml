@@ -9,40 +9,43 @@
     <!-- if there are no players write a message 'no players'   -->
     @if (Model.Count == 0)
     {
-    <li class="list-group-item">
-        No players
-    </li>
+        <p>No players</p>
     }
     
     <!-- foreach of the Model players write it in a list -->
-    <ul>
-        <!-- add a text field and button that posts back to the controller method addplayer -->
-        <form asp-controller="Player" asp-action="AddPlayer" method="post">
-            <div class="form-group d-flex">
-                <input type="text" class="form-control me-2" name="Name" />
-                <button type="submit" class="btn btn-primary">Add Player</button>
-            </div>
-        </form>
 
+    <!-- add a text field and button that posts back to the controller method addplayer -->
+    <form asp-controller="Player" asp-action="AddPlayer" method="post">
+        <div class="input-group">
+            <input type="text" class="form-control" name="Name" />
+            <button type="submit" class="btn btn-primary">Add Player</button>
+        </div>
+    </form>
+    
+    <br/>
+    
+    <table class="table table-borderless">
         @foreach (var player in Model)
         {
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span>  
-                    <form asp-controller="Player" asp-action="EditPlayer" method="post">
-                            <input type="hidden" class="form-control me-2" name="oldName" value="@player.Name"/>
-                            <input type="text" class="form-control me-2" name="Name" value="@player.Name"/>
+            <tr>
+                <td>
+                    <form asp-controller="Player" asp-action="EditPlayer" method="post" class="d-inline">
+                        <div class="input-group">
+                            <input type="hidden" class="form-control" name="oldName" value="@player.Name"/>
+                            <input type="text" class="form-control" name="Name" value="@player.Name"/>
                             <button type="submit" class="btn btn-primary">Edit</button>
+                        </div>
                     </form>
-
-
-
+                </td>
+                <td>
                     <form asp-controller="Player" asp-action="DeletePlayer" method="post" class="d-inline">
                         <input type="hidden" name="Name" value="@player.Name"/>
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
-                </span>
-            </li>
+                </td>
+            </tr>
         }
-    </ul>
+    </table>
+       
 
 </div>
