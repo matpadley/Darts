@@ -6,6 +6,8 @@ namespace DartsScorer.Main.Player;
 
 public abstract class MatchPlayer(Player player) : Player(player.Name)
 {
+    public ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
+    
     public abstract void StartThrow();
     public abstract void Throw(BoardScore one, Multiplier multiplier);
     public abstract void EndThrow();
