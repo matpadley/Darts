@@ -1,0 +1,42 @@
+﻿@model IList<DartsScorer.Main.Player.Player>
+@{
+    ViewData["Title"] = "Player";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Player</h1>
+    
+    
+    <!-- foreach of the Model players write it in a list -->
+    <ul>
+        <!-- add a text field and button that posts back to the controller method addplayer -->
+        <form asp-controller="Player" asp-action="AddPlayer" method="post">
+            <div class="form-group d-flex">
+                <input type="text" class="form-control me-2" name="Name" />
+                <button type="submit" class="btn btn-primary">Add Player</button>
+            </div>
+        </form>
+
+        <!-- if there are no players write a message 'no players'   -->
+        @if (Model.Count == 0)
+        {
+            <li class="list-group-item">
+                No players
+            </li>
+        }
+        @foreach (var player in Model)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @player.Name
+                <span>
+                    <a href="@Url.Action("EditPlayer", "Player", new { Name = player.Name })" class="btn btn-secondary btn-sm me-2">Edit</a>
+                    <form asp-controller="Player" asp-action="DeletePlayer" method="post" class="d-inline">
+                        <input type="hidden" name="Name" value="@player.Name" />
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </span>
+            </li>
+        }
+    </ul>
+
+</div>
