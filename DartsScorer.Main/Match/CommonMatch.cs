@@ -4,6 +4,7 @@ namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {
+    public abstract bool IsMatchComplete { get; }
     public DartsMatchType DartsMatchType { get; set; }
 
     private  List<Player.MatchPlayer> _players = new();
