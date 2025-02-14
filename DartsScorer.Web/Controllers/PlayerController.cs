@@ -29,9 +29,9 @@ public class PlayerController(ILogger<PlayerController> logger, IPLayerService p
     }
     
     // delete action that takes in the player name
-    public IActionResult EditPlayer(string name)
+    public IActionResult EditPlayer(string name, string oldName)
     {
-        playerService.Edit(name);
+        playerService.Edit(oldName, name);
         
         return RedirectToAction("Index");
     }

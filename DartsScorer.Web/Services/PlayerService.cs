@@ -11,7 +11,7 @@ public interface IPLayerService
 
     void Delete(string name);
 
-    void Edit(string name);
+    void Edit(string oldName, string name);
 }
 
 public class PlayerService: IPLayerService
@@ -62,17 +62,19 @@ public class PlayerService: IPLayerService
         _cache.Set("players", players);
     }
 
-    public void Edit(string name)
+    public void Edit(string oldName, string name)
     {
         // edit the player with the new name
         // get the player list from the cache
         var players = GetPLayers();
         
         // find the player in the list
-        var player = players.FirstOrDefault(p => p.Name == name);
+        var player = players.FirstOrDefault(p => p.Name == oldName);
+        
+        var newPlayer = new Player(name);
         
         players.Remove(player);
-        players.Add(player);
+        players.Add(newPlayer);
         
         // save the player list to the cache
         _cache.Set("players", players);

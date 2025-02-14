@@ -5,7 +5,14 @@
 
 <div class="text-center">
     <h1 class="display-4">Player</h1>
-    
+
+    <!-- if there are no players write a message 'no players'   -->
+    @if (Model.Count == 0)
+    {
+    <li class="list-group-item">
+        No players
+    </li>
+    }
     
     <!-- foreach of the Model players write it in a list -->
     <ul>
@@ -17,21 +24,20 @@
             </div>
         </form>
 
-        <!-- if there are no players write a message 'no players'   -->
-        @if (Model.Count == 0)
-        {
-            <li class="list-group-item">
-                No players
-            </li>
-        }
         @foreach (var player in Model)
         {
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                @player.Name
-                <span>
-                    <a href="@Url.Action("EditPlayer", "Player", new { Name = player.Name })" class="btn btn-secondary btn-sm me-2">Edit</a>
+                <span>  
+                    <form asp-controller="Player" asp-action="EditPlayer" method="post">
+                            <input type="hidden" class="form-control me-2" name="oldName" value="@player.Name"/>
+                            <input type="text" class="form-control me-2" name="Name" value="@player.Name"/>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+
+
+
                     <form asp-controller="Player" asp-action="DeletePlayer" method="post" class="d-inline">
-                        <input type="hidden" name="Name" value="@player.Name" />
+                        <input type="hidden" name="Name" value="@player.Name"/>
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </span>
