@@ -9,7 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\DartsScorer.Main\DartsScorer.Main.csproj" />
-      <ProjectReference Include="..\lib\DartsScorer.Main\DartsScorer.Main.csproj" />
+      <ProjectReference Include=".\DartsScorer.Main\DartsScorer.Main.csproj" />
     </ItemGroup>
 
     <ItemGroup>

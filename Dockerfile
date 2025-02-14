@@ -5,10 +5,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copy the solution and project files
-COPY lib/ lib/
-COPY DartsScorer.Console/ DartsScorer.Console/
+COPY . .
 
-WORKDIR /app/lib
+WORKDIR /app
 
 # Restore the dependencies
 RUN dotnet restore
