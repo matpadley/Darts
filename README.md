@@ -1,58 +1,31 @@
 # Darts Scorer
 
-## Project Structure
+## Running the Console App
 
-The project is organized as follows:
+To run the console app from the command line, navigate to the `DartsScorer.Console` directory and use the following command:
 
-- The main project files are located in the `lib/DartsScorer.Main` directory.
-- The `lib/DartsScorer.Main` directory contains the main project file `lib/DartsScorer.Main/DartsScorer.Main.csproj`.
-- The `lib/DartsScorer.Main/Models` directory contains various model classes and variants.
-- The test files are located in the `lib/tests/DartsScorer.Tests` directory.
-- The `lib/tests/DartsScorer.Tests` directory contains the test project file `lib/tests/DartsScorer.Tests/DartsScorer.Tests.csproj`.
-- The repository contains a `.github` directory with configuration files for GitHub Actions.
-- The repository contains a `.gitignore` file for ignoring unnecessary files.
+```sh
+dotnet run --project DartsScorer.Console.csproj
+```
 
-## How to Use the Console Application
+### From a container
 
-### Prerequisites
+```sh
+docker build -f Dockerfile.console -t dartsscorer-console .
+```
 
-- Ensure you have [.NET SDK 8.0](https://dotnet.microsoft.com/download/dotnet/8.0) installed on your machine.
-- Ensure you have [Docker](https://www.docker.com/get-started) installed if you want to run the application in a Docker container.
+```sh
+docker run -it dartsscorer-console
+```
 
-### Running the Application Locally
+## Running the Web App
 
-1. Navigate to the `DartsScorer.Console` directory:
-    ```sh
-    cd DartsScorer.Console
-    ```
+### From a container
 
-2. Restore the dependencies:
-    ```sh
-    dotnet restore
-    ```
+```sh
+docker build -f Dockerfile.web -t dartsscorer-web .
+```
 
-3. Run the application:
-    ```sh
-    dotnet run
-    ```
-
-### Running the Application in a Docker Container
-
-1. Build the Docker image:
-    ```sh
-    docker build -t dartsscorer-console .
-    ```
-
-2. Run the Docker container:
-    ```sh
-    docker run -it dartsscorer-console
-    ```
-
-### Using the Application
-
-1. When you run the application, you will be prompted to select a match type.
-2. Enter the number corresponding to the match type you want to use.
-3. Enter the names of the players when prompted.
-4. Follow the on-screen instructions to play the game.
-
-Enjoy scoring your darts game!
+```sh
+ docker run -it -p 8080:5000 dartsscorer-web
+```

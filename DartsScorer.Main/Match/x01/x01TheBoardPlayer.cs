@@ -1,14 +1,11 @@
 using DartsScorer.Main.Player;
 using DartsScorer.Main.Scoring;
 
-namespace DartsScorer.Main.Match.Killer;
+namespace DartsScorer.Main.Match.x01;
 
-public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name))
+public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name))
 {
     public  int RequiredBoardNumber { get; private set; } = 1;
-    public  ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
-
-    private Leg? _currentLeg;
     
     public override void StartThrow()
     {
@@ -44,7 +41,7 @@ public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name
                 break;
         }
         
-        if (_currentLeg.IsComplete)
+        if (_currentLeg is { IsComplete: true })
         {
             Legs.Add(_currentLeg);
         }

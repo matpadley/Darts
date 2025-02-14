@@ -8,7 +8,6 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     public int RequiredBoardNumber { get; private set; } = 1;
 
     private const int WinningNumber = 20;
-    public  ICollection<Leg?> Legs { get; } = new List<Leg?>();
     private bool HasWon { get; set; }
     public override void StartThrow()
     {
