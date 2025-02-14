@@ -409,3 +409,7 @@ FodyWeavers.xsd
 .idea/
 
 .DS_Store
+
+# add visual sutio out and bin
+out/
+bin/
