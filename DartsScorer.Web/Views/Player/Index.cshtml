@@ -29,23 +29,20 @@
         {
             <tr>
                 <td>
-                    <form asp-controller="Player" asp-action="EditPlayer" method="post" class="d-inline">
                         <div class="input-group">
-                            <input type="hidden" class="form-control" name="oldName" value="@player.Name"/>
-                            <input type="text" class="form-control" name="Name" value="@player.Name"/>
-                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <input type="hidden" class="form-control" id="oldName" name="oldName" value="@player.Name"/>
+                            <input type="text" class="form-control" id="name" name="Name" value="@player.Name"/>
+                            <button type="button" 
+                                onclick="updatePlayerName(document.getElementById('oldName').value, document.getElementById('name').value)"
+                                class="btn btn-primary">Change Name</button>
+                                
+                            <button type="button" 
+                                onclick="deletePlayer('@player.Name')" 
+                                class="btn btn-danger btn-sm">Delete</button>
                         </div>
-                    </form>
-                </td>
-                <td>
-                    <form asp-controller="Player" asp-action="DeletePlayer" method="post" class="d-inline">
-                        <input type="hidden" name="Name" value="@player.Name"/>
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                    </form>
                 </td>
             </tr>
         }
     </table>
-       
-
 </div>
+       

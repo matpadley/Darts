@@ -1,7 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DartsScorer.Web.Models;
+using DartsScorer.Web.Models.UpdateModels;
 using DartsScorer.Web.Services;
+using Newtonsoft.Json.Linq;
 
 namespace DartsScorer.Web.Controllers;
 
@@ -20,18 +22,19 @@ public class PlayerController(ILogger<PlayerController> logger, IPLayerService p
         return RedirectToAction("Index");
     }
     
-    // delete action that takes in the player name
-    public IActionResult DeletePlayer(string name)
+    [HttpDelete]
+    public IActionResult DeletePlayer([FromBody] EditPlayerModel model)
     {
-        playerService.Delete(name);
+        playerService.Delete(model.Name);
         
         return RedirectToAction("Index");
     }
     
     // delete action that takes in the player name
-    public IActionResult EditPlayer(string name, string oldName)
+    [HttpPost]
+    public IActionResult EditPlayer([FromBody] EditPlayerModel model)
     {
-        playerService.Edit(oldName, name);
+        playerService.Edit(model.OldName, model.Name);
         
         return RedirectToAction("Index");
     }
