@@ -20,7 +20,7 @@
         
         @Html.Partial("MatchPlayers", Model.Players)
         @{
-            if (Model.Players.Any())
+            if (Model.Players.Count() > 1)
             {
                 <form asp-action="StartMatch" method="post">
                     <button type="submit" class="btn btn-primary">Start Match</button>
@@ -51,14 +51,17 @@
             }
             else
             {   
-                @Html.Partial("PlayerScore", Model.CurrentPlayer)
 
                 var currentPlayer = Model.CurrentPlayer as RoundTheBoardPlayer;
+                
+                @Html.Partial("PlayerScore", currentPlayer)
                 
                 @if (!currentPlayer.Finished())
                 {
                     <form asp-action="Throw" method="post">
                         <div class="input-group">
+                            <!-- add radio group that will post a string called maultipler to the form post-->
+                 
                             <input type="text" class="form-control" id="throwValue" name="throwValue" required/>
                             <button type="submit" class="btn btn-primary">Throw</button>
                         </div>
