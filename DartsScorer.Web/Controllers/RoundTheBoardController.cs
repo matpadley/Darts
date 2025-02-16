@@ -1,13 +1,18 @@
+using DartsScorer.Main.Player;
 using DartsScorer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DartsScorer.Web.Controllers;
 
 public class RoundTheBoardController(ILogger<RoundTheBoardController> logger, 
-    IRoundTheBoardService dartsMatchService) : Controller
+    IRoundTheBoardService dartsMatchService,
+    IPlayerService playerService) : Controller
 {
-    public IActionResult Index()
+    public IActionResult Index()    
     {
+        var players = playerService.GetPLayersForDropDown();
+        ViewBag.PlayerList = players;
         return View(dartsMatchService.Create());
     }
     
@@ -19,8 +24,15 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     [HttpPost]
     public IActionResult AddPlayer(string playerName)
     {
+        if (playerService.CheckPlayerExisits(playerName) |
+            dartsMatchService.GetPlayers().Any(f => f.Name == playerName))
+        {
+            return RedirectToAction("Index");
+        }
+        
         // Add logic to add the player
         dartsMatchService.AddPlayer(playerName);
+        playerService.Add(playerName);
         return RedirectToAction("Index");
     }
     

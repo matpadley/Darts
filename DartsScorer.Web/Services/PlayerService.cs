@@ -1,20 +1,24 @@
 using DartsScorer.Main.Player;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace DartsScorer.Web.Services;
 
-public interface IPLayerService
+public interface IPlayerService
 {
-    IList<Player>? GetPLayers();
+    IList<Player>? GetPlayers();
     
-    void AddP(String name);
+    void Add(String name);
 
     void Delete(string name);
 
     void Edit(string oldName, string name);
+    
+    IList<SelectListItem> GetPLayersForDropDown();
+    bool CheckPlayerExisits(string playerName);
 }
 
-public class PlayerService: IPLayerService
+public class PlayerService: IPlayerService
 {    
     private readonly IMemoryCache _cache;
     
@@ -23,7 +27,7 @@ public class PlayerService: IPLayerService
         _cache = cache;
     }
     
-    public IList<Player>? GetPLayers()
+    public IList<Player>? GetPlayers()
     {
         var players = _cache.Get("players");
         // check if the players has anything in it
@@ -31,13 +35,13 @@ public class PlayerService: IPLayerService
         return  players == null ? new List<Player>() : players as IList<Player>;
     }
 
-    public void AddP(string name)
+    public void Add(string name)
     {
         // get the player list from the cache
         // if the players list is null create a new list
         var players = _cache.Get("players") as List<Player> ?? new List<Player>();
 
-        // create a new player using the name from AddPlayer
+        if (CheckPlayerExisits(name)) return;
         var player = new Player(name);
         
         // add the player to the list
@@ -50,7 +54,7 @@ public class PlayerService: IPLayerService
     public void Delete(string name)
     {
         // get the player list from the cache
-        var players = GetPLayers();
+        var players = GetPlayers();
         
         // find the player in the list
         var player = players.FirstOrDefault(p => p.Name == name);
@@ -66,7 +70,7 @@ public class PlayerService: IPLayerService
     {
         // edit the player with the new name
         // get the player list from the cache
-        var players = GetPLayers();
+        var players = GetPlayers();
         
         // find the player in the list
         var player = players.FirstOrDefault(p => p.Name == oldName);
@@ -78,5 +82,17 @@ public class PlayerService: IPLayerService
         
         // save the player list to the cache
         _cache.Set("players", players);
+    }
+
+    public IList<SelectListItem> GetPLayersForDropDown()
+    {
+        // get all the players and convert them to a selectlist item
+        var players = GetPlayers();
+        return players.Select(p => new SelectListItem(p.Name, p.Name)).ToList();
+    }
+
+    public bool CheckPlayerExisits(string playerName)
+    {
+        return GetPlayers().Any(player => player.Name == playerName);
     }
 }

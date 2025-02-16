@@ -1,4 +1,5 @@
 @using DartsScorer.Main.Match.RoundTheBoard
+@using DartsScorer.Main.Player
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model DartsScorer.Main.Match.RoundTheBoard.Match
 @{
@@ -32,6 +33,21 @@
             if (Model.CurrentPlayer == null)
             {
                 @Html.Partial("AddPlayer")
+                <br />
+                // foreach of the players in the viewbag.players create a dropdown
+                // with the player names
+                <form asp-action="AddPlayer" method="post">
+                <div class="input-group">
+                    <select class="form-control" id="playerName" name="playerName" required>
+                        <option value="">Select a player</option>
+                        @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
+                        {
+                            <option value="@player.Text">@player.Value</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-primary">Pick Player</button>
+                </div>
+                </form>
             }
             else
             {   

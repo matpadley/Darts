@@ -7,18 +7,18 @@ using Newtonsoft.Json.Linq;
 
 namespace DartsScorer.Web.Controllers;
 
-public class PlayerController(ILogger<PlayerController> logger, IPLayerService playerService) : Controller
+public class PlayerController(ILogger<PlayerController> logger, IPlayerService playerService) : Controller
 {
     private readonly ILogger<PlayerController> _logger = logger;
 
     public IActionResult Index()
     {
-        return View(playerService.GetPLayers());
+        return View(playerService.GetPlayers());
     }
     
     public IActionResult AddPlayer(string name)
     {
-        playerService.AddP(name);
+        playerService.Add(name);
         return RedirectToAction("Index");
     }
     
