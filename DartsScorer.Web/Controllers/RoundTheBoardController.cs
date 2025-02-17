@@ -45,10 +45,10 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     }
     
     [HttpPost]
-    //public IActionResult Throw([FromBody] ThrowModel throwValue)
-    public IActionResult Throw(string throwValue)
+    public IActionResult Throw(string multiplier, string throwValue)
+    //public IActionResult Throw(string throwValue)
     {
-        dartsMatchService.Throw(throwValue.ToString());
+        dartsMatchService.Throw($"{multiplier}{throwValue}");
         return RedirectToAction("Index");
     }
 }

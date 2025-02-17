@@ -61,7 +61,24 @@
                     <form asp-action="Throw" method="post">
                         <div class="input-group">
                             <!-- add radio group that will post a string called maultipler to the form post-->
-                 
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="multiplier" value="S" id="single" checked>
+                                <label class="form-check-label" for="single">
+                                    Single
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="multiplier" value="D" id="double">
+                                <label class="form-check-label" for="double">
+                                    Double
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="multiplier" value="T" id="treble">
+                                <label class="form-check-label" for="treble">
+                                    Treble
+                                </label>
+                            </div>
                             <input type="text" class="form-control" id="throwValue" name="throwValue" required/>
                             <button type="submit" class="btn btn-primary">Throw</button>
                         </div>
