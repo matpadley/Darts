@@ -20,7 +20,7 @@
         
         @Html.Partial("MatchPlayers", Model.Players)
         @{
-            if (Model.Players.Count() > 1)
+            if (Model.Players.Any())
             {
                 <form asp-action="StartMatch" method="post">
                     <button type="submit" class="btn btn-primary">Start Match</button>

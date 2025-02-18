@@ -58,7 +58,7 @@ public abstract class CommonMatch
         {
             return;
         }
-
+        
         // Get the next player
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;
         

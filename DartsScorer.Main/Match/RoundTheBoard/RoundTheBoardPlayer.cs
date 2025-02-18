@@ -57,7 +57,8 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
                 _currentLeg.ThrowThird(newThrow);
                 UpdateRequiredBoardNumber(newThrow);
                 HasFinishedLeg = true;
-                if (HasWon) EndThrow();
+                if (HasWon) EndThrow(); 
+                //EndThrow();
                 break;
         }
     }
