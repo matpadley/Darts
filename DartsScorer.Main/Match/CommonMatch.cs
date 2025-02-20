@@ -59,7 +59,8 @@ public abstract class CommonMatch
             return;
         }
 
-        if (!player.Legs.Any() || !player.Legs.Last().IsComplete) return;
+      //  if (!player.Legs.Any() || !player.Legs.Last().IsComplete) return;
+      if (player.CurrentLeg != null && !player.CurrentLeg.IsComplete) return;
         
         // Get the next player
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;

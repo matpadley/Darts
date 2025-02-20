@@ -86,8 +86,7 @@
                 
                 for(var leg = 0; leg < currentPlayer.Legs.Count; leg++)
                 {
-                    <h4>Leg @(leg + 1)</h4>
-                    @string.Join(", ", currentPlayer.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))
+                    <p><b>Leg @(leg + 1)</b> - @string.Join(", ", currentPlayer.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))</p>
                 }
             }
         }
