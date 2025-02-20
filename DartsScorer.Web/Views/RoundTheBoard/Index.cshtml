@@ -7,94 +7,59 @@
 
 <h1>@ViewBag.Title</h1>
 
-<div class="d-flex">
-    <div class="flex-fill">
-        
-        @{
-            if (Model.Winner != null)
-            {
-                <h2>Winner: @Model.Winner.Name</h2>
-            }
-        }
-        
-        @Html.Partial("MatchPlayers", Model.Players)
-        @{
-            if (Model.Players.Any())
-            {
-                <form asp-action="StartMatch" method="post">
-                    <button type="submit" class="btn btn-primary">Start Match</button>
-                </form>
-            }
-        }
-    </div>
-    <div class="flex-fill">
-        @{
-            if (Model.CurrentPlayer == null)
-            {
-                @Html.Partial("AddPlayer")
-                <br />
-                // foreach of the players in the viewbag.players create a dropdown
-                // with the player names
-                <form asp-action="AddPlayer" method="post">
-                    <div class="input-group">
-                        <select class="form-control" id="playerName" name="playerName" required>
-                            <option value="">Select a player</option>
-                            @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
-                            {
-                                <option value="@player.Text">@player.Value</option>
-                            }
-                        </select>
-                        <button type="submit" class="btn btn-primary">Pick Player</button>
-                    </div>
-                </form>
-            }
-            else
-            {   
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
 
-                var currentPlayer = Model.CurrentPlayer as RoundTheBoardPlayer;
-                
-                @Html.Partial("PlayerScore", currentPlayer)
-                
-                @if (!currentPlayer.Finished())
+            @{
+                if (Model.Winner != null)
                 {
-                    <form asp-action="Throw" method="post">
+                    <h2>Winner: @Model.Winner.Name</h2>
+                }
+            }
+
+            @Html.Partial("MatchPlayers", Model.Players)
+            @{
+                if (Model.Players.Any())
+                {
+                    <form asp-action="StartMatch" method="post">
+                        <button type="submit" class="btn btn-primary btn-block">Start Match</button>
+                    </form>
+                }
+            }
+        </div>
+        <div class="col-12 col-md-6">
+            @{
+                if (Model.CurrentPlayer == null)
+                {
+                    @Html.Partial("AddPlayer")
+                    <br />
+                    <form asp-action="AddPlayer" method="post">
                         <div class="input-group">
-                            <!-- add radio group that will post a string called multiplier to the form post-->
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="multiplier" value="S" id="single" checked>
-                                <label class="form-check-label" for="single">
-                                    Single
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="multiplier" value="D" id="double">
-                                <label class="form-check-label" for="double">
-                                    Double
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="multiplier" value="T" id="treble">
-                                <label class="form-check-label" for="treble">
-                                    Treble
-                                </label>
-                            </div>
-                            <div class="btn-group" role="group" aria-label="Throw Values">
-                                @for (int i = 1; i <= 20; i++)
+                            <select class="form-control" id="playerName" name="playerName" required>
+                                <option value="">Select a player</option>
+                                @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
                                 {
-                                    <button type="button" class="btn btn-secondary btn-score" onclick="setThrowValue(this, @i)">@i</button>
+                                    <option value="@player.Text">@player.Value</option>
                                 }
+                            </select>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Pick Player</button>
                             </div>
-                            <input type="hidden" id="throwValue" name="throwValue" value="" />
-                            <button type="submit" class="btn btn-primary">Throw</button>
                         </div>
                     </form>
                 }
-                
-                for(var leg = 0; leg < currentPlayer.Legs.Count; leg++)
+                else
                 {
-                    <p><b>Leg @(leg + 1)</b> - @string.Join(", ", currentPlayer.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))</p>
+                    var currentPlayer = Model.CurrentPlayer as RoundTheBoardPlayer;
+
+                    @Html.Partial("PlayerScore", currentPlayer)
+
+                    @Html.Partial("ThrowForm", currentPlayer)
+
+                    @Html.Partial("LegScore", currentPlayer)
                 }
             }
-        }
+        </div>
     </div>
 </div>

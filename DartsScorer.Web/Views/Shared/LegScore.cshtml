@@ -1,0 +1,6 @@
+@model DartsScorer.Main.Match.RoundTheBoard.RoundTheBoardPlayer
+
+@for (var leg = 0; leg < Model.Legs.Count; leg++)
+{
+    <p><b>Leg @(leg + 1)</b> - @string.Join(", ", Model.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))</p>
+}
