@@ -36,16 +36,16 @@
                 // foreach of the players in the viewbag.players create a dropdown
                 // with the player names
                 <form asp-action="AddPlayer" method="post">
-                <div class="input-group">
-                    <select class="form-control" id="playerName" name="playerName" required>
-                        <option value="">Select a player</option>
-                        @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
-                        {
-                            <option value="@player.Text">@player.Value</option>
-                        }
-                    </select>
-                    <button type="submit" class="btn btn-primary">Pick Player</button>
-                </div>
+                    <div class="input-group">
+                        <select class="form-control" id="playerName" name="playerName" required>
+                            <option value="">Select a player</option>
+                            @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
+                            {
+                                <option value="@player.Text">@player.Value</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary">Pick Player</button>
+                    </div>
                 </form>
             }
             else
@@ -59,7 +59,7 @@
                 {
                     <form asp-action="Throw" method="post">
                         <div class="input-group">
-                            <!-- add radio group that will post a string called maultipler to the form post-->
+                            <!-- add radio group that will post a string called multiplier to the form post-->
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="multiplier" value="S" id="single" checked>
                                 <label class="form-check-label" for="single">
@@ -78,7 +78,13 @@
                                     Treble
                                 </label>
                             </div>
-                            <input type="text" class="form-control" id="throwValue" name="throwValue" required/>
+                            <div class="btn-group" role="group" aria-label="Throw Values">
+                                @for (int i = 1; i <= 20; i++)
+                                {
+                                    <button type="button" class="btn btn-secondary btn-score" onclick="setThrowValue(this, @i)">@i</button>
+                                }
+                            </div>
+                            <input type="hidden" id="throwValue" name="throwValue" value="" />
                             <button type="submit" class="btn btn-primary">Throw</button>
                         </div>
                     </form>

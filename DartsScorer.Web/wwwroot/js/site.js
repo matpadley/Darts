@@ -34,3 +34,10 @@ function updatePlayerName(oldName, newName) {
     )
     .catch(error => console.error('Error:', error));
     }
+
+function setThrowValue(button, value) {
+    document.getElementById('throwValue').value = value;
+    var buttons = document.querySelectorAll('.btn-group .btn');
+    buttons.forEach(btn => btn.classList.remove('throw-score-btn-pressed'));
+    button.classList.add('throw-score-btn-pressed');
+}
