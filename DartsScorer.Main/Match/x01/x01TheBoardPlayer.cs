@@ -7,11 +7,12 @@ public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name
 {
     public  int RequiredBoardNumber { get; private set; } = 1;
     
+    /*
     public override void StartThrow()
     {
         CurrentLeg = new Leg();
     }
-
+*/
     public override void Throw(BoardScore one, Multiplier multiplier)
     {
         var newThrow = new ThrowScore(multiplier, one);

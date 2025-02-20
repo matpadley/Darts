@@ -10,7 +10,7 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-        roundTheBoardPlayer.StartThrow();
+       // roundTheBoardPlayer.StartThrow();
         
         Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(0));
     }
@@ -20,7 +20,7 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-        roundTheBoardPlayer.StartThrow();
+        //roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
@@ -35,7 +35,7 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-        roundTheBoardPlayer.StartThrow();
+       // roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
@@ -50,13 +50,13 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-        roundTheBoardPlayer.StartThrow();
+       // roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
         roundTheBoardPlayer.EndThrow();
         
-        roundTheBoardPlayer.StartThrow();
+       // roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
@@ -71,7 +71,7 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-        roundTheBoardPlayer.StartThrow();
+        //roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
         
@@ -84,12 +84,12 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-        roundTheBoardPlayer.StartThrow();
+       // roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Seven, Multiplier.Single);
         
         Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo( 3));
-        Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(0));
+        Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(1));
     }
 }

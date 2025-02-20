@@ -58,7 +58,6 @@ public class RoundTheBoardService : IRoundTheBoardService
     {
         var match = _cache.Get("currentMatch") as Match;
         match.StartMatch();
-        (match.CurrentPlayer as RoundTheBoardPlayer).StartThrow();
         _cache.Set("currentMatch", match);
         return match;
     }

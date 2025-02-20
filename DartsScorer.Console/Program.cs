@@ -63,7 +63,7 @@ if (newMatch.Players.Count > 0)
             // write a line under the above line
             AnsiConsole.MarkupLine("[blue]--------------------------------[/]");
 
-            player.StartThrow();
+          //  player.StartThrow();
             if (!player.Finished()) HandleThrow(player);
             if (!player.Finished()) HandleThrow(player);
             if (!player.Finished()) HandleThrow(player);

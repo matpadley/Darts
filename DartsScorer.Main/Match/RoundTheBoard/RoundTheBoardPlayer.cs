@@ -9,7 +9,8 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
 
     private const int WinningNumber = 20;
     private bool HasWon { get; set; }
-    public override void StartThrow()
+    /*
+    public void StartThrow()
     {
         if (Legs.Any())
         {
@@ -25,7 +26,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
         
         CurrentLeg = new Leg();
     }
-
+*/
     public override void Throw(BoardScore boardScore, Multiplier multiplier)
     {
         // if the leg is finished return
@@ -77,7 +78,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     // add method to end the throw and add the leg to the list of legs
     public override void EndThrow()
     {
-        Legs.Add(CurrentLeg);
+        if (CurrentLeg != null) Legs.Add(CurrentLeg);
         CurrentLeg = null;
         // CurrentLeg = null; // this is the bit that is causing the set current player leg null
     }
