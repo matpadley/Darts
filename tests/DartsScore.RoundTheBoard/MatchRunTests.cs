@@ -204,6 +204,45 @@ public class MatchRunTests
         Assert.That(_match.Winner.Name, Is.EqualTo("new player"));
     }
 
+    [Test]
+    public void RoundTheBoard_MultiPlayer_Player_First_Leg()
+    {
+        var player1 = new RoundTheBoardPlayer("playerTwo");
+        var player2 = new RoundTheBoardPlayer("playerOne");
+
+        _match.AddPlayer(player1);
+        _match.AddPlayer(player2);
+
+        _match.StartMatch();
+
+        Assert.That(_match.CurrentPlayer.Equals(player1));
+
+        var player_throw_one = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player_throw_one.Throw(BoardScore.Five, Multiplier.Single);
+        if (player_throw_one.CurrentLeg.IsComplete) player_throw_one.EndThrow();
+        _match.SetCurrentPlayer(player_throw_one);
+        
+        Assert.That(_match.CurrentPlayer.Equals(player1));
+
+        var player_throw_two = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player_throw_two.Throw(BoardScore.Five, Multiplier.Single);
+        if (player_throw_one.CurrentLeg.IsComplete) player_throw_one.EndThrow();
+        _match.SetCurrentPlayer(player_throw_two);
+        
+        Assert.That(_match.CurrentPlayer.Equals(player1));
+
+        var player_throw_three = _match.CurrentPlayer as RoundTheBoardPlayer;
+        player_throw_three.Throw(BoardScore.Five, Multiplier.Single);
+        if (player_throw_one.CurrentLeg.IsComplete) player_throw_one.EndThrow();
+        _match.SetCurrentPlayer(player_throw_three);
+        
+        Assert.That(_match.CurrentPlayer.Equals(player2));
+
+        
+        
+        // THIS NEEDS RE_WORLING TO FIND OUT IF THE PLAYER HAS FINISHED THE THROW ON THE UPDATE AND END THE THROW AFTER THE THROW HAS BEEN COMPLETED
+    }
+
     
     /// add test for bust - if the player goes over the required number[Test]
 

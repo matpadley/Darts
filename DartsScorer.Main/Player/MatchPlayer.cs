@@ -12,10 +12,9 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
     public abstract void Throw(BoardScore one, Multiplier multiplier);
     public abstract void EndThrow();
     public abstract bool Finished();
-    protected bool HasFinishedLeg { get; set; } = false;
-    
-    protected Leg? _currentLeg;
-    public Leg? CurrentLeg => _currentLeg;
+    protected internal bool HasFinishedLeg { get; set; } = false;
+
+    public Leg? CurrentLeg;
     public void Throw(string dartThrow)
     {
         if (int.TryParse(dartThrow, out _)) dartThrow = "S" + dartThrow;
