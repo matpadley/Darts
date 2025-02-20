@@ -1,9 +1,6 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using DartsScorer.Web.Models;
 using DartsScorer.Web.Models.UpdateModels;
 using DartsScorer.Web.Services;
-using Newtonsoft.Json.Linq;
 
 namespace DartsScorer.Web.Controllers;
 

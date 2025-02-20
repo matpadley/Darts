@@ -1,7 +1,5 @@
-using DartsScorer.Main.Player;
 using DartsScorer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DartsScorer.Web.Controllers;
 
@@ -12,7 +10,16 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     public IActionResult Index()    
     {
         var players = playerService.GetPLayersForDropDown();
-        ViewBag.PlayerList = players;
+        
+        if (players.Count == 0)
+        {
+            playerService.Add("Player 1");
+            playerService.Add("Player 2");
+            playerService.Add("Player 3");
+            playerService.Add("Player 4");
+        }
+        
+        ViewBag.PlayerList = playerService.GetPLayersForDropDown();
         return View(dartsMatchService.Create());
     }
     
@@ -24,12 +31,6 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     [HttpPost]
     public IActionResult AddPlayer(string playerName)
     {
-        if (playerService.CheckPlayerExisits(playerName) |
-            dartsMatchService.GetPlayers().Any(f => f.Name == playerName))
-        {
-            return RedirectToAction("Index");
-        }
-        
         // Add logic to add the player
         dartsMatchService.AddPlayer(playerName);
         playerService.Add(playerName);
@@ -46,20 +47,8 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     
     [HttpPost]
     public IActionResult Throw(string multiplier, string throwValue)
-    //public IActionResult Throw(string throwValue)
     {
         dartsMatchService.Throw($"{multiplier}{throwValue}");
         return RedirectToAction("Index");
-    }
-}
-
-public class ThrowModel
-{
-    public string ThrowValue { get; set; }
-    public string Multiplyer { get; set; }
-
-    public override string ToString()
-    {
-        return $"{ThrowValue}{Multiplyer}";
     }
 }
