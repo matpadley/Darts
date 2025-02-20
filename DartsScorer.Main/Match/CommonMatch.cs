@@ -5,9 +5,9 @@ namespace DartsScorer.Main.Match;
 public abstract class CommonMatch
 {
     public abstract bool IsMatchComplete { get; }
-    public DartsMatchType DartsMatchType { get; set; }
+    public DartsMatchType DartsMatchType { get; protected init; }
 
-    private  List<Player.MatchPlayer> _players = new();
+    private  List<Player.MatchPlayer> _players = [];
     
     public abstract string Name { get; }
 
@@ -32,7 +32,7 @@ public abstract class CommonMatch
             throw new InvalidOperationException("Cannot start match with no players");
         }
 
-        SetCurrentPlayer((Player.Player)Players[0]);
+        SetCurrentPlayer(Players[0]);
 
         return true;
     }
@@ -59,8 +59,7 @@ public abstract class CommonMatch
             return;
         }
 
-      //  if (!player.Legs.Any() || !player.Legs.Last().IsComplete) return;
-      if (player.CurrentLeg != null && !player.CurrentLeg.IsComplete) return;
+        if (player.CurrentLeg != null && !player.CurrentLeg.IsComplete) return;
         
         // Get the next player
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;
