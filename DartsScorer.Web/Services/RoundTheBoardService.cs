@@ -44,6 +44,12 @@ public class RoundTheBoardService : IRoundTheBoardService
     public void AddPlayer(string playerName)
     {
         var match = _cache.Get("currentMatch") as Match;
+        
+        if (match.Players.Any(f => f.Name == playerName))
+        {
+            return;
+        }
+        
         match.AddPlayer(new RoundTheBoardPlayer(playerName));
         _cache.Set("currentMatch", match);
     }
@@ -52,7 +58,6 @@ public class RoundTheBoardService : IRoundTheBoardService
     {
         var match = _cache.Get("currentMatch") as Match;
         match.StartMatch();
-        (match.CurrentPlayer as RoundTheBoardPlayer).StartThrow();
         _cache.Set("currentMatch", match);
         return match;
     }
@@ -63,6 +68,7 @@ public class RoundTheBoardService : IRoundTheBoardService
         var player = match.CurrentPlayer as RoundTheBoardPlayer;
         
         player.Throw(throwValue);
+        
         match.UpdatePlayer(player);
         _cache.Set("currentMatch", match);
     }

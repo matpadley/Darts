@@ -1,5 +1,7 @@
 # Darts Scorer
 
+The apps in here are rough and ready proof of concept and by no means production ready. They are missing expection handling.
+
 ## Running the Console App
 
 To run the console app from the command line, navigate to the `DartsScorer.Console` directory and use the following command:

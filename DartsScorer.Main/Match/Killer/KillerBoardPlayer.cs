@@ -7,33 +7,34 @@ public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name
 {
     public  int RequiredBoardNumber { get; private set; } = 1;
     
+    /*
     public override void StartThrow()
     {
-        _currentLeg = new Leg();
+        CurrentLeg = new Leg();
     }
-
+*/
     public override void Throw(BoardScore one, Multiplier multiplier)
     {
         var newThrow = new ThrowScore(multiplier, one);
 
-        switch (_currentLeg?.NextThrow)
+        switch (CurrentLeg?.NextThrow)
         {
             case 1: 
-                _currentLeg.ThrowFirst(newThrow);
+                CurrentLeg.ThrowFirst(newThrow);
                 if (newThrow.Score == RequiredBoardNumber)
                 {
                     RequiredBoardNumber++;
                 }
                 break;
             case 2: 
-                _currentLeg.ThrowSecond(newThrow);
+                CurrentLeg.ThrowSecond(newThrow);
                 if (newThrow.Score == RequiredBoardNumber)
                 {
                     RequiredBoardNumber++;
                 }
                 break;
             case 3: 
-                _currentLeg.ThrowThird(newThrow);
+                CurrentLeg.ThrowThird(newThrow);
                 if (newThrow.Score == RequiredBoardNumber)
                 {
                     RequiredBoardNumber++;
@@ -41,9 +42,9 @@ public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name
                 break;
         }
         
-        if (_currentLeg.IsComplete)
+        if (CurrentLeg.IsComplete)
         {
-            Legs.Add(_currentLeg);
+            Legs.Add(CurrentLeg);
         }
     }
 

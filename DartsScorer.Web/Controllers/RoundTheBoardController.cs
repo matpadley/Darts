@@ -4,10 +4,22 @@ using Microsoft.AspNetCore.Mvc;
 namespace DartsScorer.Web.Controllers;
 
 public class RoundTheBoardController(ILogger<RoundTheBoardController> logger, 
-    IRoundTheBoardService dartsMatchService) : Controller
+    IRoundTheBoardService dartsMatchService,
+    IPlayerService playerService) : Controller
 {
-    public IActionResult Index()
+    public IActionResult Index()    
     {
+        var players = playerService.GetPLayersForDropDown();
+        
+        if (players.Count == 0)
+        {
+            playerService.Add("Player 1");
+            playerService.Add("Player 2");
+            playerService.Add("Player 3");
+            playerService.Add("Player 4");
+        }
+        
+        ViewBag.PlayerList = playerService.GetPLayersForDropDown();
         return View(dartsMatchService.Create());
     }
     
@@ -21,6 +33,7 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     {
         // Add logic to add the player
         dartsMatchService.AddPlayer(playerName);
+        playerService.Add(playerName);
         return RedirectToAction("Index");
     }
     
@@ -33,9 +46,9 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     }
     
     [HttpPost]
-    public IActionResult Throw(string throwValue)
+    public IActionResult Throw(string multiplier, string throwValue)
     {
-        dartsMatchService.Throw(throwValue);
+        dartsMatchService.Throw($"{multiplier}{throwValue}");
         return RedirectToAction("Index");
     }
 }

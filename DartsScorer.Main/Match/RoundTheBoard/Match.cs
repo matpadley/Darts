@@ -13,7 +13,7 @@ public sealed class Match : CommonMatch
     {
         if (CanStartMatch())
         {
-            SetCurrentPlayer(Players.First());
+            SetCurrentPlayer((Player.Player)Players.First());
         }
     }
 

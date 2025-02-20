@@ -32,17 +32,52 @@
             if (Model.CurrentPlayer == null)
             {
                 @Html.Partial("AddPlayer")
+                <br />
+                // foreach of the players in the viewbag.players create a dropdown
+                // with the player names
+                <form asp-action="AddPlayer" method="post">
+                <div class="input-group">
+                    <select class="form-control" id="playerName" name="playerName" required>
+                        <option value="">Select a player</option>
+                        @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
+                        {
+                            <option value="@player.Text">@player.Value</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-primary">Pick Player</button>
+                </div>
+                </form>
             }
             else
             {   
-                @Html.Partial("PlayerScore", Model.CurrentPlayer)
 
                 var currentPlayer = Model.CurrentPlayer as RoundTheBoardPlayer;
+                
+                @Html.Partial("PlayerScore", currentPlayer)
                 
                 @if (!currentPlayer.Finished())
                 {
                     <form asp-action="Throw" method="post">
                         <div class="input-group">
+                            <!-- add radio group that will post a string called maultipler to the form post-->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="multiplier" value="S" id="single" checked>
+                                <label class="form-check-label" for="single">
+                                    Single
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="multiplier" value="D" id="double">
+                                <label class="form-check-label" for="double">
+                                    Double
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="multiplier" value="T" id="treble">
+                                <label class="form-check-label" for="treble">
+                                    Treble
+                                </label>
+                            </div>
                             <input type="text" class="form-control" id="throwValue" name="throwValue" required/>
                             <button type="submit" class="btn btn-primary">Throw</button>
                         </div>
@@ -51,8 +86,7 @@
                 
                 for(var leg = 0; leg < currentPlayer.Legs.Count; leg++)
                 {
-                    <h4>Leg @(leg + 1)</h4>
-                    @string.Join(", ", currentPlayer.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))
+                    <p><b>Leg @(leg + 1)</b> - @string.Join(", ", currentPlayer.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))</p>
                 }
             }
         }

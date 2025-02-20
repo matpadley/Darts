@@ -5,9 +5,9 @@ namespace DartsScorer.Main.Match;
 public abstract class CommonMatch
 {
     public abstract bool IsMatchComplete { get; }
-    public DartsMatchType DartsMatchType { get; set; }
+    public DartsMatchType DartsMatchType { get; protected init; }
 
-    private  List<Player.MatchPlayer> _players = new();
+    private  List<Player.MatchPlayer> _players = [];
     
     public abstract string Name { get; }
 
@@ -26,7 +26,6 @@ public abstract class CommonMatch
 
     protected bool CanStartMatch()
     {
-        
         // throw exception if no players
         if (Players.Count == 0)
         {
@@ -45,11 +44,12 @@ public abstract class CommonMatch
         if (currentInd != -1)
         {
             // Create a temporary list to store the updated players
-            var updatedPlayers = new List<Player.MatchPlayer>(_players);
-        
-            // Replace the player at the found index with the new player
-            updatedPlayers[currentInd] = player;
-        
+            var updatedPlayers = new List<Player.MatchPlayer>(_players)
+            {
+                // Replace the player at the found index with the new player
+                [currentInd] = player
+            };
+
             // Replace the original list with the updated list
             _players = updatedPlayers;
         }
@@ -59,6 +59,8 @@ public abstract class CommonMatch
             return;
         }
 
+        if (player.CurrentLeg != null && !player.CurrentLeg.IsComplete) return;
+        
         // Get the next player
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;
         
@@ -74,6 +76,4 @@ public abstract class CommonMatch
     {
         CurrentPlayer = player;
     }
-    
-    
 }

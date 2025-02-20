@@ -29,7 +29,7 @@ public class PlayerTests
         
         var matchPlayer = (match.CurrentPlayer as RoundTheBoardPlayer);
             
-        matchPlayer.StartThrow();
+       // matchPlayer.StartThrow();
         matchPlayer.Throw("S1");
         matchPlayer.Throw("S1");
         matchPlayer.Throw("S2");
