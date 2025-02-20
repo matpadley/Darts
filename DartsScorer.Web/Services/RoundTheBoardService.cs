@@ -69,9 +69,8 @@ public class RoundTheBoardService : IRoundTheBoardService
         var player = match.CurrentPlayer as RoundTheBoardPlayer;
         
         player.Throw(throwValue);
-        if (player.CurrentLeg.IsComplete) player.EndThrow();
         
-        match.SetCurrentPlayer(player);
+        match.UpdatePlayer(player);
         _cache.Set("currentMatch", match);
     }
 }

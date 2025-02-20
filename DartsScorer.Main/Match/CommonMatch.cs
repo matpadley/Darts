@@ -38,7 +38,7 @@ public abstract class CommonMatch
     }
     
     // update the current player with the one with the updates numbers
-    public void SetCurrentPlayer(Player.MatchPlayer player)
+    public void UpdatePlayer(Player.MatchPlayer player)
     {
         var currentInd = _players.FindIndex(p => Equals(p, player));
         if (currentInd != -1)
@@ -59,7 +59,7 @@ public abstract class CommonMatch
             return;
         }
 
-        if (!player.CurrentLeg.IsComplete) return;
+        if (!player.Legs.Any() || !player.Legs.Last().IsComplete) return;
         
         // Get the next player
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;

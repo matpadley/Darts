@@ -55,7 +55,7 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
             case 3:
                 CurrentLeg.ThrowThird(newThrow);
                 UpdateRequiredBoardNumber(newThrow);
-                if (HasWon) EndThrow(); 
+                EndThrow(); 
                 break;
         }
     }
@@ -64,19 +64,22 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     {
         if (newThrow.NumberScore == RequiredBoardNumber && !HasWon && WinningNumber != RequiredBoardNumber)
         {
-            
             var nextNumber = newThrow.Score + 1;
             RequiredBoardNumber = nextNumber > 20 ? RequiredBoardNumber : nextNumber;
         }
-        
-        HasWon = newThrow.NumberScore == 20 && RequiredBoardNumber == 20;
+
+        if (newThrow.NumberScore == 20 && RequiredBoardNumber == 20)
+        {
+            HasWon = true;
+        }
     }
     
     // add method to end the throw and add the leg to the list of legs
     public override void EndThrow()
     {
-        if (CurrentLeg != null) Legs.Add(CurrentLeg);
-        CurrentLeg = null; // this is the bit that is causing the set current player leg null
+        Legs.Add(CurrentLeg);
+        CurrentLeg = null;
+        // CurrentLeg = null; // this is the bit that is causing the set current player leg null
     }
 
     public override bool Finished()

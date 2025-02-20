@@ -69,7 +69,7 @@ if (newMatch.Players.Count > 0)
             if (!player.Finished()) HandleThrow(player);
             player.EndThrow();
 
-            newMatch.SetCurrentPlayer(player!);
+            newMatch.UpdatePlayer(player!);
 
             //write the name and the score of the current player
             AnsiConsole.MarkupLine($"[green]Player: - {player.Name} - Score: {player.RequiredBoardNumber}[/]");

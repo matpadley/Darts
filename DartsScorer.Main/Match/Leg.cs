@@ -44,4 +44,12 @@ public class Leg : CommonLeg
         NextThrow = 1;
         IsComplete = true;
     }
+
+    public void Clear()
+    {
+        CurrentScore = 0;
+        Throws.Clear();
+        NextThrow = 1;
+        IsComplete = false;
+    }
 }
