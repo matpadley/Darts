@@ -33,7 +33,6 @@ public class LegTests
 
         // Assert
         Assert.That(leg.CurrentScore, Is.EqualTo(expectedScore));
-        //Assert.That(leg.FirstThrow?.Score, Is.EqualTo(expectedScore));
         Assert.That(leg.NextThrow, Is.EqualTo(2));
         Assert.That(leg.IsComplete, Is.False);
         Assert.That(leg.Throws.Count, Is.EqualTo(1));

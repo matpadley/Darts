@@ -50,13 +50,11 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-       // roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
         roundTheBoardPlayer.EndThrow();
         
-       // roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
@@ -71,7 +69,6 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-        //roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
         
@@ -84,7 +81,6 @@ public class LegTests
     {
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
-       // roundTheBoardPlayer.StartThrow();
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.Seven, Multiplier.Single);

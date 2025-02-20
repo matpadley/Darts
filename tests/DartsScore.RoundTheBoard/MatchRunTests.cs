@@ -35,7 +35,6 @@ public class MatchRunTests
             
             var dartsToThrow = throwCase!.First();
             
-            //roundTheBoardPlayer.StartThrow();
             Assert.That(roundTheBoardPlayer.CurrentLeg, Is.Null);
             roundTheBoardPlayer.Throw(dartsToThrow.FirstThrow.BoardScore,
                 dartsToThrow.FirstThrow.Multiplier); // next score == 3
@@ -82,23 +81,17 @@ public class MatchRunTests
             TryParse((player?.RequiredBoardNumber + 1).ToString(), out BoardScore boardScore2);
             TryParse((player?.RequiredBoardNumber + 2).ToString(), out BoardScore boardScore3);
             
-            //player?.StartThrow();
-            
             player?.Throw(boardScore1, Multiplier.Single);
             _match.UpdatePlayer(player);
             player = _match.CurrentPlayer as RoundTheBoardPlayer;
             
             player?.Throw(boardScore2, Multiplier.Single);
-            //Assert.That(player.NextThrow, Is.EqualTo(2));
             _match.UpdatePlayer(player);
             player = _match.CurrentPlayer as RoundTheBoardPlayer;
             
             player?.Throw(boardScore3, Multiplier.Single);
-           // Assert.That(player.NextThrow, Is.EqualTo(3));
             _match.UpdatePlayer(player);
             player = _match.CurrentPlayer as RoundTheBoardPlayer;
-            
-            //player?.EndThrow();
             
             _match.UpdatePlayer(player!);
         }
@@ -123,7 +116,6 @@ public class MatchRunTests
         TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore2);
         TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore3);
         
-       // player?.StartThrow();
         Assert.That(player?.CurrentLeg, Is.Null);
         player?.Throw(boardScore1, Multiplier.Treble);
         Assert.That(player?.CurrentLeg.NextThrow, Is.EqualTo(2));
@@ -157,7 +149,6 @@ public class MatchRunTests
         TryParse((player?.RequiredBoardNumber + 3).ToString(), out BoardScore boardScore3);
         
         //first throw
-       // player?.StartThrow();
         player?.Throw(boardScore1, Multiplier.Treble);
         player = _match.CurrentPlayer as RoundTheBoardPlayer;
         player?.Throw(boardScore2, Multiplier.Treble);
@@ -169,7 +160,6 @@ public class MatchRunTests
         _match.UpdatePlayer(player!);
         
         //second throw
-       // player?.StartThrow();
         player?.Throw(BoardScore.Thirteen, Multiplier.Single);
         player = _match.CurrentPlayer as RoundTheBoardPlayer;
         player?.Throw(BoardScore.Fourteen, Multiplier.Single);
@@ -181,7 +171,6 @@ public class MatchRunTests
         _match.UpdatePlayer(player!);
         
         // third throw
-       // player?.StartThrow();
         player?.Throw(BoardScore.Sixteen, Multiplier.Single);
         player = _match.CurrentPlayer as RoundTheBoardPlayer;
         player?.Throw(BoardScore.Seventeen, Multiplier.Single);
@@ -192,7 +181,6 @@ public class MatchRunTests
         
         _match.UpdatePlayer(player!);
         
-       // player?.StartThrow();
         player?.Throw(BoardScore.Nineteen, Multiplier.Single);
         player?.Throw(BoardScore.Twenty, Multiplier.Single);
         player?.Throw(BoardScore.Eighteen, Multiplier.Single);
@@ -218,16 +206,13 @@ public class MatchRunTests
         Assert.That(_match.CurrentPlayer.Equals(player1));
 
         var player_throw_one = _match.CurrentPlayer as RoundTheBoardPlayer;
-        //player_throw_one.StartThrow();
         player_throw_one.Throw(BoardScore.Six, Multiplier.Single);
-        //if (player_throw_one.CurrentLeg.IsComplete) player_throw_one.EndThrow();
         _match.UpdatePlayer(player_throw_one);
         
         Assert.That(_match.CurrentPlayer.Equals(player1));
 
         var player_throw_two = _match.CurrentPlayer as RoundTheBoardPlayer;
         player_throw_two.Throw(BoardScore.Five, Multiplier.Single);
-        //if (player_throw_one.CurrentLeg.IsComplete) player_throw_one.EndThrow();
         _match.UpdatePlayer(player_throw_two);
         
         Assert.That(_match.CurrentPlayer.Equals(player1));
@@ -242,16 +227,9 @@ public class MatchRunTests
         Assert.That(player_throw_three.Legs.First().Throws.ElementAt(1).NumberScore == 5);
         Assert.That(player_throw_three.Legs.First().Throws.ElementAt(2).NumberScore == 5);
         
-       // player_throw_three.EndThrow();
-        
-        //if (player_throw_one.CurrentLeg.IsComplete) player_throw_one.EndThrow();
         _match.UpdatePlayer(player_throw_three);
         
         Assert.That(_match.CurrentPlayer.Equals(player2));
-
-        
-        
-        // THIS NEEDS RE_WORLING TO FIND OUT IF THE PLAYER HAS FINISHED THE THROW ON THE UPDATE AND END THE THROW AFTER THE THROW HAS BEEN COMPLETED
     }
 
     
