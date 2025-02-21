@@ -5,6 +5,11 @@ public class ThrowScore
     public readonly BoardScore BoardScore;
     public readonly Multiplier Multiplier;
 
+    public ThrowScore(string score)
+    {
+        
+    }
+    
     public ThrowScore(Multiplier multiplier, BoardScore score)
     {
         BoardScore = score;
