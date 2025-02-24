@@ -32,42 +32,42 @@
             if (Model.CurrentPlayer == null)
             {
                 @Html.Partial("AddPlayer")
-                <br />
+                <br/>
                 // foreach of the players in the viewbag.players create a dropdown
                 // with the player names
                 <form asp-action="AddPlayer" method="post">
-                <div class="input-group">
-                    <select class="form-control" id="playerName" name="playerName" required>
-                        <option value="">Select a player</option>
-                        @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
-                        {
-                            <option value="@player.Text">@player.Value</option>
-                        }
-                    </select>
-                    <button type="submit" class="btn btn-primary">Pick Player</button>
-                </div>
+                    <div class="input-group">
+                        <select class="form-control" id="playerName" name="playerName" required>
+                            <option value="">Select a player</option>
+                            @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
+                            {
+                                <option value="@player.Text">@player.Value</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary">Pick Player</button>
+                    </div>
                 </form>
             }
             else
-            {   
+            {
 
                 var currentPlayer = Model.CurrentPlayer as RoundTheBoardPlayer;
-                
+
                 @Html.Partial("PlayerScore", currentPlayer)
-                
+
                 @if (!currentPlayer.Finished())
                 {
                     <form asp-action="Throw" method="post">
                         <div class="d-flex mb-2">
                             <div class="d-flex flex-column w-75">
-                               <div class="d-flex flex-fill">
-                                 <div class="d-flex flex-column w-50 me-2">
-                                     <button class="btn btn-primary bullseye" id="throwValue" name="throwValue" value="Bull">Bull</button>
-                                 </div>
-                                 <div class="d-flex flex-column w-50">
-                                     <button class="btn btn-primary outerbull" id="throwValue" name="throwValue" value="OuterBull">Outer Bull</button>
-                                 </div>
-                               </div>
+                                <div class="d-flex flex-fill">
+                                    <div class="d-flex flex-column w-50 me-2">
+                                        <button class="btn btn-primary bullseye" id="throwValue" name="throwValue" value="Bull">Bull</button>
+                                    </div>
+                                    <div class="d-flex flex-column w-50">
+                                        <button class="btn btn-primary outerbull" id="throwValue" name="throwValue" value="OuterBull">Outer Bull</button>
+                                    </div>
+                                </div>
                                 <div class="btn-group mt-2" role="group" aria-label="Multiplier">
                                     <button class="btn multiplier" name="multiplier" id="single" value="S">Single</button>
                                     <button class="btn multiplier" name="multiplier" id="double" value="D">Double</button>
@@ -82,33 +82,8 @@
                         </div>
                     </form>
                 }
-                
-                var legArray = currentPlayer.OrderedDescendingLegs().ToArray();
-                var currentLegLocation = 0;
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Leg Number</th>
-                                <th colspan="3">Scores</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @{
-                               foreach (var leg in legArray)
-                               {
-                                   var throws = leg.Throws;
-                                   <tr>
-                                       <td>@(legArray.Length - currentLegLocation)</td>
-                                       @foreach (var thr in throws)
-                                       {
-                                           <td>@thr.ToString()</td>
-                                       }
-                                   </tr>
-                                   currentLegLocation++;
-                               }
-                            }
-                        </tbody>
-                    </table>
+
+                @Html.Partial("LegTable", currentPlayer)
             }
         }
     </div>
