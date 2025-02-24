@@ -46,7 +46,7 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     }
     
     [HttpPost]
-    public IActionResult Throw(string multiplier, string throwValue)
+    public IActionResult Throw(string multiplier = "S", string throwValue = "0")
     {
         dartsMatchService.Throw($"{multiplier}{throwValue}");
         return RedirectToAction("Index");
