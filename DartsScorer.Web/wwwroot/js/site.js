@@ -33,4 +33,4 @@ function updatePlayerName(oldName, newName) {
         window.location.href = '/player/index'
     )
     .catch(error => console.error('Error:', error));
-    }
+}
