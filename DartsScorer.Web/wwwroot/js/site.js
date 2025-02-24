@@ -41,12 +41,14 @@ function toggleBullsEye() {
         document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
         document.getElementById('throwValue').disabled = false;
         document.getElementById('outerBullThrow').disabled = false;
+        document.getElementById('bullseyeThrow').classList.remove('bullseye');
         return;
     }
     else {
         document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
         document.getElementById('throwValue').disabled = true;
         document.getElementById('outerBullThrow').disabled = true;
+        document.getElementById('bullseyeThrow').classList.add('bullseye');
     }
 }
 
@@ -56,12 +58,29 @@ function toggleOuterBull() {
         document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
         document.getElementById('throwValue').disabled = false;
         document.getElementById('bullseyeThrow').disabled = false;
+        document.getElementById('outerBullThrow').classList.remove('outerbull');
         return;
     }
     else {
         document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
         document.getElementById('throwValue').disabled = true;
         document.getElementById('bullseyeThrow').disabled = true;
+        document.getElementById('outerBullThrow').classList.add('outerbull');
     }
 }
 
+function toggleMultiplier(button) {
+    switch (button.id) {
+        case 'single':
+            document.getElementById('double').disabled = true;
+            document.getElementById('treble').disabled = true;
+            break;
+        case 'double':
+            document.getElementById('single').disabled = true;
+            document.getElementById('treble').disabled = true;
+            break;
+        case 'treble':
+            document.getElementById('single').disabled = true;
+            document.getElementById('double').disabled = true;
+    }
+}

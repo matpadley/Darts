@@ -10,11 +10,9 @@
 <div class="d-flex">
     <div class="flex-fill">
         
-        @{
-            if (Model.Winner != null)
-            {
-                <h2>Winner: @Model.Winner.Name</h2>
-            }
+        @if (Model.Winner != null)
+        {
+            <h2>Winner: @Model.Winner.Name</h2>
         }
         
         @Html.Partial("MatchPlayers", Model)
@@ -58,33 +56,33 @@
                 @if (!currentPlayer.Finished())
                 {
                     <!--<form asp-action="Throw" method="post">-->
-                        <div class="d-flex mb-2">
-                            <div class="d-flex flex-column w-75">
-                                <div class="d-flex flex-fill">
-                                    <div class="d-flex flex-column w-50 me-2">
-                                        <button class="btn btn-primary bullseye" id="bullseyeThrow" name="throwValue" value="Bull" onclick="toggleBullsEye()">Bull</button>
-                                    </div>
-                                    <div class="d-flex flex-column w-50">
-                                        <button class="btn btn-primary outerbull" id="outerBullThrow" name="throwValue" value="OuterBull" onclick="toggleOuterBull()">Outer Bull</button>
-                                    </div>
-                                </div>
-                                <div class="btn-group mt-2" role="group" aria-label="Multiplier">
-                                    <button class="btn multiplier" name="multiplier" id="single" value="S">Single</button>
-                                    <button class="btn multiplier" name="multiplier" id="double" value="D">Double</button>
-                                    <button class="btn multiplier" name="multiplier" id="treble" value="T">Treble</button>
-                                </div>
-                                <div class="mt-2">
-                                    <label class="form-check-label" for="throwValue">Score</label>
-                                    <input type="text" class="form-control" id="throwValue" name="throwValue" pattern="^(1[0-9]|20|[0-9])$" required title="The number must be between 1 and 20"/>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary ms-2 w-auto">Throw</button>
-                        </div>
-                   <!-- </form> -->
-                }
+        <div class="d-flex mb-2">
+            <div class="d-flex flex-column w-75">
+                <div class="d-flex flex-fill">
+                    <div class="d-flex flex-column w-50 me-2">
+                        <button class="btn btn-primary" id="bullseyeThrow" value="bull" onclick="toggleBullsEye()">Bull</button>
+                    </div>
+                    <div class="d-flex flex-column w-50">
+                        <button class="btn btn-primary" id="outerBullThrow" value="outerBull" onclick="toggleOuterBull()">Outer Bull</button>
+                    </div>
+                </div>
+                <div class="btn-group mt-2" role="group" aria-label="Multiplier">
+                    <button class="btn multiplier" name="multiplier" id="single" value="S" onclick="toggleMultiplier(this)">Single</button>
+                    <button class="btn multiplier" name="multiplier" id="double" value="D" onclick="toggleMultiplier(this)">Double</button>
+                    <button class="btn multiplier" name="multiplier" id="treble" value="T" onclick="toggleMultiplier(this)">Treble</button>
+                </div>
+                <div class="mt-2">
+                    <label class="form-check-label" for="throwValue">Score</label>
+                    <input type="text" class="form-control" id="throwValue" name="throwValue" pattern="^(1[0-9]|20|[0-9])$" required title="The number must be between 1 and 20"/>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary ms-2 w-auto" onclick="handleThrow()">Throw</button>
+        </div>
+        <!-- </form> -->
+        }
 
-                @Html.Partial("LegTable", currentPlayer)
-            }
+        @Html.Partial("LegTable", currentPlayer)
+        }
         }
     </div>
 </div>
