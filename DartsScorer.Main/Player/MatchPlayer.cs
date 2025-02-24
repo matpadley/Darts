@@ -28,7 +28,7 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
             return;
         }
         
-        var regexString = "^(S|D|T)(1[0-9]|20|[1-9])$|^(25|50)$";
+        var regexString = "^(S|D|T)(1[0-9]|20|[0-9])$|^(25|50)$";
         var regEx = new Regex(regexString);
         
         var regExMatch = regEx.Match(dartThrow);
@@ -60,6 +60,7 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
             18 => BoardScore.Eighteen,
             19 => BoardScore.Nineteen,
             20 => BoardScore.Twenty,
+            0 => BoardScore.Zero,
             _ => throw new InvalidOperationException("Board score not found")
         };
     
