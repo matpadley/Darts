@@ -7,7 +7,11 @@ public class Leg : CommonLeg
     public Leg()
     {
         NextThrow = 1;
+        CreationDate = DateTime.Now;
     }
+
+    public DateTime CreationDate { get; set; }
+
     public override void ThrowFirst(ThrowScore throwScore)
     {
         if (NextThrow != 1)
@@ -43,13 +47,5 @@ public class Leg : CommonLeg
         Throws.Add(throwScore);
         NextThrow = 1;
         IsComplete = true;
-    }
-
-    public void Clear()
-    {
-        CurrentScore = 0;
-        Throws.Clear();
-        NextThrow = 1;
-        IsComplete = false;
     }
 }

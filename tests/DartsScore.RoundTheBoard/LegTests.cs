@@ -88,4 +88,22 @@ public class LegTests
         Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo( 3));
         Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(1));
     }
+
+    [Test]
+    public void RoundTheBoard_Leg_Order_Test()
+    {
+        var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
+        
+        roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
+        roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
+        roundTheBoardPlayer.Throw(BoardScore.Seven, Multiplier.Single);
+        
+        roundTheBoardPlayer.Throw(BoardScore.Two, Multiplier.Single);
+        roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
+        roundTheBoardPlayer.Throw(BoardScore.Six, Multiplier.Single);
+        
+        Assert
+            .That(roundTheBoardPlayer.Legs.Last().CreationDate, 
+                Is.GreaterThan(roundTheBoardPlayer.Legs.First().CreationDate));
+    }
 }

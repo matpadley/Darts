@@ -84,9 +84,16 @@
                     </form>
                 }
                 
-                for(var leg = 0; leg < currentPlayer.Legs.Count; leg++)
+                // sort the currentPlayer.Legs by the createion date, but to the exact millisecond
+                // then iterate over each leg and display the leg number and the throws in that leg
+                
+                var legArray = currentPlayer.OrderedDescendingLegs().ToArray();
+                var currentLegLocation = 0;
+                foreach (var leg in legArray)
                 {
-                    <p><b>Leg @(leg + 1)</b> - @string.Join(", ", currentPlayer.Legs.ElementAt(leg).Throws.Select(thr => thr.ToString()))</p>
+                    var throws = leg.Throws;
+                    <p><b>Leg @(legArray.Length - currentLegLocation)</b>: @string.Join(", ", throws.Select(thr => thr.ToString()))</p>
+                    currentLegLocation++;
                 }
             }
         }
