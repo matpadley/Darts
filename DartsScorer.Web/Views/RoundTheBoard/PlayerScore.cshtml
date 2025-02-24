@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
 @model DartsScorer.Main.Match.RoundTheBoard.RoundTheBoardPlayer
 
 @{
@@ -9,7 +10,13 @@
         <h3>Throw: @Model.CurrentLeg?.NextThrow</h3>
         <p>Score Needed: 
         @{
-             <player>@Model.RequiredBoardNumber</player>
-         }</p>
+            <player>@Model.RequiredBoardNumber</player>
+        }</p>
+        @if (Model.CurrentLeg != null)
+        {
+            <p>Current Leg:
+            @string.Join(", ", Model.CurrentLeg.Throws.Select(thr => thr.ToString()))
+            </p>
+        }
     } 
 }
