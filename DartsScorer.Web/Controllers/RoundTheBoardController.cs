@@ -25,7 +25,7 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     
     public IActionResult MatchPlayers()
     {
-        return PartialView("MatchPlayers",dartsMatchService.GetPlayers());
+        return PartialView("MatchPlayers", dartsMatchService.Get());
     }
     
     [HttpPost]
