@@ -6,18 +6,16 @@ public sealed class Match : CommonMatch
     {
         DartsMatchType = DartsMatchType.RoundTheBoard;
     }
-
+    
+    public override bool IsMatchComplete => Players.Count(f => (f as RoundTheBoardPlayer).Finished()) == 1;
+    public RoundTheBoardPlayer Winner => Players.FirstOrDefault(f => (f as RoundTheBoardPlayer).Finished()) as RoundTheBoardPlayer;
     public override string Name => "Round The Board";
 
     public override void StartMatch()
     {
         if (CanStartMatch())
         {
-            SetCurrentPlayer((Player.Player)Players.First());
+            SetCurrentPlayer(Players.First());
         }
     }
-
-    public override bool IsMatchComplete => Players.Count(f => (f as RoundTheBoardPlayer).Finished()) == 1;
-    
-    public RoundTheBoardPlayer Winner => Players.FirstOrDefault(f => (f as RoundTheBoardPlayer).Finished()) as RoundTheBoardPlayer;
 }
