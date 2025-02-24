@@ -71,16 +71,36 @@ function toggleOuterBull() {
 
 function toggleMultiplier(button) {
     switch (button.id) {
-        case 'single':
-            document.getElementById('double').disabled = true;
-            document.getElementById('treble').disabled = true;
-            break;
         case 'double':
-            document.getElementById('single').disabled = true;
-            document.getElementById('treble').disabled = true;
+            document.getElementById('treble').disabled = !ocument.getElementById('treble').disabled;
             break;
         case 'treble':
-            document.getElementById('single').disabled = true;
-            document.getElementById('double').disabled = true;
+            document.getElementById('double').disabled = !document.getElementById('double').disabled;
+            break;
     }
+}
+
+function handleThrow()
+{
+    var multiplier = 'S';
+    if (document.getElementById('treble').enabled && document.getElementById('double').disabled) {
+        multiplier = 'T';
+    }
+    else if (document.getElementById('double').enabled && document.getElementById('treble').disabled) {
+        multiplier = 'D';
+    }
+    
+    var throwValue = document.getElementById('throwValue').value;
+
+    fetch('/RoundTheBoard/Throw', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ multiplier: multiplier, throwValue: throwValue })
+    })
+        .then(response => // redierct to the home page
+            window.location.href = '/roundtheboard/index'
+        )
+        .catch(error => console.error('Error:', error));
 }
