@@ -84,9 +84,6 @@
                     </form>
                 }
                 
-                // sort the currentPlayer.Legs by the createion date, but to the exact millisecond
-                // then iterate over each leg and display the leg number and the throws in that leg
-                
                 var legArray = currentPlayer.OrderedDescendingLegs().ToArray();
                 var currentLegLocation = 0;
                 foreach (var leg in legArray)
