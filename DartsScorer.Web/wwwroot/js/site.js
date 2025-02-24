@@ -34,3 +34,34 @@ function updatePlayerName(oldName, newName) {
     )
     .catch(error => console.error('Error:', error));
 }
+
+function toggleBullsEye() {
+    // if the multiple buttons are disabled, enable them
+    if (document.querySelector('.multiplier').disabled) {
+        document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
+        document.getElementById('throwValue').disabled = false;
+        document.getElementById('outerBullThrow').disabled = false;
+        return;
+    }
+    else {
+        document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
+        document.getElementById('throwValue').disabled = true;
+        document.getElementById('outerBullThrow').disabled = true;
+    }
+}
+
+function toggleOuterBull() {
+    // if the multiple buttons are disabled, enable them
+    if (document.querySelector('.multiplier').disabled) {
+        document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
+        document.getElementById('throwValue').disabled = false;
+        document.getElementById('bullseyeThrow').disabled = false;
+        return;
+    }
+    else {
+        document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
+        document.getElementById('throwValue').disabled = true;
+        document.getElementById('bullseyeThrow').disabled = true;
+    }
+}
+
