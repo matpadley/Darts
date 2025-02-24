@@ -16,6 +16,8 @@ public abstract class CommonMatch
     private readonly List<Set> _sets = [];
 
     public IReadOnlyList<Set> Sets => _sets.AsReadOnly();
+    
+    public abstract bool MatchInProgress { get; set; }
 
     public void AddPlayer(Player.MatchPlayer player)
     {

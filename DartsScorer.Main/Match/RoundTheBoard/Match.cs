@@ -11,11 +11,14 @@ public sealed class Match : CommonMatch
     public RoundTheBoardPlayer Winner => Players.FirstOrDefault(f => (f as RoundTheBoardPlayer).Finished()) as RoundTheBoardPlayer;
     public override string Name => "Round The Board";
 
+    public override bool MatchInProgress { get; set; }
+
     public override void StartMatch()
     {
         if (CanStartMatch())
         {
             SetCurrentPlayer(Players.First());
+            MatchInProgress = true;
         }
     }
 }

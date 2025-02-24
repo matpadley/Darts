@@ -1,9 +1,26 @@
-@model IEnumerable<DartsScorer.Main.Player.MatchPlayer>
+@using DartsScorer.Main.Match.RoundTheBoard
+@model DartsScorer.Main.Match.RoundTheBoard.Match
 
 <h2>Match Players</h2>
-<dl>
-    @foreach (var player in Model)
+@if (Model.MatchInProgress)
+{
+    <dl>
+    @foreach (var modelPlayer in Model.Players)
     {
-        <dt>@player.Name</dt>
+        <dt>@{
+               var player = modelPlayer as RoundTheBoardPlayer;
+               @modelPlayer.Name <span>(@player.RequiredBoardNumber)</span>
+           }</dt>
     }
-</dl>
+    </dl>
+}
+else
+{
+    <dl>
+        @foreach (var player in Model.Players)
+        {
+            <dt>@player.Name</dt>
+        }
+    </dl>
+    
+}

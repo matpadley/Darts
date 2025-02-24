@@ -7,7 +7,7 @@
         var player = Model;
         <h2>Current Player: @Model.Name</h2>
         <h3>Leg: @(Model.Legs.Count+1)</h3>
-        <h3>Throw: @Model.CurrentLeg?.NextThrow</h3>
+        <h3>Throw: @(Model.CurrentLeg == null ? 1 : @Model.CurrentLeg?.NextThrow)</h3>
         <p>Score Needed: 
         @{
             <player>@Model.RequiredBoardNumber</player>
