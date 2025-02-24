@@ -9,6 +9,8 @@ public class Match: CommonMatch
     }
 
     public override string Name { get; } = "Killer";
+    public override bool MatchInProgress { get; set; }
+
     public override void StartMatch()
     {
         if (CanStartMatch())

@@ -17,9 +17,9 @@
             }
         }
         
-        @Html.Partial("MatchPlayers", Model.Players)
+        @Html.Partial("MatchPlayers", Model)
         @{
-            if (Model.Players.Any())
+            if (Model.Players.Any() && !Model.MatchInProgress)
             {
                 <form asp-action="StartMatch" method="post">
                     <button type="submit" class="btn btn-primary">Start Match</button>
