@@ -29,3 +29,15 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.bullseye
+{
+  background-color: #ff0000;
+  color: white;
+}
+
+.outerbull
+{
+  background-color: green;
+  color: white;
+}
