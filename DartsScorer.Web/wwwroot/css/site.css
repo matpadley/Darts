@@ -29,3 +29,63 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.score-buttons
+{
+  border-color: black;
+}
+
+.boardScoreDark
+{
+  background-color: #add8e6;
+  border-color: black;
+}
+
+.boardScoreLight
+{
+  background-color: #d3d3d3;
+  border-color: black;
+}
+
+.double
+{
+  background-color: #dfb26d;
+  border-color: black;
+  
+}
+
+.treble
+{
+  background-color: #efe976;
+  border-color: black;
+  
+}
+
+.outerbull
+{
+  background-color: #008000;
+  border-color: black;
+  color: white;
+}
+
+.bullseye
+{
+  background-color: #ff0000;
+  border-color: black;
+  color: white;
+}
+
+.score-button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.score-button-group .btn {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.score-button-group .btn:last-child {
+  margin-right: 0;
+}

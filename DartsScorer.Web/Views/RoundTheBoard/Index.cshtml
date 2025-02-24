@@ -7,6 +7,48 @@
 
 <h1>@ViewBag.Title</h1>
 
+
+<div class="score-button-group">
+    <button class="btn btn-dark text-white">No Throw</button>
+    <button class="btn outerbull">Outer Bull</button>
+    <button class="btn bullseye">Bulls Eye</button>
+</div>
+<div class="score-button-group">
+    <button class="btn double">Double</button>
+    <button class="btn treble">Treble</button>
+</div>
+<div class="score-button-group">
+    <button class="btn score-buttons boardScoreDark">One</button>
+    <button class="btn score-buttons boardScoreLight">Two</button>
+    <button class="btn score-buttons boardScoreDark">Three</button>
+    <button class="btn score-buttons boardScoreLight">Four</button>
+    <button class="btn score-buttons boardScoreDark">Five</button>
+</div>
+<div class="score-button-group">
+    <button class="btn score-buttons boardScoreLight">Six</button>
+    <button class="btn score-buttons boardScoreDark">Seven</button>
+    <button class="btn score-buttons boardScoreLight">Eight</button>
+    <button class="btn score-buttons boardScoreDark">Nine</button>
+    <button class="btn score-buttons boardScoreLight">Ten</button>
+</div>
+<div class="score-button-group">
+    <button class="btn score-buttons boardScoreDark">Eleven</button>
+    <button class="btn score-buttons boardScoreLight">Twelve</button>
+    <button class="btn score-buttons boardScoreDark">Thirteen</button>
+    <button class="btn score-buttons boardScoreLight">Fourteen</button>
+    <button class="btn score-buttons boardScoreDark">Fifteen</button>
+</div>
+<div class="score-button-group">
+    <button class="btn score-buttons boardScoreLight">Sixteen</button>
+    <button class="btn score-buttons boardScoreDark">Seventeen</button>
+    <button class="btn score-buttons boardScoreLight">Eighteen</button>
+    <button class="btn score-buttons boardScoreDark">Nineteen</button>
+    <button class="btn score-buttons boardScoreLight">Twenty</button>
+</div>
+
+
+
+
 <div class="d-flex">
     <div class="flex-fill">
         
@@ -54,6 +96,8 @@
                 var currentPlayer = Model.CurrentPlayer as RoundTheBoardPlayer;
                 
                 @Html.Partial("PlayerScore", currentPlayer)
+                
+                
                 
                 @if (!currentPlayer.Finished())
                 {
