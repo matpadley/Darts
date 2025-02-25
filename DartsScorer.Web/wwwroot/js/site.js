@@ -105,11 +105,11 @@ function handleThrow()
     }
     
     if (bullValue && !outerBullThrow ){
-        throwValue = "BULL"
+        throwValue = "50"
         multiplier = "S"
     }
     else if (outerBullThrow && !bullValue) {
-            throwValue = "OUTERBULL"
+            throwValue = "25"
             multiplier = "S"
         }
 

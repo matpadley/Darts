@@ -22,13 +22,13 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
     {
         if (int.TryParse(dartThrow, out _)) dartThrow = "S" + dartThrow;
         
-        if (dartThrow == "25" || dartThrow == "50")
+        if (dartThrow == "S25" || dartThrow == "S50")
         {
-            Throw(dartThrow == "25" ? BoardScore.OuterBull : BoardScore.BullsEye, Multiplier.Single);
+            Throw(dartThrow == "S25" ? BoardScore.OuterBull : BoardScore.BullsEye, Multiplier.Single);
             return;
         }
         
-        var regexString = "^(S|D|T)(1[0-9]|20|[0-9])$|^(25|50|BULL|OUTERBULL)$";
+        var regexString = "^(S|D|T)(1[0-9]|[0-9]|20|25|50)$";
         var regEx = new Regex(regexString);
         
         var regExMatch = regEx.Match(dartThrow);
