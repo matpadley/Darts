@@ -1,3 +1,4 @@
+using DartsScorer.Web.Models;
 using DartsScorer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +26,7 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     
     public IActionResult MatchPlayers()
     {
-        return PartialView("MatchPlayers",dartsMatchService.GetPlayers());
+        return PartialView("MatchPlayers", dartsMatchService.Get());
     }
     
     [HttpPost]
@@ -46,9 +47,9 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     }
     
     [HttpPost]
-    public IActionResult Throw(string multiplier, string throwValue)
+    public IActionResult Throw([FromBody] ThrowModel model)
     {
-        dartsMatchService.Throw($"{multiplier}{throwValue}");
+        dartsMatchService.Throw($"{model.Multiplier}{model.ThrowValue}");
         return RedirectToAction("Index");
     }
 }

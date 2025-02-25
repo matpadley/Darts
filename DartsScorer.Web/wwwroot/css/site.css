@@ -29,3 +29,21 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.bullseye
+{
+  background-color: #ff0000;
+  color: white;
+}
+
+.outerbull
+{
+  background-color: #0800FF;
+  color: white;
+}
+
+.multiplier
+{
+  background-color: #0dcaf0;
+  border-color: #000;
+}
