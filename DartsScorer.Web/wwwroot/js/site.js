@@ -72,9 +72,19 @@ function toggleMultiplier(button) {
     switch (button.id) {
         case 'double':
             document.getElementById('treble').disabled = !document.getElementById('treble').disabled;
+            // toggle the bullseye button if the treble is enabled
+            if (!document.getElementById('treble').disabled) {
+                document.getElementById('bullseyeThrow').disabled = !document.getElementById('bullseyeThrow').disabled;
+                document.getElementById('outerBullThrow').disabled = !document.getElementById('outerBullThrow').disabled;
+            }
             break;
         case 'treble':
             document.getElementById('double').disabled = !document.getElementById('double').disabled;
+            // toggle the bullseye button if the treble is enabled
+            if (!document.getElementById('treble').disabled) {
+                document.getElementById('bullseyeThrow').disabled = !document.getElementById('bullseyeThrow').disabled;
+                document.getElementById('outerBullThrow').disabled = !document.getElementById('outerBullThrow').disabled;
+            }
             break;
     }
 }
