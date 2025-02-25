@@ -59,7 +59,6 @@ function toggleOuterBull() {
         document.getElementById('throwValue').disabled = false;
         document.getElementById('bullseyeThrow').disabled = false;
         document.getElementById('outerBullThrow').classList.remove('outerbull');
-        return;
     }
     else {
         document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
@@ -72,7 +71,7 @@ function toggleOuterBull() {
 function toggleMultiplier(button) {
     switch (button.id) {
         case 'double':
-            document.getElementById('treble').disabled = !ocument.getElementById('treble').disabled;
+            document.getElementById('treble').disabled = !document.getElementById('treble').disabled;
             break;
         case 'treble':
             document.getElementById('double').disabled = !document.getElementById('double').disabled;
@@ -82,22 +81,44 @@ function toggleMultiplier(button) {
 
 function handleThrow()
 {
-    var multiplier = 'S';
-    if (document.getElementById('treble').enabled && document.getElementById('double').disabled) {
+    let multiplier = 'S';
+    let throwValue = document.getElementById('throwValue').value;
+
+    let trebleValue = document.getElementById('treble').disabled ? false : true;
+    let doubleValue = document.getElementById('double').disabled ? false : true;
+    let bullValue = document.getElementById('bullseyeThrow').disabled ? false : true;
+    let outerBullThrow = document.getElementById('outerBullThrow').disabled ? false : true;
+
+    // if the throw value is empty alert the user and don't carry on
+    // only do this if the throw value is not the bullseye or outer bull
+
+    if (throwValue === "" && !bullValue && !outerBullThrow) {
+        alert("Please enter a throw value");
+        return;
+    }
+
+    if (trebleValue && !doubleValue) {
         multiplier = 'T';
     }
-    else if (document.getElementById('double').enabled && document.getElementById('treble').disabled) {
+    else if (doubleValue && !trebleValue) {
         multiplier = 'D';
     }
     
-    var throwValue = document.getElementById('throwValue').value;
+    if (bullValue && !outerBullThrow ){
+        throwValue = "BULL"
+        multiplier = "S"
+    }
+    else if (outerBullThrow && !bullValue) {
+            throwValue = "OUTERBULL"
+            multiplier = "S"
+        }
 
     fetch('/RoundTheBoard/Throw', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ multiplier: multiplier, throwValue: throwValue })
+        body: JSON.stringify({multiplier: multiplier, throwValue: throwValue})
     })
         .then(response => // redierct to the home page
             window.location.href = '/roundtheboard/index'

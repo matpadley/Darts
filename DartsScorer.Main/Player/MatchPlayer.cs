@@ -28,7 +28,7 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
             return;
         }
         
-        var regexString = "^(S|D|T)(1[0-9]|20|[0-9])$|^(25|50)$";
+        var regexString = "^(S|D|T)(1[0-9]|20|[0-9])$|^(25|50|BULL|OUTERBULL)$";
         var regEx = new Regex(regexString);
         
         var regExMatch = regEx.Match(dartThrow);
