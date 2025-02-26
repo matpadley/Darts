@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using DartsScore.RoundTheBoard.TestCases;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Scoring;
@@ -31,8 +30,6 @@ public class MatchRunTests
         {
             var roundTheBoardPlayer = matchPlayer as RoundTheBoardPlayer;
 
-            Debug.Assert(roundTheBoardPlayer != null, nameof(roundTheBoardPlayer) + " != null");
-            
             var dartsToThrow = throwCase!.First();
             
             Assert.That(roundTheBoardPlayer.CurrentLeg, Is.Null);

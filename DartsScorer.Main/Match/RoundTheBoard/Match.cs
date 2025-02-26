@@ -1,4 +1,6 @@
-﻿namespace DartsScorer.Main.Match.RoundTheBoard;
+﻿using DartsScorer.Main.Match.RoundTheBoard;
+
+namespace DartsScorer.Main.Match.RoundTheBoard;
 
 public sealed class Match : CommonMatch
 {
