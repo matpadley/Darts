@@ -9,7 +9,7 @@ public class X01Controller(ILogger<RoundTheBoardController> logger,
     IPlayerService playerService) : Controller
 {
     // GET
-    public IActionResult Index()
+    public IActionResult Index(bool reset = false)
     {        var players = playerService.GetPLayersForDropDown();
         
         if (players.Count == 0)
@@ -21,27 +21,8 @@ public class X01Controller(ILogger<RoundTheBoardController> logger,
         }
         
         ViewBag.PlayerList = playerService.GetPLayersForDropDown();
-        return View( x01Service.Get());
+        return View( x01Service.Create(5, reset));
     }
-    
-    // new action method that takes in an integer parameter and starts a new game of 501
-    public IActionResult NewGame(int requiredScore)
-    {
-
-        var players = playerService.GetPLayersForDropDown();
-        
-        if (players.Count == 0)
-        {
-            playerService.Add("Player 1");
-            playerService.Add("Player 2");
-            playerService.Add("Player 3");
-            playerService.Add("Player 4");
-        }
-        
-        ViewBag.PlayerList = playerService.GetPLayersForDropDown();
-        return View("Index",x01Service.Create(requiredScore, true));
-    }
-    
     
     public IActionResult MatchPlayers()
     {

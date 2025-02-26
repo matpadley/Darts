@@ -6,69 +6,51 @@
 }
 
 @{
-    if (Model == null)
+    <h1>Playing Game of @Model.RequiredScore</h1>
+    
+    @if (Model.Winner != null)
     {
-        <h1>@ViewBag.Title</h1>
-        // create a select list with the values 1,2,3,4,5
-        var selectList = new SelectList(new List<int> { 1, 2, 3, 4, 5 });
-
-        // create a dropdown list with the values 1,2,3,4,5
-
-        <form asp-action="NewGame" method="post">
-            @Html.Label("requiredScore", "Game Length")
-            @Html.DropDownList("requiredScore", selectList)
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <h2>Winner: @Model.Winner.Name</h2>
+    }
+    
+    @Html.Partial("MatchPlayers", Model)
+    
+    if (Model.Players.Any() && !Model.MatchInProgress)
+    {
+        <form asp-action="StartMatch" method="post">
+            <button type="submit" class="btn btn-primary">Start Match</button>
+        </form>
+    }
+    
+    if (Model.CurrentPlayer == null)
+    {
+        @Html.Partial("AddPlayer")
+        <br/>
+        // foreach of the players in the viewbag.players create a dropdown
+        // with the player names
+        <form asp-action="AddPlayer" method="post">
+            <div class="input-group">
+                <select class="form-control" id="playerName" name="playerName" required>
+                    <option value="">Select a player</option>
+                    @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
+                    {
+                        <option value="@player.Text">@player.Value</option>
+                    }
+                </select>
+                <button type="submit" class="btn btn-primary">Pick Player</button>
+            </div>
         </form>
     }
     else
     {
-        <h1>Playing Game of @Model.RequiredScore</h1>
-        
-        @if (Model.Winner != null)
-        {
-            <h2>Winner: @Model.Winner.Name</h2>
-        }
-        
-        @Html.Partial("MatchPlayers", Model)
-        
-        if (Model.Players.Any() && !Model.MatchInProgress)
-        {
-            <form asp-action="StartMatch" method="post">
-                <button type="submit" class="btn btn-primary">Start Match</button>
-            </form>
-        }
-    
-        
-        if (Model.CurrentPlayer == null)
-        {
-            @Html.Partial("AddPlayer")
-            <br/>
-            // foreach of the players in the viewbag.players create a dropdown
-            // with the player names
-            <form asp-action="AddPlayer" method="post">
-                <div class="input-group">
-                    <select class="form-control" id="playerName" name="playerName" required>
-                        <option value="">Select a player</option>
-                        @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
-                        {
-                            <option value="@player.Text">@player.Value</option>
-                        }
-                    </select>
-                    <button type="submit" class="btn btn-primary">Pick Player</button>
-                </div>
-            </form>
-        }
-        else
-        {
-            var currentPlayer = Model.CurrentPlayer as X01Player;
+        var currentPlayer = Model.CurrentPlayer as X01Player;
 
-            @if (!currentPlayer.Finished())
-            {
-                @Html.Partial("PlayerScore", currentPlayer)
-                @Html.Partial("ScoreEntry", "x01")
+        @if (!currentPlayer.Finished())
+        {
+            @Html.Partial("PlayerScore", currentPlayer)
+            @Html.Partial("ScoreEntry", "x01")
 
-            }
-            @Html.Partial("LegTable", currentPlayer)
         }
+        @Html.Partial("LegTable", currentPlayer)
     }
 }
