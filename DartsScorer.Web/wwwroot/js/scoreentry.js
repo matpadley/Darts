@@ -28,7 +28,7 @@ function handleThrow()
         multiplier = 'D';
     }
 
-    fetch('/'+getEndPoint()+'/Throw', {
+    fetch(navigateToPath('throw'), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -36,7 +36,7 @@ function handleThrow()
         body: JSON.stringify({multiplier: multiplier, throwValue: throwValue})
     })
         .then(response => // redierct to the home page
-            window.location.href = '/'+getEndPoint()+'/index'
+            window.location.href = navigateToPath('index')
         )
         .catch(error => console.error('Error:', error));
 }
@@ -44,7 +44,7 @@ function handleThrow()
 function handleMiss()
 {
 
-    fetch('/RoundTheBoard/Throw', {
+    fetch(navigateToPath('throw'), {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ function handleMiss()
         body: JSON.stringify({multiplier: "S", throwValue: "0"})
     })
         .then(response => // redierct to the home page
-            window.location.href = '/'+getEndPoint()+'/index'
+            window.location.href = navigateToPath('index')
         )
         .catch(error => console.error('Error:', error));
 }
@@ -66,7 +66,7 @@ function setThrow(button) {
     handleThrow();
 }
 
-function getEndPoint()
+function navigateToPath(path)
 {
-    return document.getElementById('endPoint').value;
+    return '/'+document.getElementById('endPoint').value +'/' + path;
 }
