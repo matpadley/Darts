@@ -66,7 +66,11 @@ function setThrow(button) {
     handleThrow();
 }
 
+function encodeForURL(value) {
+    return encodeURIComponent(value);
+}
+
 function navigateToPath(path)
 {
-    return '/'+document.getElementById('endPoint').value +'/' + path;
+    return '/' + encodeForURL(document.getElementById('endPoint').value) + '/' + path;
 }
