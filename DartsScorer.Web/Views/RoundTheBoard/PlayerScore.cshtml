@@ -1,7 +1,15 @@
 @model DartsScorer.Main.Match.RoundTheBoard.RoundTheBoardPlayer
-@{
-    <div class="d-flex justify-content-between">
-        <h2>@Model.Name</h2>
-        <p>Next: @Model.RequiredBoardNumber</p>
-    </div>
-}
+
+<div class="d-flex justify-content-between">
+    <h2>@Model.Name</h2>
+    <p>Next: @Model.RequiredBoardNumber</p>
+</div>
+<div>
+    <h5>Current Throws:
+    @if (Model.CurrentLeg != null)
+    {
+        <span>@string.Join(", ", Model.CurrentLeg.Throws)</span>
+    }
+    </h5>
+</div>
+
