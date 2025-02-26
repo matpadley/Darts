@@ -130,3 +130,8 @@ body {
 {
   filter: invert(1);
 }
+
+.miss-btn
+{
+  margin-top: 10px;
+}
