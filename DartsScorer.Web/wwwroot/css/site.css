@@ -47,3 +47,35 @@ body {
   background-color: #0dcaf0;
   border-color: #000;
 }
+
+.score-button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.score-button-group .btn {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.score-button-group .btn:last-child {
+  margin-right: 0;
+}
+
+.score-buttons
+{
+  border-color: black;
+}
+
+.boardScoreDark
+{
+  background-color: #add8e6;
+  border-color: black;
+}
+
+.boardScoreLight
+{
+  background-color: #d3d3d3;
+  border-color: black;
+}
