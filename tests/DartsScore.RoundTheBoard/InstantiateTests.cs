@@ -17,9 +17,9 @@ public class InstantiateTests
     [Test]
     public void RoundTheBoard_Instantiate_Failure()
     {
-        var roundTheBoard = new Match();
+        var match = new Match();
         
-        Assert.That(roundTheBoard.DartsMatchType, !Is.EqualTo(DartsMatchType.X01));
-        Assert.That(roundTheBoard.Players.Count, Is.EqualTo(0));
+        Assert.That(match.DartsMatchType, !Is.EqualTo(DartsMatchType.X01));
+        Assert.That(match.Players.Count, Is.EqualTo(0));
     }
 }
