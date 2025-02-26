@@ -1,4 +1,5 @@
 using DartsScorer.Main.Checkout;
+using NUnit.Framework.Constraints;
 
 namespace DartsScorer.Tests
 {
@@ -14,10 +15,10 @@ namespace DartsScorer.Tests
         }
 
         [Test]
-        public void Calculate_InputNumberOutOfRange_ThrowsArgumentOutOfRangeException()
+        public void Calculate_InputNumberOutOfRange_Returns_Empty_Throw_List()
         {
-            Assert.Throws<InvalidOperationException>(() => _checkout.Calculate(1));
-            Assert.Throws<InvalidOperationException>(() => _checkout.Calculate(171));
+            Assert.That(_checkout.Calculate(1).Length, Is.EqualTo(0));
+            Assert.That(_checkout.Calculate(171).Length, Is.EqualTo(0));
         }
     }
 }
