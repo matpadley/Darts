@@ -1,3 +1,4 @@
+using DartsScorer.Web.Controllers;
 using DartsScorer.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IRoundTheBoardService, RoundTheBoardService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<IX01Service, X01Service>();
 
 var app = builder.Build();
 

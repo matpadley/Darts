@@ -1,0 +1,26 @@
+
+@model DartsScorer.Main.Match.x01.Match
+@{
+    ViewData["Title"] = "X01";
+}
+
+@{
+    if (Model == null)
+    {
+        <h1>@ViewBag.Title</h1>
+        // create a select list with the values 1,2,3,4,5
+        var selectList = new SelectList(new List<int> { 1, 2, 3, 4, 5 });
+
+        // create a dropdown list with the values 1,2,3,4,5
+
+        <form asp-action="NewGame" method="post">
+            @Html.Label("requiredScore", "Game Length")
+            @Html.DropDownList("requiredScore", selectList)
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    }
+    else
+    {
+        <h1>Playing Game of @Model.RequiredScore</h1>
+    }
+}
