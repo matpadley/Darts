@@ -51,6 +51,10 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
             RequiredBoardNumber = nextNumber > 20 ? RequiredBoardNumber : nextNumber;
             HasWon = newThrow.Score == WinningNumber;
         }
+        else if (newThrow.NumberScore == WinningNumber && RequiredBoardNumber == 20)
+        {
+            HasWon = true;
+        }
     }
     
     // add method to end the throw and add the leg to the list of legs
