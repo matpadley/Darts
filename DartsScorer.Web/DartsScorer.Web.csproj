@@ -14,4 +14,8 @@
     <ProjectReference Include="..\DartsScorer.Main\DartsScorer.Main.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Shared\scrore\" />
+  </ItemGroup>
+
 </Project>
