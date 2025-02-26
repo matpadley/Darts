@@ -413,3 +413,5 @@ FodyWeavers.xsd
 # add visual sutio out and bin
 out/
 bin/
+
+nupkgs/
