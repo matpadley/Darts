@@ -2,6 +2,6 @@ namespace DartsScorer.Web.Models.UpdateModels;
 
 public class EditPlayerModel
 {
-    public string OldName { get; set; }
-    public string Name { get; set; }
+    public required string OldName { get; set; }
+    public required string Name { get; set; }
 }

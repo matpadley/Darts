@@ -1,14 +1,19 @@
 @model DartsScorer.Main.Match.x01.X01Player
 
-<div class="d-flex justify-content-between" xmlns="http://www.w3.org/1999/html">
-    <h2>@Model.Name</h2>
-    <p>
-        <b>Remaining</b><br/>@Model.RemainingScore
-    </p>
-    <p>
-      <p style="color: @(Model.Checkout().Any() ? "black" : "gray")">
-          <b>Checkout</b><br/>@string.Join(", ", Model.Checkout().Select(throwScore => throwScore))
-      </p>
+<div class="row">
+    <div class="col">
+        <h2>@Model.Name</h2>
+    </div>
+    <div class="col">
+        <p>
+            <b>Remaining</b><br/>@Model.RemainingScore
+        </p>
+    </div>
+    <div class="col">
+        <p style="color: @(Model.Checkout().Any() ? "black" : "gray")">
+            <b>Checkout</b><br/>@string.Join(", ", Model.Checkout().Select(throwScore => throwScore))
+        </p>
+    </div>
 </div>
 <div>
     <h5>Current Throws:

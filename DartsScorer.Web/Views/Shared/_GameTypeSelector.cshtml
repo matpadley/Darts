@@ -1,32 +1,11 @@
-@using System.Reflection
-@using DartsScorer.Main.Match
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@{
-    var types = Assembly.GetAssembly(typeof(CommonMatch))?.GetTypes()
-        .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(CommonMatch)))
-        .ToList()
-        .OrderBy(x => x.Name)
-        .ToList();
-
-    var matchTuple = new List<(int index, string Name)>();
-
-    if (types != null)
-        for (var i = 0; i < types.Count; i++)
-        {
-            var match = (CommonMatch)Activator.CreateInstance(types[i]);
-            matchTuple.Add((i, match.Name));
-        }
-}
-
 <form id="gameForm" asp-action="index" method="post" onsubmit="updateFormAction()">
     <input type="hidden" name="reset" value="true"/>
     <div class="d-flex align-items-center g-4">
         <select class="form-select me-2" id="gameType" name="gameType" required>
             <option value="" disabled selected>Select Game Type</option>
-            @foreach (var (index, Name) in matchTuple)
-            {
-                <option value="@Name.Replace(" ", "")">@Name</option>
-            }
+            <option value="X01">X01</option>
+            <option value="RoundTheBoard">Round The Board</option>
         </select>
         <button type="submit" class="btn btn-primary">Start</button>
     </div>
@@ -34,8 +13,8 @@
 
 <script>
     function updateFormAction() {
-        var form = document.getElementById('gameForm');
-        var selectedGameType = document.getElementById('gameType').value;
+        const form = document.getElementById('gameForm');
+        const selectedGameType = document.getElementById('gameType').value;
         form.action = '/' + selectedGameType
     }
 </script>

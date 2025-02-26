@@ -1,5 +1,4 @@
 using DartsScorer.Main.Checkout;
-using NUnit.Framework.Constraints;
 
 namespace DartsScorer.Tests
 {

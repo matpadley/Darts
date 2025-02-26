@@ -4,10 +4,8 @@ using DartsScorer.Web.Models;
 
 namespace DartsScorer.Web.Controllers;
 
-public class CheckoutController(ILogger<CheckoutController> logger) : Controller
+public class CheckoutController() : Controller
 {
-    private readonly ILogger<CheckoutController> _logger = logger;
-
     public IActionResult Index()
     {
         return View();

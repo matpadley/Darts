@@ -4,12 +4,9 @@ namespace DartsScorer.Main.Match.x01;
 
 public sealed class Match : CommonMatch
 {
-    public int RequiredScore { get; private set; } = 501;
-
-    public Match()
-    {
-        DartsMatchType = DartsMatchType.X01;
-    }
+    public override string Name => "x01";
+    public int RequiredScore { get; private set; }
+    public override DartsMatchType DartsMatchType => DartsMatchType.X01;
 
     public Match(int requiredScore = 5)
     {
@@ -20,20 +17,11 @@ public sealed class Match : CommonMatch
 
         RequiredScore = requiredScore * 100 + 1;
     }
-
-    public override string Name { get; } = "x01";
-    public override bool MatchInProgress { get; set; }
-
+    
     public override void StartMatch()
     {
-        if (CanStartMatch())
-        {
-            SetCurrentPlayer(Players.First());
-            MatchInProgress = true;
-        }
+        if (!CanStartMatch()) return;
+        SetCurrentPlayer(Players.First());
+        MatchInProgress = true;
     }
-
-    public override bool IsMatchComplete { get; }
-
-    public X01Player Winner { get; }
 }

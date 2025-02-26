@@ -5,5 +5,5 @@ namespace DartsScorer.Web.Models;
 public class CheckoutResultModel
 {
     public int Score { get; set; }
-    public ThrowScore[] Results { get; set; }
+    public required ThrowScore[] Results { get; set; }
 }

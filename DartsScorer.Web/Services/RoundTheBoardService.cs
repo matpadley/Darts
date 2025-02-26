@@ -33,7 +33,7 @@ public class RoundTheBoardService : IRoundTheBoardService
         
         if (existingMatch != null)
         {
-            return existingMatch as Match;
+            return (existingMatch as Match)!;
         }
         
         var match = new Match();
@@ -43,13 +43,13 @@ public class RoundTheBoardService : IRoundTheBoardService
 
     public Match Get()
     {
-        return _cache.Get("currentMatch") as Match;
+        return (_cache.Get("currentMatch") as Match)!;
     }
 
-    public IEnumerable<MatchPlayer> GetPlayers()
+    public IEnumerable<MatchPlayer>? GetPlayers()
     {
         var match = _cache.Get("currentMatch") as Match;
-        return match.Players;
+        return match?.Players;
     }
 
     public void AddPlayer(string playerName)

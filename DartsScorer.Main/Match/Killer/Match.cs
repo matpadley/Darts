@@ -1,15 +1,12 @@
+using DartsScorer.Main.Player;
+
 namespace DartsScorer.Main.Match.Killer;
 
 public class Match: CommonMatch
-{
+{ 
+    public override DartsMatchType DartsMatchType => DartsMatchType.Killer;
 
-    public Match()
-    {
-        DartsMatchType = DartsMatchType.Killer;
-    }
-
-    public override string Name { get; } = "Killer";
-    public override bool MatchInProgress { get; set; }
+    public override string Name => "Killer";
 
     public override void StartMatch()
     {
@@ -18,6 +15,4 @@ public class Match: CommonMatch
             
         }
     }
-
-    public override bool IsMatchComplete { get; }
 }

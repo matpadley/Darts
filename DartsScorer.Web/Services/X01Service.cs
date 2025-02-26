@@ -47,7 +47,7 @@ public class X01Service : IX01Service
         return _cache.Get("currentMatch") as Match;
     }
 
-    public IEnumerable<MatchPlayer> GetPlayers()
+    public IEnumerable<MatchPlayer>? GetPlayers()
     {
         var match = _cache.Get("currentMatch") as Match;
         return match.Players;

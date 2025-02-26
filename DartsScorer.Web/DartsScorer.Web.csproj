@@ -6,16 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <NoWarn>1701;1702;CS8602;CS8603;CS8604</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DartsScorer.Main\DartsScorer.Main.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Shared\scrore\" />
   </ItemGroup>
 
 </Project>

@@ -1,34 +1,32 @@
-using DartsScorer.Main.Scoring;
+using DartsScorer.Main.Player;
 
 namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {
-    public abstract bool IsMatchComplete { get; }
-    public DartsMatchType DartsMatchType { get; protected init; }
+    public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
+    public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
+    public abstract DartsMatchType DartsMatchType { get; }
 
     private  List<Player.MatchPlayer> _players = [];
     
     public abstract string Name { get; }
 
-    public IReadOnlyList<Player.MatchPlayer> Players => _players.AsReadOnly();
+    public abstract void StartMatch();
 
-    private readonly List<Set> _sets = [];
-
-    public IReadOnlyList<Set> Sets => _sets.AsReadOnly();
+    public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();
     
-    public abstract bool MatchInProgress { get; set; }
+    public bool MatchInProgress { get; set; }
+
+    public Player.Player? CurrentPlayer { get; private set; }
 
     public void AddPlayer(Player.MatchPlayer player)
     {
         _players.Add(player);
     }
 
-    public abstract void StartMatch();
-
     protected bool CanStartMatch()
     {
-        // throw exception if no players
         if (Players.Count == 0)
         {
             throw new InvalidOperationException("Cannot start match with no players");
@@ -39,20 +37,17 @@ public abstract class CommonMatch
         return true;
     }
     
-    // update the current player with the one with the updates numbers
+    
     public void UpdatePlayer(Player.MatchPlayer player)
     {
         var currentInd = _players.FindIndex(p => Equals(p, player));
         if (currentInd != -1)
         {
-            // Create a temporary list to store the updated players
             var updatedPlayers = new List<Player.MatchPlayer>(_players)
             {
-                // Replace the player at the found index with the new player
                 [currentInd] = player
             };
-
-            // Replace the original list with the updated list
+            
             _players = updatedPlayers;
         }
 
@@ -72,12 +67,8 @@ public abstract class CommonMatch
         }
     }
 
-    public Player.Player? CurrentPlayer { get; private set; }
-
     protected void SetCurrentPlayer(Player.Player player)
     {
         CurrentPlayer = player;
     }
-    
-    
 }

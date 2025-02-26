@@ -14,4 +14,14 @@ public class Player(string name)
 
         return Name == ((Player)obj).Name;
     }
+
+    protected bool Equals(Player other)
+    {
+        return Name == other.Name;
+    }
+
+    public override int GetHashCode()
+    {
+        return Name.GetHashCode();
+    }
 }
