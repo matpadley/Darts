@@ -2,20 +2,18 @@
 @using DartsScorer.Main.Match
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @{
+    var matchTuple = new List<(int index, string Name)>();
+
     var types = Assembly.GetAssembly(typeof(CommonMatch))?.GetTypes()
         .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(CommonMatch)))
         .ToList()
         .OrderBy(x => x.Name)
         .ToList();
 
-    var matchTuple = new List<(int index, string Name)>();
-
     if (types != null)
-        for (var i = 0; i < types.Count; i++)
-        {
-            var match = (CommonMatch)Activator.CreateInstance(types[i]);
-            matchTuple.Add((i, match.Name));
-        }
+    {
+        matchTuple.AddRange(types.Select((t, i) => (i, t.Name)));
+    }
 }
 
 <form id="gameForm" asp-action="index" method="post" onsubmit="updateFormAction()">

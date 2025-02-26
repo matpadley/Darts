@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DartsScorer.Web.Controllers;
 
-public class X01Controller(ILogger<RoundTheBoardController> logger, 
-    IX01Service x01Service,
+public class X01Controller(IX01Service x01Service,
     IPlayerService playerService) : Controller
 {
     // GET

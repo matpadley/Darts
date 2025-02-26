@@ -14,7 +14,7 @@ public abstract class CommonMatch
 
     public abstract void StartMatch();
 
-    public IReadOnlyList<Player.MatchPlayer> Players => _players.AsReadOnly();
+    public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();
     
     public bool MatchInProgress { get; set; }
 

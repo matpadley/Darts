@@ -14,8 +14,9 @@
         {
             <h2>Winner: @Model.Winner.Name</h2>
         }
-        
-        @Html.Partial("MatchPlayers", Model)
+
+
+        @await Html.PartialAsync("MatchPlayers", Model)
         @{
             if (Model.Players.Any() && !Model.MatchInProgress)
             {
@@ -27,7 +28,7 @@
         @{
             if (Model.CurrentPlayer == null)
             {
-                @Html.Partial("AddPlayer")
+                @await Html.PartialAsync("AddPlayer")
                 <br/>
                 // foreach of the players in the viewbag.players create a dropdown
                 // with the player names
@@ -50,12 +51,12 @@
 
                 @if (!currentPlayer.Finished())
                 {
-                    @Html.Partial("PlayerScore", currentPlayer)
-                    @Html.Partial("ScoreEntry", "roundtheboard")
-
+                    @await Html.PartialAsync("PlayerScore", currentPlayer)
+                    @await Html.PartialAsync("ScoreEntry", "roundtheboard")
                 }
-        @Html.Partial("LegTable", currentPlayer)
-        }
+
+                @await Html.PartialAsync("LegTable", currentPlayer)
+            }
         }
     </div>
 </div>

@@ -5,8 +5,8 @@ namespace DartsScorer.Main.Match.RoundTheBoard;
 public sealed class Match : CommonMatch
 {
     
-    public override bool IsMatchComplete => Players.Count(f => (f as RoundTheBoardPlayer).Finished()) == 1;
-    public override MatchPlayer Winner => Players.FirstOrDefault(f => (f as RoundTheBoardPlayer).Finished());
+    public override bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
+    public override MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
     public override string Name => "Round The Board";
     public override DartsMatchType DartsMatchType => DartsMatchType.RoundTheBoard;
     
