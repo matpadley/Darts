@@ -1,14 +1,7 @@
-@using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata
 @model DartsScorer.Main.Match.RoundTheBoard.RoundTheBoardPlayer
-
 @{
-    if (Model != null)
-    {
-        var player = Model;
-        <h2>Current Player: @Model.Name</h2>
-        <p>Score Needed: 
-        @{
-            <player>@Model.RequiredBoardNumber</player>
-        }</p>
-    } 
+    <div class="d-flex justify-content-between">
+        <h2>@Model.Name</h2>
+        <p>Next: @Model.RequiredBoardNumber</p>
+    </div>
 }

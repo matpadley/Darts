@@ -30,6 +30,8 @@ body {
   text-align: start;
 }
 
+
+ 
 .bullseye
 {
   background-color: #ff0000;
@@ -48,6 +50,9 @@ body {
   color: white;
   border-color: #ff9b9b;
 }
+
+
+
 
 .outerbull
 {
@@ -68,10 +73,15 @@ body {
   filter: invert(1);
 }
 
+
+
+
 .multiplier
 {
   background-color: #0dcaf0;
   border-color: #000;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .multiplier:disabled
