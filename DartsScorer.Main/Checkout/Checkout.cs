@@ -1,23 +1,21 @@
 using DartsScorer.Main.Scoring;
 
-namespace DartsScorer.Main.Checkout
+namespace DartsScorer.Main.Checkout;
+
+public class CheckoutCalculator
 {
-    public class CheckoutCalculator
+    private readonly Dictionary<int, ThrowScore[]> _checkouts = CheckoutData.Scores;
+
+    public ThrowScore[] Calculate(int number)
     {
-        private readonly Dictionary<int, ThrowScore[]> _checkouts = CheckoutData.Scores;
+        var checkoutNeeded = _checkouts.FirstOrDefault(cd => cd.Key == number);
 
-        public ThrowScore[] Calculate(int number)
+        if (checkoutNeeded.Value != null)
         {
-            var checkoutNeeded = _checkouts.FirstOrDefault(cd => cd.Key == number);
-
-            if (checkoutNeeded.Value != null)
-            {
-                return checkoutNeeded.Value;
-            }
-
-            throw new InvalidOperationException("No checkout available for the given number");
+            return checkoutNeeded.Value;
         }
-        
-        
+
+        return [];
+
     }
 }

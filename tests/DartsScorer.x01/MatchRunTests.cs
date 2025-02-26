@@ -66,4 +66,36 @@ public class MatchRunTests
         Assert.That(currentPlayer.Name, Is.EqualTo("playerTwo"));
         Assert.That(currentPlayer.RemainingScore, Is.EqualTo(501));
     }
+
+    [Test]
+    public void X01_Single_PLayer_Run_To_End()
+    {
+        var match = new Match(1);
+        var player = new X01Player("p1", match.RequiredScore);
+        match.AddPlayer(player);
+        match.StartMatch();
+        var currentPlayer = match.CurrentPlayer as X01Player;
+        
+        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(101));
+        
+        currentPlayer.Throw(BoardScore.Twenty, Multiplier.Treble);
+        
+        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(41));
+        
+        currentPlayer.Throw(BoardScore.Twenty, Multiplier.Treble);
+        
+        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(41));
+        
+        currentPlayer.Throw(BoardScore.Twenty, Multiplier.Double);
+        
+        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(1));
+        
+        currentPlayer.Throw(BoardScore.Twenty, Multiplier.Double);
+        
+        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(1));
+        
+        currentPlayer.Throw(BoardScore.One, Multiplier.Single);
+        
+        Assert.That(currentPlayer.Finished(), Is.True);
+    }
 }

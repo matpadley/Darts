@@ -1,8 +1,14 @@
 @model DartsScorer.Main.Match.x01.X01Player
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between" xmlns="http://www.w3.org/1999/html">
     <h2>@Model.Name</h2>
-    <p>Remaining: @Model.RemainingScore</p>
+    <p>
+        <b>Remaining</b><br/>@Model.RemainingScore
+    </p>
+    <p>
+      <p style="color: @(Model.Checkout().Any() ? "black" : "gray")">
+          <b>Checkout</b><br/>@string.Join(", ", Model.Checkout().Select(throwScore => throwScore))
+      </p>
 </div>
 <div>
     <h5>Current Throws:
@@ -10,6 +16,7 @@
     {
         <span>@string.Join(", ", Model.CurrentLeg.Throws)</span>
     }
+    
     </h5>
 </div>
 
