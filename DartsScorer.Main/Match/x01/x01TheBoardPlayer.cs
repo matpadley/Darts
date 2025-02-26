@@ -13,7 +13,6 @@ public class X01Player(string name, int winningNumber) : MatchPlayer(new Player.
     
     public int CurrentScore() => WinningNumber - RemainingScore;
     
-    
     public override void UpdateRequiredBoardNumber(ThrowScore newThrow)
     {
         if (RemainingScore >= newThrow.Score)
@@ -24,14 +23,7 @@ public class X01Player(string name, int winningNumber) : MatchPlayer(new Player.
         HasWon = RemainingScore == 0;
     }
 
-    public override bool Finished()
-    {
-        return HasWon;
-    }
+    public override bool Finished() => HasWon;
 
-    public ThrowScore[] Checkout()
-    {
-        
-        return _checkoutCalculator.Calculate(RemainingScore);
-    }
+    public ThrowScore[] Checkout() => _checkoutCalculator.Calculate(RemainingScore);
 }

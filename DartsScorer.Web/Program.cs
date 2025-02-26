@@ -1,4 +1,3 @@
-using DartsScorer.Web.Controllers;
 using DartsScorer.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);

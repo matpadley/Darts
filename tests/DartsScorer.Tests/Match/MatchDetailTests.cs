@@ -14,7 +14,7 @@ public class MatchDetailTests
             .ToList();
         
         // write the name and description of each match type
-        foreach (var match in matchTypes.Select(matchType => (CommonMatch)Activator.CreateInstance(matchType)))
+        foreach (var match in matchTypes)
         {
             Console.WriteLine($"Match Name: {match.Name}");
         }
