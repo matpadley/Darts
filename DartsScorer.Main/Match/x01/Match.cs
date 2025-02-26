@@ -26,6 +26,7 @@ public sealed class Match : CommonMatch
     {
         if (CanStartMatch())
         {
+            SetCurrentPlayer(Players.First());
             MatchInProgress = true;
         }
     }

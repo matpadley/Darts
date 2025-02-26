@@ -7,13 +7,16 @@ public class X01Player(string name, int winningNumber) : MatchPlayer(new Player.
 {
     public int WinningNumber { get; set; } = winningNumber;
 
-    public int CurrentScore { get; private set; } = winningNumber;
+    public int RemainingScore { get; private set; } = winningNumber;
+    
+    public int CurrentScore() => WinningNumber - RemainingScore;
+    
     
     public override void UpdateRequiredBoardNumber(ThrowScore newThrow)
     {
-        CurrentScore -= newThrow.Score;
+        RemainingScore -= newThrow.Score;
         
-        HasWon = CurrentScore == 0;
+        HasWon = RemainingScore == 0;
     }
 
     public override bool Finished()

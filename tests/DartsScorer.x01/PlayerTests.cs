@@ -1,5 +1,4 @@
 using DartsScorer.Main.Match.x01;
-using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
 using Match = DartsScorer.Main.Match.x01.Match;
 
 namespace DartsScorer.x01;
