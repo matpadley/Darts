@@ -66,10 +66,14 @@
                                     <button class="btn btn-primary outerbull" id="outerBullThrow" value="25" onclick="setThrow(this)">Outer Bull</button>
                                 </div>
                             </div>
-                            <div class="btn-group mt-2" role="group" aria-label="Multiplier">
-                                <button class="btn multiplier" name="multiplier" id="double" value="D" onclick="toggleMultiplier(this)">Double</button>
-                                <button class="btn multiplier" name="multiplier" id="treble" value="T" onclick="toggleMultiplier(this)">Treble</button>
-                            </div>
+                            <div class="d-flex flex-fill" aria-label="Multiplier">
+                                <div class="d-flex flex-column w-50 me-2">
+                                    <button class="btn multiplier" name="multiplier" id="double" value="D" onclick="clickDouble(this)">Double</button>
+                                </div>
+                                <div class="d-flex flex-column w-50">
+                                    <button class="btn multiplier" name="multiplier" id="treble" value="T" onclick="clickTreble(this)">Treble</button>
+                                </div>
+                                </div>
                             <div class="mt-2">
                                 <input type="hidden" id="throwValue"/>
                                 <div class="score-button-group">

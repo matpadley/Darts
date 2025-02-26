@@ -35,6 +35,20 @@ function updatePlayerName(oldName, newName) {
     .catch(error => console.error('Error:', error));
 }
 
+function clickDouble(button)
+{
+    document.getElementById('treble').disabled = !document.getElementById('treble').disabled;
+    document.getElementById('bullseyeThrow').disabled = !document.getElementById('bullseyeThrow').disabled;
+    document.getElementById('outerBullThrow').disabled = !document.getElementById('outerBullThrow').disabled;
+}
+
+function clickTreble(button)
+{
+    document.getElementById('double').disabled = !document.getElementById('double').disabled;
+    document.getElementById('bullseyeThrow').disabled = !document.getElementById('bullseyeThrow').disabled;
+    document.getElementById('outerBullThrow').disabled = !document.getElementById('outerBullThrow').disabled;
+}
+
 function toggleMultiplier(button) {
     switch (button.id) {
         case 'double':

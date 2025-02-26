@@ -37,6 +37,11 @@ body {
   border-color: #ff0000;
 }
 
+.bullseye:hover
+{
+  filter: invert(1);
+}
+
 .bullseye:disabled
 {
   background-color: #ff9b9b;
@@ -58,9 +63,20 @@ body {
   border-color: #beffb4;
 }
 
+.outerbull:hover
+{
+  filter: invert(1);
+}
+
 .multiplier
 {
   background-color: #0dcaf0;
+  border-color: #000;
+}
+
+.multiplier:disabled
+{
+  background-color: #4c5f63;
   border-color: #000;
 }
 
