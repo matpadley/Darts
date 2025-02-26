@@ -1,4 +1,5 @@
 
+@using DartsScorer.Main.Match.x01
 @model DartsScorer.Main.Match.x01.Match
 @{
     ViewData["Title"] = "X01";
@@ -22,5 +23,52 @@
     else
     {
         <h1>Playing Game of @Model.RequiredScore</h1>
+        
+        @if (Model.Winner != null)
+        {
+            <h2>Winner: @Model.Winner.Name</h2>
+        }
+        
+        @Html.Partial("MatchPlayers", Model)
+        
+        if (Model.Players.Any() && !Model.MatchInProgress)
+        {
+            <form asp-action="StartMatch" method="post">
+                <button type="submit" class="btn btn-primary">Start Match</button>
+            </form>
+        }
+    
+        
+        if (Model.CurrentPlayer == null)
+        {
+            @Html.Partial("AddPlayer")
+            <br/>
+            // foreach of the players in the viewbag.players create a dropdown
+            // with the player names
+            <form asp-action="AddPlayer" method="post">
+                <div class="input-group">
+                    <select class="form-control" id="playerName" name="playerName" required>
+                        <option value="">Select a player</option>
+                        @foreach (var player in ViewBag.PlayerList as List<SelectListItem>)
+                        {
+                            <option value="@player.Text">@player.Value</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-primary">Pick Player</button>
+                </div>
+            </form>
+        }
+        else
+        {
+            var currentPlayer = Model.CurrentPlayer as X01Player;
+
+            @if (!currentPlayer.Finished())
+            {
+                @Html.Partial("PlayerScore", currentPlayer)
+                @Html.Partial("ScoreEntry", "x01")
+
+            }
+            @Html.Partial("LegTable", currentPlayer)
+        }
     }
 }

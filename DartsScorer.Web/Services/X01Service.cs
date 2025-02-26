@@ -1,4 +1,5 @@
 using DartsScorer.Main.Match.x01;
+using DartsScorer.Main.Player;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace DartsScorer.Web.Services;
@@ -43,21 +44,44 @@ public class X01Service : IX01Service
 
     public Match Get()
     {
-        throw new NotImplementedException();
+        return _cache.Get("currentMatch") as Match;
+    }
+
+    public IEnumerable<MatchPlayer> GetPlayers()
+    {
+        var match = _cache.Get("currentMatch") as Match;
+        return match.Players;
     }
 
     public void AddPlayer(string playerName)
     {
-        throw new NotImplementedException();
+        var match = _cache.Get("currentMatch") as Match;
+        
+        if (match.Players.Any(f => f.Name == playerName))
+        {
+            return;
+        }
+        
+        match.AddPlayer(new X01Player(playerName, match.RequiredScore));
+        _cache.Set("currentMatch", match);
     }
 
     public Match StartMatch()
     {
-        throw new NotImplementedException();
+        var match = _cache.Get("currentMatch") as Match;
+        match.StartMatch();
+        _cache.Set("currentMatch", match);
+        return match;
     }
 
     public void Throw(string throwValue)
     {
-        throw new NotImplementedException();
+        var match = _cache.Get("currentMatch") as Match;
+        var player = match.CurrentPlayer as X01Player;
+        
+        player.Throw(throwValue);
+        
+        match.UpdatePlayer(player);
+        _cache.Set("currentMatch", match);
     }
 }

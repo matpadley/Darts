@@ -1,3 +1,5 @@
+using DartsScorer.Main.Player;
+
 namespace DartsScorer.Main.Match.x01;
 
 public sealed class Match : CommonMatch
@@ -32,4 +34,6 @@ public sealed class Match : CommonMatch
     }
 
     public override bool IsMatchComplete { get; }
+
+    public X01Player Winner { get; }
 }

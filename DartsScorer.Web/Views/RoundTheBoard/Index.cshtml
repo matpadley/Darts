@@ -53,7 +53,7 @@
                 @if (!currentPlayer.Finished())
                 {
                     @Html.Partial("PlayerScore", currentPlayer)
-                    @Html.Partial("ScoreEntry")
+                    @Html.Partial("ScoreEntry", "roundtheboard")
 
                 }
         @Html.Partial("LegTable", currentPlayer)

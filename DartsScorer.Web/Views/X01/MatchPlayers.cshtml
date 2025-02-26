@@ -1,0 +1,26 @@
+@using DartsScorer.Main.Match.x01
+@model DartsScorer.Main.Match.x01.Match
+
+<h2>Match Players</h2>
+@if (Model.MatchInProgress)
+{
+    <dl>
+    @foreach (var modelPlayer in Model.Players)
+    {
+        <dt>@{
+               var player = modelPlayer as X01Player;
+               @modelPlayer.Name <span>(@player.Name)</span>
+           }</dt>
+    }
+    </dl>
+}
+else
+{
+    <dl>
+        @foreach (var player in Model.Players)
+        {
+            <dt>@player.Name</dt>
+        }
+    </dl>
+    
+}
