@@ -1,6 +1,6 @@
 namespace DartsScorer.Main.Match.x01;
 
-public class Match : CommonMatch
+public sealed class Match : CommonMatch
 {
     public int RequiredScore { get; private set; } = 501;
 
@@ -26,6 +26,7 @@ public class Match : CommonMatch
     {
         if (CanStartMatch())
         {
+            SetCurrentPlayer(Players.First());
             MatchInProgress = true;
         }
     }

@@ -3,52 +3,24 @@ using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Match.x01;
 
-public class X01TheBoardPlayer(string name) : MatchPlayer(new Player.Player(name))
+public class X01Player(string name, int winningNumber) : MatchPlayer(new Player.Player(name))
 {
-    public  int RequiredBoardNumber { get; private set; } = 1;
+    public int WinningNumber { get; set; } = winningNumber;
+
+    public int RemainingScore { get; private set; } = winningNumber;
     
-    public override void Throw(BoardScore one, Multiplier multiplier)
+    public int CurrentScore() => WinningNumber - RemainingScore;
+    
+    
+    public override void UpdateRequiredBoardNumber(ThrowScore newThrow)
     {
-        var newThrow = new ThrowScore(multiplier, one);
-
-        switch (CurrentLeg?.NextThrow)
-        {
-            case 1: 
-                CurrentLeg.ThrowFirst(newThrow);
-                if (newThrow.Score == RequiredBoardNumber)
-                {
-                    RequiredBoardNumber++;
-                }
-                break;
-            case 2: 
-                CurrentLeg.ThrowSecond(newThrow);
-                if (newThrow.Score == RequiredBoardNumber)
-                {
-                    RequiredBoardNumber++;
-                }
-                break;
-            case 3: 
-                CurrentLeg.ThrowThird(newThrow);
-                if (newThrow.Score == RequiredBoardNumber)
-                {
-                    RequiredBoardNumber++;
-                }
-                break;
-        }
+        RemainingScore -= newThrow.Score;
         
-        if (CurrentLeg is { IsComplete: true })
-        {
-            Legs.Add(CurrentLeg);
-        }
-    }
-
-    public override void EndThrow()
-    {
-        throw new NotImplementedException();
+        HasWon = RemainingScore == 0;
     }
 
     public override bool Finished()
     {
-        throw new NotImplementedException();
+        return HasWon;
     }
 }

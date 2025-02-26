@@ -13,6 +13,7 @@ public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name
         CurrentLeg = new Leg();
     }
 */
+    /*
     public override void Throw(BoardScore one, Multiplier multiplier)
     {
         var newThrow = new ThrowScore(multiplier, one);
@@ -48,7 +49,18 @@ public class KillerBoardPlayer(string name) : MatchPlayer(new Player.Player(name
         }
     }
 
-    public override void EndThrow()
+    public override void UpdateRequiredBoardNumber(ThrowScore newThrow)
+    {
+        throw new NotImplementedException();
+    }
+
+    /* public override void EndThrow()
+    {
+        throw new NotImplementedException();
+    }
+    */
+
+    public override void UpdateRequiredBoardNumber(ThrowScore newThrow)
     {
         throw new NotImplementedException();
     }

@@ -6,18 +6,29 @@ namespace DartsScorer.Main.Player;
 
 public abstract class MatchPlayer(Player player) : Player(player.Name)
 {  
+    public Leg? CurrentLeg;
+
+    public bool HasWon { get; set; }
+    
+    public abstract bool Finished();
+
+    public abstract void UpdateRequiredBoardNumber(ThrowScore newThrow);
+    
     public ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
     public IOrderedEnumerable<Leg?> OrderedDescendingLegs()
     {
-        return Legs.OrderByDescending(leg => leg.CreationDate.Ticks);
+        return Legs.OrderByDescending(leg => leg!.CreationDate.Ticks);
     }
-
-    public abstract void Throw(BoardScore one, Multiplier multiplier);
-    public abstract void EndThrow();
-    public abstract bool Finished();
-
-    public Leg? CurrentLeg;
+    public void EndThrow()
+    {
+        if (CurrentLeg != null)
+        {
+            Legs.Add(CurrentLeg);
+        }
+        CurrentLeg = null;
+    }
+    
     public void Throw(string dartThrow)
     {
         if (int.TryParse(dartThrow, out _)) dartThrow = "S" + dartThrow;
@@ -28,13 +39,13 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
             return;
         }
         
-        var regexString = "^(S|D|T)(1[0-9]|[0-9]|20|25|50)$";
-        var regEx = new Regex(regexString);
+        var regEx = new Regex("^(S|D|T)(1[0-9]|[0-9]|20|25|50)$");
         
         var regExMatch = regEx.Match(dartThrow);
     
         // if the throw is not 25 or 50 split the string and get the board score
         var score = int.Parse(regExMatch.Groups[2].Value);
+        
         var multiplier = regExMatch.Groups[1].Value;
     
         // convert the input to the board score enum
@@ -76,4 +87,38 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
         
         Throw(boardScore, boardMultiplier);
     }
+    
+    public void Throw(BoardScore boardScore, Multiplier multiplier)
+    {
+        if (HasWon)
+        {
+            EndThrow();
+            return;
+        }
+        
+        var newThrow = new ThrowScore(multiplier, boardScore);
+        
+        CurrentLeg ??= new Leg();
+        
+        switch (CurrentLeg?.NextThrow)
+        {
+            case 1:
+                CurrentLeg.ThrowFirst(newThrow);
+                UpdateRequiredBoardNumber(newThrow);
+                if (HasWon) EndThrow();
+                break;
+            case 2:
+                CurrentLeg.ThrowSecond(newThrow);
+                UpdateRequiredBoardNumber(newThrow);
+                if (HasWon) EndThrow();
+                break;
+            case 3:
+                CurrentLeg.ThrowThird(newThrow);
+                UpdateRequiredBoardNumber(newThrow);
+                EndThrow(); 
+                break;
+        }
+    }
+    
+    
 }
