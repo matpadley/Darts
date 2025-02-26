@@ -34,12 +34,28 @@ body {
 {
   background-color: #ff0000;
   color: white;
+  border-color: #ff0000;
+}
+
+.bullseye:disabled
+{
+  background-color: #ff9b9b;
+  color: white;
+  border-color: #ff9b9b;
 }
 
 .outerbull
 {
-  background-color: #0800FF;
+  background-color: #17AE03FF;
   color: white;
+  border-color: #17AE03FF;
+}
+
+.outerbull:disabled
+{
+  background-color: #beffb4;
+  color: white;
+  border-color: #beffb4;
 }
 
 .multiplier
@@ -74,8 +90,17 @@ body {
   border-color: black;
 }
 
+.boardScoreDark:hover
+{
+  filter: invert(1);
+}
+
 .boardScoreLight
 {
   background-color: #d3d3d3;
   border-color: black;
+}
+.boardScoreLight:hover
+{
+  filter: invert(1);
 }

@@ -8,7 +8,7 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
     IRoundTheBoardService dartsMatchService,
     IPlayerService playerService) : Controller
 {
-    public IActionResult Index()    
+    public IActionResult Index(bool reset = false)    
     {
         var players = playerService.GetPLayersForDropDown();
         
@@ -21,7 +21,7 @@ public class RoundTheBoardController(ILogger<RoundTheBoardController> logger,
         }
         
         ViewBag.PlayerList = playerService.GetPLayersForDropDown();
-        return View(dartsMatchService.Create());
+        return View(dartsMatchService.Create(reset));
     }
     
     public IActionResult MatchPlayers()

@@ -6,7 +6,7 @@ namespace DartsScorer.Web.Services;
 
 public interface IRoundTheBoardService
 {
-    Match Create();
+    Match Create(bool reset);
     Match Get();
     void AddPlayer(string playerName);
     Match StartMatch();
@@ -21,13 +21,19 @@ public class RoundTheBoardService : IRoundTheBoardService
     {
         _cache = cache;
     }
-    public Match Create()
+    public Match Create(bool reset)
     {
+        if (reset)
+        {
+            _cache.Remove("currentMatch");
+            _cache.Set("currentMatch", new Match());
+        }
+        
         var existingMatch = _cache.Get("currentMatch");
         
         if (existingMatch != null)
         {
-            return existingMatch  as Match;
+            return existingMatch as Match;
         }
         
         var match = new Match();

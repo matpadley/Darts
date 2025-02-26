@@ -7,7 +7,7 @@
 
 <h1>@ViewBag.Title</h1>
 
-<div class="d-flex">
+<div class="d-flex flex-column flex-md-row">
     <div class="flex-fill">
         
         @if (Model.Winner != null)
@@ -56,58 +56,57 @@
                 @if (!currentPlayer.Finished())
                 {
                     <!--<form asp-action="Throw" method="post">-->
-        <div class="d-flex mb-2">
-            <div class="d-flex flex-column w-75">
-                <div class="d-flex flex-fill">
-                    <div class="d-flex flex-column w-50 me-2">
-                        <button class="btn btn-primary" id="bullseyeThrow" value="50" onclick="setThrow(this)">Bull</button>
+                    <div class="d-flex mb-2">
+                        <div class="d-flex flex-column w-75">
+                            <div class="d-flex flex-fill">
+                                <div class="d-flex flex-column w-50 me-2">
+                                    <button class="btn btn-primary bullseye" id="bullseyeThrow" value="50" onclick="setThrow(this)">Bull</button>
+                                </div>
+                                <div class="d-flex flex-column w-50">
+                                    <button class="btn btn-primary outerbull" id="outerBullThrow" value="25" onclick="setThrow(this)">Outer Bull</button>
+                                </div>
+                            </div>
+                            <div class="btn-group mt-2" role="group" aria-label="Multiplier">
+                                <button class="btn multiplier" name="multiplier" id="double" value="D" onclick="toggleMultiplier(this)">Double</button>
+                                <button class="btn multiplier" name="multiplier" id="treble" value="T" onclick="toggleMultiplier(this)">Treble</button>
+                            </div>
+                            <div class="mt-2">
+                                <input type="hidden" id="throwValue"/>
+                                <div class="score-button-group">
+                                    <button class="btn score-buttons boardScoreDark" value="1" onclick="setThrow(this)">1</button>
+                                    <button class="btn score-buttons boardScoreLight" value="2" onclick="setThrow(this)">2</button>
+                                    <button class="btn score-buttons boardScoreDark" value="3" onclick="setThrow(this)">3</button>
+                                    <button class="btn score-buttons boardScoreLight" value="4" onclick="setThrow(this)">4</button>
+                                    <button class="btn score-buttons boardScoreDark" value="5" onclick="setThrow(this)">5</button>
+                                </div>
+                                <div class="score-button-group">
+                                    <button class="btn score-buttons boardScoreLight" value="6" onclick="setThrow(this)">6</button>
+                                    <button class="btn score-buttons boardScoreDark" value="7" onclick="setThrow(this)">7</button>
+                                    <button class="btn score-buttons boardScoreLight" value="8" onclick="setThrow(this)">8</button>
+                                    <button class="btn score-buttons boardScoreDark" value="9" onclick="setThrow(this)">9</button>
+                                    <button class="btn score-buttons boardScoreLight" value="10" onclick="setThrow(this)">10</button>
+                                </div>
+                                <div class="score-button-group">
+                                    <button class="btn score-buttons boardScoreDark" value="11" onclick="setThrow(this)">11</button>
+                                    <button class="btn score-buttons boardScoreLight" value="12" onclick="setThrow(this)">12</button>
+                                    <button class="btn score-buttons boardScoreDark" value="13" onclick="setThrow(this)">13</button>
+                                    <button class="btn score-buttons boardScoreLight" value="14" onclick="setThrow(this)">14</button>
+                                    <button class="btn score-buttons boardScoreDark" value="15" onclick="setThrow(this)">15</button>
+                                </div>
+                                <div class="score-button-group">
+                                    <button class="btn score-buttons boardScoreLight" value="16" onclick="setThrow(this)">16</button>
+                                    <button class="btn score-buttons boardScoreDark" value="17" onclick="setThrow(this)">17</button>
+                                    <button class="btn score-buttons boardScoreLight" value="18" onclick="setThrow(this)">18</button>
+                                    <button class="btn score-buttons boardScoreDark" value="19" onclick="setThrow(this)">19</button>
+                                    <button class="btn score-buttons boardScoreLight" value="20" onclick="setThrow(this)">20</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline-secondary ms-2 w-auto" onclick="handleMiss()">Miss</button>
                     </div>
-                    <div class="d-flex flex-column w-50">
-                        <button class="btn btn-primary" id="outerBullThrow" value="25" onclick="setThrow(this)">Outer Bull</button>
-                    </div>
-                </div>
-                <div class="btn-group mt-2" role="group" aria-label="Multiplier">
-                    <button class="btn multiplier" name="multiplier" id="double" value="D" onclick="toggleMultiplier(this)">Double</button>
-                    <button class="btn multiplier" name="multiplier" id="treble" value="T" onclick="toggleMultiplier(this)">Treble</button>
-                </div>
-                <div class="mt-2">
-                    <label class="form-check-label">Score</label>
-                    <input type="hidden" id="throwValue"/>
-                    <div class="score-button-group">
-                        <button class="btn score-buttons boardScoreDark" value="1" onclick="setThrow(this)">One</button>
-                        <button class="btn score-buttons boardScoreLight" value="2" onclick="setThrow(this)">Two</button>
-                        <button class="btn score-buttons boardScoreDark" value="3" onclick="setThrow(this)">Three</button>
-                        <button class="btn score-buttons boardScoreLight" value="4" onclick="setThrow(this)">Four</button>
-                        <button class="btn score-buttons boardScoreDark" value="5" onclick="setThrow(this)">Five</button>
-                    </div>
-                    <div class="score-button-group">
-                        <button class="btn score-buttons boardScoreLight" value="6" onclick="setThrow(this)">Six</button>
-                        <button class="btn score-buttons boardScoreDark" value="7" onclick="setThrow(this)">Seven</button>
-                        <button class="btn score-buttons boardScoreLight" value="8" onclick="setThrow(this)">Eight</button>
-                        <button class="btn score-buttons boardScoreDark" value="9" onclick="setThrow(this)">Nine</button>
-                        <button class="btn score-buttons boardScoreLight" value="10" onclick="setThrow(this)">Ten</button>
-                    </div>
-                    <div class="score-button-group">
-                        <button class="btn score-buttons boardScoreDark" value="11" onclick="setThrow(this)">Eleven</button>
-                        <button class="btn score-buttons boardScoreLight" value="12" onclick="setThrow(this)">Twelve</button>
-                        <button class="btn score-buttons boardScoreDark" value="13" onclick="setThrow(this)">Thirteen</button>
-                        <button class="btn score-buttons boardScoreLight" value="14" onclick="setThrow(this)">Fourteen</button>
-                        <button class="btn score-buttons boardScoreDark" value="15" onclick="setThrow(this)">Fifteen</button>
-                    </div>
-                    <div class="score-button-group">
-                        <button class="btn score-buttons boardScoreLight" value="16" onclick="setThrow(this)">Sixteen</button>
-                        <button class="btn score-buttons boardScoreDark" value="17" onclick="setThrow(this)">Seventeen</button>
-                        <button class="btn score-buttons boardScoreLight" value="18" onclick="setThrow(this)">Eighteen</button>
-                        <button class="btn score-buttons boardScoreDark" value="19" onclick="setThrow(this)">Nineteen</button>
-                        <button class="btn score-buttons boardScoreLight" value="20" onclick="setThrow(this)">Twenty</button>
-                    </div>
-                </div>
-            </div>
-                <button type="button" class="btn btn-outline-secondary ms-2 w-auto" onclick="handleMiss()">Miss</button>
-        </div>
-        <!-- </form> -->
-        }
+                    <!-- </form> -->
 
+                }
         @Html.Partial("LegTable", currentPlayer)
         }
         }

@@ -35,39 +35,6 @@ function updatePlayerName(oldName, newName) {
     .catch(error => console.error('Error:', error));
 }
 
-function toggleBullsEye() {
-    // if the multiple buttons are disabled, enable them
-    if (document.querySelector('.multiplier').disabled) {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
-        document.getElementById('throwValue').disabled = false;
-        document.getElementById('outerBullThrow').disabled = false;
-        document.getElementById('bullseyeThrow').classList.remove('bullseye');
-        return;
-    }
-    else {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
-        document.getElementById('throwValue').disabled = true;
-        document.getElementById('outerBullThrow').disabled = true;
-        document.getElementById('bullseyeThrow').classList.add('bullseye');
-    }
-}
-
-function toggleOuterBull() {
-    // if the multiple buttons are disabled, enable them
-    if (document.querySelector('.multiplier').disabled) {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
-        document.getElementById('throwValue').disabled = false;
-        document.getElementById('bullseyeThrow').disabled = false;
-        document.getElementById('outerBullThrow').classList.remove('outerbull');
-    }
-    else {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
-        document.getElementById('throwValue').disabled = true;
-        document.getElementById('bullseyeThrow').disabled = true;
-        document.getElementById('outerBullThrow').classList.add('outerbull');
-    }
-}
-
 function toggleMultiplier(button) {
     switch (button.id) {
         case 'double':

@@ -12,11 +12,5 @@
         @{
             <player>@Model.RequiredBoardNumber</player>
         }</p>
-        @if (Model.CurrentLeg != null)
-        {
-            <p>Current Leg:
-            @string.Join(", ", Model.CurrentLeg.Throws.Select(thr => thr.ToString()))
-            </p>
-        }
     } 
 }
