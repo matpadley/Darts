@@ -1,3 +1,5 @@
+![Test Status](https://github.com/matpadley/Darts/actions/workflows/build_library.yaml/badge.svg)
+
 # Darts Scorer
 
 The apps in here are rough and ready proof of concept and by no means production ready. They are missing expection handling.
