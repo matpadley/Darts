@@ -24,8 +24,6 @@
                 </form>
             }
         }
-    </div>
-    <div class="flex-fill">
         @{
             if (Model.CurrentPlayer == null)
             {
@@ -53,7 +51,7 @@
                 @if (!currentPlayer.Finished())
                 {
                     @Html.Partial("PlayerScore", currentPlayer)
-                    @Html.Partial("ScoreEntry")
+                    @Html.Partial("ScoreEntry", "roundtheboard")
 
                 }
         @Html.Partial("LegTable", currentPlayer)
