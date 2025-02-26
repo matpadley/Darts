@@ -5,9 +5,7 @@ namespace DartsScorer.Main.Match.x01;
 public sealed class Match : CommonMatch
 {
     public override string Name => "x01";
-    public int RequiredScore { get; private set; } = 501;
-    public override bool IsMatchComplete => Players.Count(f => (f as X01Player).Finished()) == 1;
-    public override MatchPlayer Winner=> Players.FirstOrDefault(f => (f as X01Player).Finished());
+    public int RequiredScore { get; private set; }
     public override DartsMatchType DartsMatchType => DartsMatchType.X01;
 
     public Match(int requiredScore = 5)

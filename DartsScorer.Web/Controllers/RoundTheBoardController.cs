@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DartsScorer.Web.Controllers;
 
-public class RoundTheBoardController(ILogger<RoundTheBoardController> logger, 
-    IRoundTheBoardService dartsMatchService,
+public class RoundTheBoardController(IRoundTheBoardService dartsMatchService,
     IPlayerService playerService) : Controller
 {
     public IActionResult Index(bool reset = false)    

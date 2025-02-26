@@ -4,8 +4,8 @@ namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {
-    public abstract bool IsMatchComplete { get; }
-    public abstract MatchPlayer Winner { get; }
+    public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
+    public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
     public abstract DartsMatchType DartsMatchType { get; }
 
     private  List<Player.MatchPlayer> _players = [];

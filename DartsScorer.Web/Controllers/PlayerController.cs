@@ -4,10 +4,8 @@ using DartsScorer.Web.Services;
 
 namespace DartsScorer.Web.Controllers;
 
-public class PlayerController(ILogger<PlayerController> logger, IPlayerService playerService) : Controller
+public class PlayerController(IPlayerService playerService) : Controller
 {
-    private readonly ILogger<PlayerController> _logger = logger;
-
     public IActionResult Index()
     {
         return View(playerService.GetPlayers());
