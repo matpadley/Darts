@@ -19,6 +19,7 @@
 }
 
 <form id="gameForm" asp-action="index" method="post" onsubmit="updateFormAction()">
+    <input type="hidden" name="reset" value="true"/>
     <div class="d-flex align-items-center g-4">
         <select class="form-select me-2" id="gameType" name="gameType" required>
             <option value="" disabled selected>Select Game Type</option>

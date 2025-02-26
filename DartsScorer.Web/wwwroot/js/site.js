@@ -35,69 +35,20 @@ function updatePlayerName(oldName, newName) {
     .catch(error => console.error('Error:', error));
 }
 
-function toggleBullsEye() {
-    // if the multiple buttons are disabled, enable them
-    if (document.querySelector('.multiplier').disabled) {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
-        document.getElementById('throwValue').disabled = false;
-        document.getElementById('outerBullThrow').disabled = false;
-        document.getElementById('bullseyeThrow').classList.remove('bullseye');
-        return;
-    }
-    else {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
-        document.getElementById('throwValue').disabled = true;
-        document.getElementById('outerBullThrow').disabled = true;
-        document.getElementById('bullseyeThrow').classList.add('bullseye');
-    }
-}
-
-function toggleOuterBull() {
-    // if the multiple buttons are disabled, enable them
-    if (document.querySelector('.multiplier').disabled) {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = false);
-        document.getElementById('throwValue').disabled = false;
-        document.getElementById('bullseyeThrow').disabled = false;
-        document.getElementById('outerBullThrow').classList.remove('outerbull');
-    }
-    else {
-        document.querySelectorAll('.multiplier').forEach(button => button.disabled = true);
-        document.getElementById('throwValue').disabled = true;
-        document.getElementById('bullseyeThrow').disabled = true;
-        document.getElementById('outerBullThrow').classList.add('outerbull');
-    }
-}
-
-function toggleMultiplier(button) {
-    switch (button.id) {
-        case 'double':
-            document.getElementById('treble').disabled = !document.getElementById('treble').disabled;
-            // toggle the bullseye button if the treble is enabled
-            if (!document.getElementById('treble').disabled) {
-                document.getElementById('bullseyeThrow').disabled = !document.getElementById('bullseyeThrow').disabled;
-                document.getElementById('outerBullThrow').disabled = !document.getElementById('outerBullThrow').disabled;
-            }
-            break;
-        case 'treble':
-            document.getElementById('double').disabled = !document.getElementById('double').disabled;
-            // toggle the bullseye button if the treble is enabled
-            if (!document.getElementById('treble').disabled) {
-                document.getElementById('bullseyeThrow').disabled = !document.getElementById('bullseyeThrow').disabled;
-                document.getElementById('outerBullThrow').disabled = !document.getElementById('outerBullThrow').disabled;
-            }
-            break;
-    }
+function toggleMultiplier(button)
+{
+    let otherButtonId = button.id === 'double' ? 'treble' : 'double';
+    document.getElementById(otherButtonId).disabled = !document.getElementById(otherButtonId).disabled;
+    document.getElementById('bullseyeThrow').disabled = !document.getElementById('bullseyeThrow').disabled;
+    document.getElementById('outerBullThrow').disabled = !document.getElementById('outerBullThrow').disabled;
 }
 
 function handleThrow()
 {
     let multiplier = 'S';
     let throwValue = document.getElementById('throwValue').value;
-
     let trebleValue = document.getElementById('treble').disabled ? false : true;
     let doubleValue = document.getElementById('double').disabled ? false : true;
-    let bullValue = document.getElementById('bullseyeThrow').disabled ? false : true;
-    let outerBullThrow = document.getElementById('outerBullThrow').disabled ? false : true;
 
     // if the throw value is empty alert the user and don't carry on
     // only do this if the throw value is not the bullseye or outer bull
@@ -114,15 +65,6 @@ function handleThrow()
         multiplier = 'D';
     }
     
-    if (bullValue && !outerBullThrow ){
-        throwValue = "50"
-        multiplier = "S"
-    }
-    else if (outerBullThrow && !bullValue) {
-            throwValue = "25"
-            multiplier = "S"
-        }
-
     fetch('/RoundTheBoard/Throw', {
         method: 'POST',
         headers: {
@@ -134,4 +76,29 @@ function handleThrow()
             window.location.href = '/roundtheboard/index'
         )
         .catch(error => console.error('Error:', error));
+}
+
+function handleMiss()
+{
+
+    fetch('/RoundTheBoard/Throw', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({multiplier: "S", throwValue: "0"})
+    })
+        .then(response => // redierct to the home page
+            window.location.href = '/roundtheboard/index'
+        )
+        .catch(error => console.error('Error:', error));
+}
+
+// create a function named handlethrow that has a parameter of the button
+function setThrow(button) {
+    // set the value of the hiden throwValue input to the value of the button
+    document.getElementById('throwValue').value = button.value;
+    
+    // call the handleThrow function
+    handleThrow();
 }
