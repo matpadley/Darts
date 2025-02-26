@@ -25,4 +25,16 @@ public class CheckoutTests
         Assert.That(result[2].BoardScore, Is.EqualTo(third.BoardScore));
         Assert.That(result[2].Multiplier, Is.EqualTo(third.Multiplier));
     }
+    
+    [Test]
+    public void Checkout_Should_Return_Empty_Array()
+    {
+        const int inputScore = 501;
+
+        var newCalc = new CheckoutCalculator();
+
+        var result = newCalc.Calculate(inputScore);
+
+        Assert.That(result.Length, Is.EqualTo(0));
+    }
 }
