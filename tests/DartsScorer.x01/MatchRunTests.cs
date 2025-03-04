@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.x01;
 using DartsScorer.Main.Scoring;
 
@@ -10,10 +11,17 @@ public class MatchRunTests
     [SetUp]
     public void Setup()
     {
-        _match = new Match();
+        _match = new Match(new MatchConfiguration());
         _match.AddPlayer(new X01Player("playerOne", _match.RequiredScore));
         _match.AddPlayer(new X01Player("playerTwo", _match.RequiredScore));
         _match.StartMatch();
+    }
+    [Test]
+    
+    public void RoundTheBoard_Configuration()
+    {
+        Assert.That(_match.Configuration.NumberOfLegs, Is.EqualTo(1));
+        Assert.That(_match.Configuration.NumberOfSets, Is.EqualTo(1));
     }
     
     [Test]
@@ -69,7 +77,7 @@ public class MatchRunTests
     [Test]
     public void X01_Single_PLayer_Run_To_End()
     {
-        var match = new Match(1);
+        var match = new Match(new MatchConfiguration(), 1);
         var player = new X01Player("p1", match.RequiredScore);
         match.AddPlayer(player);
         match.StartMatch();

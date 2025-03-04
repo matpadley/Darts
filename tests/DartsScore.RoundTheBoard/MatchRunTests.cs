@@ -1,4 +1,5 @@
 using DartsScore.RoundTheBoard.TestCases;
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Scoring;
 using static System.Enum;
@@ -12,7 +13,14 @@ public class MatchRunTests
     [SetUp]
     public void Setup()
     {
-        _match = new Match();
+        _match = new Match(new MatchConfiguration());
+    }
+
+    [Test]
+    public void RoundTheBoard_Configuration()
+    {
+        Assert.That(_match.Configuration.NumberOfLegs, Is.EqualTo(1));
+        Assert.That(_match.Configuration.NumberOfSets, Is.EqualTo(1));
     }
 
     [Test, TestCaseSource(nameof(_throwCases))]

@@ -2,8 +2,9 @@ using DartsScorer.Main.Player;
 
 namespace DartsScorer.Main.Match;
 
-public abstract class CommonMatch
+public abstract class CommonMatch(MatchConfiguration config)
 {
+    public MatchConfiguration Configuration { get; set; } = config;
     public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
     public MatchPlayer? Winner => Players.FirstOrDefault(f => f.Finished());
     public abstract DartsMatchType DartsMatchType { get; }

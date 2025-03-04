@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Player;
 
@@ -16,7 +17,7 @@ public class PlayerTests
     [Test]
     public void RoundTheBoard_Can_Add_Player()
     {
-        var roundTheBoard = new Match();
+        var roundTheBoard = new Match(new MatchConfiguration());
 
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         

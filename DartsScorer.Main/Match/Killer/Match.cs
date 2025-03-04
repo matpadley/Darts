@@ -2,7 +2,7 @@ using DartsScorer.Main.Player;
 
 namespace DartsScorer.Main.Match.Killer;
 
-public class Match: CommonMatch
+public class Match(MatchConfiguration config) : CommonMatch(config)
 { 
     public override DartsMatchType DartsMatchType => DartsMatchType.Killer;
 

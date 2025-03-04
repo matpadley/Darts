@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.RoundTheBoard;
 
 namespace DartsScorer.Tests.Player;
@@ -23,7 +24,7 @@ public class PlayerTests
     {
         var player = new RoundTheBoardPlayer("John");
 
-        var match = new DartsScorer.Main.Match.RoundTheBoard.Match();
+        var match = new DartsScorer.Main.Match.RoundTheBoard.Match(new MatchConfiguration());
         match.AddPlayer(player);
         match.StartMatch();
         

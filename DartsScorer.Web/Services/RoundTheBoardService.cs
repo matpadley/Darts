@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Player;
 using Microsoft.Extensions.Caching.Memory;
@@ -26,7 +27,7 @@ public class RoundTheBoardService : IRoundTheBoardService
         if (reset)
         {
             _cache.Remove("currentMatch");
-            _cache.Set("currentMatch", new Match());
+            _cache.Set("currentMatch", new Match(new MatchConfiguration()));
         }
         
         var existingMatch = _cache.Get("currentMatch");
@@ -36,7 +37,7 @@ public class RoundTheBoardService : IRoundTheBoardService
             return (existingMatch as Match)!;
         }
         
-        var match = new Match();
+        var match = new Match(new MatchConfiguration());
         _cache.Set("currentMatch", match);
         return match;
     }

@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.x01;
 using DartsScorer.Main.Scoring;
 
@@ -9,7 +10,7 @@ public class CheckoutTests
     [Test]
     public void X01_Single_PLayer_Run_To_End()
     {
-        var match = new Match(1);
+        var match = new Match(new MatchConfiguration(), 1);
         var player = new X01Player("p1", match.RequiredScore);
         match.AddPlayer(player);
         match.StartMatch();

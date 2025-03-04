@@ -8,7 +8,7 @@ public class InstantiateTests
     [Test]
     public void X01_Instantiate()
     {
-        var match = new Match();
+        var match = new Match(new MatchConfiguration());
         
         Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.X01));
         Assert.That(match.Name, Is.EqualTo("x01"));
@@ -17,7 +17,7 @@ public class InstantiateTests
     [Test]
     public void X01_Instantiate_Failure()
     {
-        var match = new Match();
+        var match = new Match(new MatchConfiguration());
         
         Assert.That(match.DartsMatchType, !Is.EqualTo(DartsMatchType.RoundTheBoard));
         Assert.That(match.Players.Count, Is.EqualTo(0));
@@ -26,7 +26,7 @@ public class InstantiateTests
     [Test]
     public void X01_Default_Score()
     {
-        var match = new Match();
+        var match = new Match(new MatchConfiguration());
         
         Assert.That(match.RequiredScore, Is.EqualTo(501));
     }
@@ -38,7 +38,7 @@ public class InstantiateTests
     [TestCase(5, 501)]
     public void X01_Custom_Score(int requiredGame, int actualGame)
     {
-        var match = new Match(requiredGame);
+        var match = new Match(new MatchConfiguration(), requiredGame);
         
         Assert.That(match.RequiredScore, Is.EqualTo(actualGame));
         Assert.That(match.IsMatchComplete, Is.False);
@@ -49,6 +49,9 @@ public class InstantiateTests
     [TestCase(6)]
     public void X01_Custom_Score_Failure(int requiredScore)
     {
-        Assert.Throws<ArgumentException>(() => new Match(requiredScore));
+        Assert.Throws<ArgumentException>(() =>
+        {
+            var match = new Match(new MatchConfiguration(), requiredScore);
+        });
     }
 }
