@@ -8,7 +8,7 @@ public abstract class CommonMatch
     public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
     public abstract DartsMatchType DartsMatchType { get; }
 
-    private  List<Player.MatchPlayer> _players = [];
+    private List<MatchPlayer> _players = [];
     
     public abstract string Name { get; }
 
@@ -20,7 +20,7 @@ public abstract class CommonMatch
 
     public Player.Player? CurrentPlayer { get; private set; }
 
-    public void AddPlayer(Player.MatchPlayer player)
+    public void AddPlayer(MatchPlayer player)
     {
         _players.Add(player);
     }
@@ -38,12 +38,12 @@ public abstract class CommonMatch
     }
     
     
-    public void UpdatePlayer(Player.MatchPlayer player)
+    public void UpdatePlayer(MatchPlayer player)
     {
         var currentInd = _players.FindIndex(p => Equals(p, player));
         if (currentInd != -1)
         {
-            var updatedPlayers = new List<Player.MatchPlayer>(_players)
+            var updatedPlayers = new List<MatchPlayer>(_players)
             {
                 [currentInd] = player
             };
