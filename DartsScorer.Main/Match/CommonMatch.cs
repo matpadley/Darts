@@ -4,6 +4,7 @@ namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch(MatchConfiguration config)
 {
+    
     public abstract DartsMatchType DartsMatchType { get; }
     public abstract string Name { get; }
     public abstract void StartMatch();

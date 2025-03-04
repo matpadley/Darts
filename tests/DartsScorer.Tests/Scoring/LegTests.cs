@@ -15,10 +15,13 @@ public class LegTests
         // Arrange
         var leg = new Leg();
 
-        // Assert
-        Assert.That(leg.CurrentScore, Is.EqualTo(0));
-        Assert.That(leg.NextThrow, Is.EqualTo(1));
-        Assert.That(leg.IsComplete, Is.False);
+        Assert.Multiple(() =>
+        {
+            // Assert
+            Assert.That(leg.CurrentScore, Is.EqualTo(0));
+            Assert.That(leg.NextThrow, Is.EqualTo(1));
+            Assert.That(leg.IsComplete, Is.False);
+        });
     }
 
     [TestCase(BoardScore.Twenty, Multiplier.Single, 20)]

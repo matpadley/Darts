@@ -15,29 +15,40 @@ public class CheckoutTests
         match.AddPlayer(player);
         match.StartMatch();
         var currentPlayer = match.CurrentPlayer as X01Player;
-        
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(101));
-        Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(3));
-        
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(101));
+            Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(3));
+        });
+
         currentPlayer.Throw(BoardScore.Twenty, Multiplier.Treble);
-        
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(41));
-        Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(2));
-        
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(41));
+            Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(2));
+        });
+
         currentPlayer.Throw(BoardScore.Twenty, Multiplier.Treble);
-        
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(41));
-        Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(2));
-        
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(41));
+            Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(2));
+        });
+
         currentPlayer.Throw(BoardScore.Twenty, Multiplier.Double);
-        
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(1));
-        Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(0));
-        
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(1));
+            Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(0));
+        });
+
         currentPlayer.Throw(BoardScore.Twenty, Multiplier.Double);
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(1));
-        Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(0));
-        
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(1));
+            Assert.That(currentPlayer.Checkout().Length, Is.EqualTo(0));
+        });
+
         currentPlayer.Throw(BoardScore.One, Multiplier.Single);
         
         Assert.That(currentPlayer.Finished(), Is.True);

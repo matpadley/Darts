@@ -20,8 +20,11 @@ public class MatchRunTests
     
     public void RoundTheBoard_Configuration()
     {
-        Assert.That(_match.Configuration.NumberOfLegs, Is.EqualTo(1));
-        Assert.That(_match.Configuration.NumberOfSets, Is.EqualTo(1));
+        Assert.Multiple(() =>
+        {
+            Assert.That(_match.Configuration.NumberOfLegs, Is.EqualTo(1));
+            Assert.That(_match.Configuration.NumberOfSets, Is.EqualTo(1));
+        });
     }
     
     [Test]
@@ -30,10 +33,12 @@ public class MatchRunTests
         var currentPlayer = _match.CurrentPlayer as X01Player;
         
         currentPlayer.Throw(BoardScore.Fifteen, Multiplier.Treble);
-        
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(456));
-        Assert.That(currentPlayer.HasWon, Is.False);
-        Assert.That(_match.IsMatchComplete, Is.False);
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(456));
+            Assert.That(currentPlayer.HasWon, Is.False);
+            Assert.That(_match.IsMatchComplete, Is.False);
+        });
     }
 
     [Test]
@@ -62,16 +67,20 @@ public class MatchRunTests
         currentPlayer.Throw(BoardScore.Fifteen, Multiplier.Treble);
         currentPlayer.Throw(BoardScore.Fifteen, Multiplier.Treble);
         currentPlayer.Throw(BoardScore.Fifteen, Multiplier.Treble);
-        
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(366));
-        
-        Assert.That(currentPlayer.Legs.Count, Is.EqualTo(1));
-        
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(366));
+            Assert.That(currentPlayer.Legs.Count, Is.EqualTo(1));
+        });
+
         _match.UpdatePlayer(currentPlayer);
         
         currentPlayer = _match.CurrentPlayer as X01Player;
-        Assert.That(currentPlayer.Name, Is.EqualTo("playerTwo"));
-        Assert.That(currentPlayer.RemainingScore, Is.EqualTo(501));
+        Assert.Multiple(() =>
+        {
+            Assert.That(currentPlayer.Name, Is.EqualTo("playerTwo"));
+            Assert.That(currentPlayer.RemainingScore, Is.EqualTo(501));
+        });
     }
 
     [Test]

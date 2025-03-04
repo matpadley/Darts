@@ -10,8 +10,11 @@ public class InstantiateTests
     {
         var match = new Match(new MatchConfiguration());
         
-        Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.RoundTheBoard));
-        Assert.That(match.Name, Is.EqualTo("Round The Board"));
+        Assert.Multiple(() =>
+        {
+            Assert.That(match.DartsMatchType, Is.EqualTo(DartsMatchType.RoundTheBoard));
+            Assert.That(match.Name, Is.EqualTo("Round The Board"));
+        });
     }
     
     [Test]
@@ -19,7 +22,10 @@ public class InstantiateTests
     {
         var match = new Match(new MatchConfiguration());
         
-        Assert.That(match.DartsMatchType, !Is.EqualTo(DartsMatchType.X01));
-        Assert.That(match.Players.Count, Is.EqualTo(0));
+        Assert.Multiple(() =>
+        {
+            Assert.That(match.DartsMatchType, !Is.EqualTo(DartsMatchType.X01));
+            Assert.That(match.Players.Count, Is.EqualTo(0));
+        });
     }
 }

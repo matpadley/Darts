@@ -39,9 +39,11 @@ public class InstantiateTests
     public void X01_Custom_Score(int requiredGame, int actualGame)
     {
         var match = new Match(new MatchConfiguration(), requiredGame);
-        
-        Assert.That(match.RequiredScore, Is.EqualTo(actualGame));
-        Assert.That(match.IsMatchComplete, Is.False);
+        Assert.Multiple(() =>
+        {
+            Assert.That(match.RequiredScore, Is.EqualTo(actualGame));
+            Assert.That(match.IsMatchComplete, Is.False);
+        });
     }
     
     [TestCase(0)]
