@@ -1,3 +1,5 @@
+using DartsScorer.Main.Match;
+
 namespace DartsScorer.Tests.Match;
 
 public class MatchConfigurationTests
@@ -5,7 +7,7 @@ public class MatchConfigurationTests
     [Test]
     public void MatchConfiguration_Setup_Sets()
     {
-        var configuration = new MatchConfig();
+        var configuration = new MatchConfiguration();
 
         configuration.SetNumberOfSets(2);
         
@@ -15,28 +17,19 @@ public class MatchConfigurationTests
     [Test]
     public void MatchConfiguration_Setup_SetsPlayers()
     {
-        var configuration = new MatchConfig();
+        var configuration = new MatchConfiguration();
 
         configuration.SetNumberOfLegs(4);
         
         Assert.That(configuration.NumberOfLegs, Is.EqualTo(4));
     }
-}
 
-public class MatchConfig
-{
-    public int NumberOfSets { get; private set; }
-
-    public int NumberOfLegs { get; private set; }   
-    
-    public void SetNumberOfSets(int sets)
+    [Test]
+    public void MatchConfiguration_Defaults()
     {
-        NumberOfSets = sets;
+        var configuration = new MatchConfiguration();
+        
+        Assert.That(configuration.NumberOfSets, Is.EqualTo(1));
+        Assert.That(configuration.NumberOfLegs, Is.EqualTo(1));
     }
-
-    public void SetNumberOfLegs(int legs)
-    {
-        NumberOfLegs = legs;
-    }
-    
 }
