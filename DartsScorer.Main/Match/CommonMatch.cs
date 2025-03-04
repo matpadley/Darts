@@ -4,28 +4,19 @@ namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch(MatchConfiguration config)
 {
+    public abstract DartsMatchType DartsMatchType { get; }
+    public abstract string Name { get; }
+    public abstract void StartMatch();
+
+    private List<MatchPlayer> _players = [];
     public MatchConfiguration Configuration { get; set; } = config;
     public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
     public MatchPlayer? Winner => Players.FirstOrDefault(f => f.Finished());
-    public abstract DartsMatchType DartsMatchType { get; }
-
-    private List<MatchPlayer> _players = [];
-    
-    public abstract string Name { get; }
-
-    public abstract void StartMatch();
-
     public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();
-    
     public bool MatchInProgress { get; set; }
 
     public Player.Player? CurrentPlayer { get; private set; }
-
-    public void AddPlayer(MatchPlayer player)
-    {
-        _players.Add(player);
-    }
-
+    
     protected bool CanStartMatch()
     {
         if (Players.Count == 0)
@@ -37,8 +28,10 @@ public abstract class CommonMatch(MatchConfiguration config)
 
         return true;
     }
-    
-    
+    protected void SetCurrentPlayer(Player.Player player)
+    {
+        CurrentPlayer = player;
+    }
     public void UpdatePlayer(MatchPlayer player)
     {
         var currentInd = _players.FindIndex(p => Equals(p, player));
@@ -67,9 +60,8 @@ public abstract class CommonMatch(MatchConfiguration config)
             CurrentPlayer = _players[nextInd];
         }
     }
-
-    protected void SetCurrentPlayer(Player.Player player)
+    public void AddPlayer(MatchPlayer player)
     {
-        CurrentPlayer = player;
+        _players.Add(player);
     }
 }
