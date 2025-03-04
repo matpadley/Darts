@@ -33,5 +33,7 @@ public class PlayerTests
         var player2 = new Player("myName");
         
         Assert.That(player1.Equals(player2));
+        
+        Assert.That(player1.Id, Is.Not.EqualTo(Guid.Empty));
     }
 }
