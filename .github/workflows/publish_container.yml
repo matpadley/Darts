@@ -24,7 +24,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u matpadley --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/matpadley/darts:${{ github.event.release.tag_name }} .
+        run: docker build -t ghcr.io/matpadley/darts:${{ inputs.tag_name }} .
 
       - name: Push Docker image
-        run: docker push ghcr.io/matpadley/darts:${{ github.event.release.tag_name }}
+        run: docker push ghcr.io/matpadley/darts:${{ inputs.tag_name }}
