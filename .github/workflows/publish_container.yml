@@ -27,7 +27,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u matpadley --password-stdin
 
       - name: Build Docker image
-        run: docker build --platform linux/arm64,linux/arm/v8 -t ghcr.io/matpadley/dartsscorer_web:${{ inputs.tag_name }} .
+        run: docker buildx --platform linux/arm64,linux/arm/v8 -t ghcr.io/matpadley/dartsscorer_web:${{ inputs.tag_name }} .
 
       - name: Push Docker image
         run: docker push ghcr.io/matpadley/dartsscorer_web:${{ inputs.tag_name }}
