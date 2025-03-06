@@ -4,7 +4,7 @@ name: Publish Docker Package
 on:
   workflow_dispatch:
     inputs:
-      tag:
+      tag_name:
         description: 'Tag to publish'
         required: true
         default: 'latest'
@@ -19,12 +19,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: ${{ inputs.tag_name }}
+
         
       - name: Log in to GitHub Docker registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u matpadley --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/matpadley/darts:${{ github.event.release.tag_name }} .
+        run: docker build -t ghcr.io/matpadley/dartsscorer_web:${{ inputs.tag_name }} .
 
       - name: Push Docker image
-        run: docker push ghcr.io/matpadley/darts:${{ github.event.release.tag_name }}
+        run: docker push ghcr.io/matpadley/dartsscorer_web:${{ inputs.tag_name }}
