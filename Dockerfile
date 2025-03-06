@@ -30,7 +30,6 @@ WORKDIR /app
 COPY --from=build /app/out .
 
 # Expose the port
-# Expose the port
 EXPOSE 5000
 
 # Set the environment variable to specify the port
