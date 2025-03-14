@@ -11,15 +11,15 @@ public class RoundTheBoardPlayer(string name) : MatchPlayer(new Player.Player(na
     
     public override void UpdateRequiredBoardNumber(ThrowScore newThrow)
     {
-        if (newThrow.NumberScore == RequiredBoardNumber && !HasWon && WinningNumber != RequiredBoardNumber)
+        if (newThrow.Score == WinningNumber && RequiredBoardNumber == 20)
+        {
+            HasWon = true;
+        }
+        else if (newThrow.NumberScore == RequiredBoardNumber && !HasWon && WinningNumber != RequiredBoardNumber)
         {
             var nextNumber = newThrow.Score + 1;
             RequiredBoardNumber = nextNumber > 20 ? RequiredBoardNumber : nextNumber;
             HasWon = newThrow.Score == WinningNumber;
-        }
-        else if (newThrow.NumberScore == WinningNumber && RequiredBoardNumber == 20)
-        {
-            HasWon = true;
         }
     }
 
