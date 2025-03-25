@@ -2,7 +2,7 @@ using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Player;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace DartsScorer.Web.Services;
+namespace DartsScorer.Web.Services.Development;
 
 public interface IRoundTheBoardService
 {

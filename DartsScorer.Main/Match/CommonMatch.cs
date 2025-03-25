@@ -1,9 +1,15 @@
 using DartsScorer.Main.Player;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
+
     public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
     public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
     public abstract DartsMatchType DartsMatchType { get; }

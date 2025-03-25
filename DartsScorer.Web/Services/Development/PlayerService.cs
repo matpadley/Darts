@@ -2,20 +2,20 @@ using DartsScorer.Main.Player;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace DartsScorer.Web.Services;
+namespace DartsScorer.Web.Services.Development;
 
 public interface IPlayerService
 {
     IList<Player>? GetPlayers();
     
-    void Add(String name);
+    void Add(string name);
 
     void Delete(string name);
 
     void Edit(string oldName, string name);
     
     IList<SelectListItem> GetPLayersForDropDown();
-    bool CheckPlayerExisits(string playerName);
+    bool CheckPlayerExists(string name);
 }
 
 public class PlayerService: IPlayerService
@@ -41,7 +41,7 @@ public class PlayerService: IPlayerService
         // if the players list is null create a new list
         var players = _cache.Get("players") as List<Player> ?? new List<Player>();
 
-        if (CheckPlayerExisits(name)) return;
+        if (CheckPlayerExists(name)) return;
         var player = new Player(name);
         
         // add the player to the list
@@ -91,8 +91,8 @@ public class PlayerService: IPlayerService
         return players.Select(p => new SelectListItem(p.Name, p.Name)).ToList();
     }
 
-    public bool CheckPlayerExisits(string playerName)
+    public bool CheckPlayerExists(string name)
     {
-        return GetPlayers().Any(player => player.Name == playerName);
+        return GetPlayers().Any(player => player.Name == name);
     }
 }
