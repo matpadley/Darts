@@ -10,7 +10,7 @@ public abstract class CommonMatch(MatchConfiguration config)
     public abstract void StartMatch();
 
     private List<MatchPlayer> _players = [];
-    public MatchConfiguration Configuration { get; set; } = config;
+    public MatchConfiguration Configuration { get; set; }
     public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
     public MatchPlayer? Winner => Players.FirstOrDefault(f => f.Finished());
     public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();

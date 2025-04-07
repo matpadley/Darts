@@ -40,7 +40,7 @@ public class RoundTheBoardService : IRoundTheBoardService
             return (existingMatch as Match)!;
         }
         
-        var match = new Match(new MatchConfiguration());
+        var match = new Match(_matchConfiguration);
         _cache.Set("currentMatch", match);
         return match;
     }
