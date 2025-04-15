@@ -71,10 +71,10 @@ public class MongoPlayerService : IPlayerService
         }
     }
 
-    public IList<SelectListItem> GetPLayersForDropDown()
+    public IList<SelectListItem> GetPlayersForDropDown()
     {
         var players = GetPlayers();
-        return players.Select(player => new SelectListItem(player.Name, player.Name)).ToList();
+        return players?.Select(player => new SelectListItem(player.Name, player.Name)).ToList() ?? new List<SelectListItem>();
     }
 
     public bool CheckPlayerExists(string name)

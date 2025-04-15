@@ -13,6 +13,6 @@ public interface IPlayerService
 
     void Edit(string oldName, string name);
     
-    IList<SelectListItem> GetPLayersForDropDown();
+    IList<SelectListItem> GetPlayersForDropDown();
     bool CheckPlayerExists(string name);
 }
