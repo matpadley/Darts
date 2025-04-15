@@ -6,7 +6,6 @@ namespace DartsScorer.Main.Player;
 /// <summary>
 /// Represents a player in the darts scorer application.
 /// </summary>
-[BsonIgnoreExtraElements]
 public class Player(string name)
 {
     /// <summary>
