@@ -18,7 +18,7 @@ public class Player(string name)
     /// <summary>
     /// Gets the name of the player.
     /// </summary>
-    public string Name { get; } = name;
+    public string Name { get; set; } = name;
     
     /// <summary>
     /// Determines whether the specified object is equal to the current player.
