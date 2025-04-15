@@ -1,6 +1,8 @@
 using DartsScorer.Web.Services;
 using DartsScorer.Web.Services.Development;
 using MongoDB.Driver;
+using Serilog;
+using Serilog.Sinks.MongoDB;
 
 /// <summary>
 /// Entry point for the Darts Scorer Web application.
@@ -8,6 +10,13 @@ using MongoDB.Driver;
 /// </summary>
 /// <param name="args">Command-line arguments.</param>
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.MongoDB(builder.Configuration["MongoDB:ConnectionString"], collectionName: "Logs")
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -42,14 +51,17 @@ app.Use(async (context, next) =>
     }
     catch (Exception ex)
     {
-        // Log the exception (you can replace this with a logging framework)
-        Console.Error.WriteLine($"Unhandled exception: {ex.Message}\n{ex.StackTrace}");
+        // Log the exception using Serilog
+        Log.Error(ex, "Unhandled exception occurred");
 
         // Set the response status code and content
         context.Response.StatusCode = 500;
         await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
     }
 });
+
+// Ensure Serilog is flushed on application shutdown
+app.Lifetime.ApplicationStopped.Register(Log.CloseAndFlush);
 
 //app.UseAuthorization();
 
