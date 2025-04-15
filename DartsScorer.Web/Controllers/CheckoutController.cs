@@ -28,6 +28,9 @@ public class CheckoutController : Controller
         }
         catch (Exception e)
         {
+            // Log the exception details
+            Console.Error.WriteLine($"Error occurred: {e.Message}\n{e.StackTrace}");
+            
             ViewBag.Exception = e;
             return View("NoCheckout");
         }

@@ -25,7 +25,7 @@ public class X01ControllerTests
         // Assert
         Assert.NotNull(result);
         Assert.NotNull(result.ViewData["PlayerList"]);
-        Assert.IsType<List<string>>(result.ViewData["PlayerList"]);
+        Assert.IsType<List<SelectListItem>>(result.ViewData["PlayerList"]);
     }
 
     [Fact]

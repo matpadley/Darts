@@ -14,7 +14,11 @@ public class PlayerControllerTests
     {
         // Arrange
         var mockPlayerService = new Mock<IPlayerService>();
-        mockPlayerService.Setup(s => s.GetPlayers()).Returns(new List<string> { "Player 1", "Player 2" });
+        mockPlayerService.Setup(s => s.GetPlayers()).Returns(new List<Player>
+        {
+            new Player { Name = "Player 1" },
+            new Player { Name = "Player 2" }
+        });
 
         var controller = new PlayerController(mockPlayerService.Object);
 
@@ -23,7 +27,11 @@ public class PlayerControllerTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.IsType<List<string>>(result.Model);
+        Assert.IsType<List<Player>>(result.Model);
+        var model = result.Model as List<Player>;
+        Assert.Equal(2, model.Count);
+        Assert.Equal("Player 1", model[0].Name);
+        Assert.Equal("Player 2", model[1].Name);
     }
 
     [Fact]
