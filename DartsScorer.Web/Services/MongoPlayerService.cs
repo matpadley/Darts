@@ -47,11 +47,7 @@ public class MongoPlayerService : IPlayerService
     {
         var collection = _database.GetCollection<Player>("players");
 
-        if (CheckPlayerExists(name))
-        {
-            throw new InvalidOperationException($"A player with the name '{name}' already exists.");
-        }
-
+        if (CheckPlayerExists(name)) return;
         var newPlayer = new Player(name);
         collection.InsertOne(newPlayer);
     }

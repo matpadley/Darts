@@ -19,7 +19,7 @@ public abstract class CommonMatch
     [BsonElement("DartsMatchType")]
     public abstract DartsMatchType DartsMatchType { get; }
 
-    [BsonIgnore]
+    [BsonElement("Players")]
     private List<MatchPlayer> _players = new();
     
     [BsonElement("Name")]
@@ -31,7 +31,7 @@ public abstract class CommonMatch
     [BsonElement("CurrentPlayer")]
     public Player.Player? CurrentPlayer { get; private set; }
 
-    [BsonElement("Players")]
+    [BsonIgnore]
     public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();
 
     public abstract void StartMatch();
