@@ -12,9 +12,9 @@ using Serilog.Sinks.MongoDB;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure Serilog
-Log.Logger = new LoggerConfiguration()
-    .WriteTo.MongoDB(builder.Configuration["MongoDB:ConnectionString"], collectionName: "Logs")
-    .CreateLogger();
+//Log.Logger = new LoggerConfiguration()
+//    .WriteTo.MongoDB(builder.Configuration["MongoDB:ConnectionString"], collectionName: "Logs")
+//    .CreateLogger();
 
 builder.Host.UseSerilog();
 
