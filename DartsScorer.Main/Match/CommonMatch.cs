@@ -11,7 +11,7 @@ public abstract class CommonMatch
     public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
 
     public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
-    public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
+    public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished())!;
     public abstract DartsMatchType DartsMatchType { get; }
 
     private  List<Player.MatchPlayer> _players = [];
