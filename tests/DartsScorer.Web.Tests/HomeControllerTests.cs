@@ -1,13 +1,13 @@
 using DartsScorer.Web.Controllers;
 using DartsScorer.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using Xunit;
+using NUnit.Framework;
 
 namespace DartsScorer.Web.Tests;
 
 public class HomeControllerTests
 {
-    [Fact]
+    [Test]
     public void Index_ReturnsViewResult()
     {
         // Arrange
@@ -17,10 +17,10 @@ public class HomeControllerTests
         var result = controller.Index();
 
         // Assert
-        Assert.IsType<ViewResult>(result);
+        Assert.IsInstanceOf<ViewResult>(result);
     }
 
-    [Fact]
+    [Test]
     public void Privacy_ReturnsViewResult()
     {
         // Arrange
@@ -30,10 +30,10 @@ public class HomeControllerTests
         var result = controller.Privacy();
 
         // Assert
-        Assert.IsType<ViewResult>(result);
+        Assert.IsInstanceOf<ViewResult>(result);
     }
 
-    [Fact]
+    [Test]
     public void Error_ReturnsViewResultWithErrorViewModel()
     {
         // Arrange
@@ -43,7 +43,7 @@ public class HomeControllerTests
         var result = controller.Error() as ViewResult;
 
         // Assert
-        Assert.NotNull(result);
-        Assert.IsType<ErrorViewModel>(result.Model);
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOf<ErrorViewModel>(result.Model);
     }
 }

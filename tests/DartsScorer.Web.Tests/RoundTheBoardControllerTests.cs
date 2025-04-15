@@ -3,13 +3,13 @@ using DartsScorer.Web.Models;
 using DartsScorer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Xunit;
+using NUnit.Framework;
 
 namespace DartsScorer.Web.Tests;
 
 public class RoundTheBoardControllerTests
 {
-    [Fact]
+    [Test]
     public void Index_ReturnsViewResultWithPlayerList()
     {
         // Arrange
@@ -23,12 +23,12 @@ public class RoundTheBoardControllerTests
         var result = controller.Index(false) as ViewResult;
 
         // Assert
-        Assert.NotNull(result);
-        Assert.NotNull(result.ViewData["PlayerList"]);
-        Assert.IsType<IList<SelectListItem>>(result.ViewData["PlayerList"]);
+        Assert.IsNotNull(result);
+        Assert.IsNotNull(result.ViewData["PlayerList"]);
+        Assert.IsInstanceOf<IList<SelectListItem>>(result.ViewData["PlayerList"]);
     }
 
-    [Fact]
+    [Test]
     public void AddPlayer_CallsServicesAndRedirects()
     {
         // Arrange
@@ -43,11 +43,11 @@ public class RoundTheBoardControllerTests
         // Assert
         mockMatchService.Verify(s => s.AddPlayer("New Player"), Times.Once);
         mockPlayerService.Verify(s => s.Add("New Player"), Times.Once);
-        Assert.NotNull(result);
-        Assert.Equal("Index", result.ActionName);
+        Assert.IsNotNull(result);
+        Assert.AreEqual("Index", result.ActionName);
     }
 
-    [Fact]
+    [Test]
     public void StartMatch_CallsServiceAndRedirects()
     {
         // Arrange
@@ -61,7 +61,7 @@ public class RoundTheBoardControllerTests
 
         // Assert
         mockMatchService.Verify(s => s.StartMatch(), Times.Once);
-        Assert.NotNull(result);
-        Assert.Equal("Index", result.ActionName);
+        Assert.IsNotNull(result);
+        Assert.AreEqual("Index", result.ActionName);
     }
 }

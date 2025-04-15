@@ -3,13 +3,13 @@ using DartsScorer.Web.Models.UpdateModels;
 using DartsScorer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Xunit;
+using NUnit.Framework;
 
 namespace DartsScorer.Web.Tests;
 
 public class PlayerControllerTests
 {
-    [Fact]
+    [Test]
     public void Index_ReturnsViewResultWithPlayers()
     {
         // Arrange
@@ -26,15 +26,15 @@ public class PlayerControllerTests
         var result = controller.Index() as ViewResult;
 
         // Assert
-        Assert.NotNull(result);
-        Assert.IsType<List<Player>>(result.Model);
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOf<List<Player>>(result.Model);
         var model = result.Model as List<Player>;
-        Assert.Equal(2, model.Count);
-        Assert.Equal("Player 1", model[0].Name);
-        Assert.Equal("Player 2", model[1].Name);
+        Assert.AreEqual(2, model.Count);
+        Assert.AreEqual("Player 1", model[0].Name);
+        Assert.AreEqual("Player 2", model[1].Name);
     }
 
-    [Fact]
+    [Test]
     public void AddPlayer_CallsServiceAndRedirects()
     {
         // Arrange
@@ -47,11 +47,11 @@ public class PlayerControllerTests
 
         // Assert
         mockPlayerService.Verify(s => s.Add("New Player"), Times.Once);
-        Assert.NotNull(result);
-        Assert.Equal("Index", result.ActionName);
+        Assert.IsNotNull(result);
+        Assert.AreEqual("Index", result.ActionName);
     }
 
-    [Fact]
+    [Test]
     public void DeletePlayer_CallsServiceAndRedirects()
     {
         // Arrange
@@ -66,11 +66,11 @@ public class PlayerControllerTests
 
         // Assert
         mockPlayerService.Verify(s => s.Delete("Player 1"), Times.Once);
-        Assert.NotNull(result);
-        Assert.Equal("Index", result.ActionName);
+        Assert.IsNotNull(result);
+        Assert.AreEqual("Index", result.ActionName);
     }
 
-    [Fact]
+    [Test]
     public void EditPlayer_CallsServiceAndRedirects()
     {
         // Arrange
@@ -85,7 +85,7 @@ public class PlayerControllerTests
 
         // Assert
         mockPlayerService.Verify(s => s.Edit("Player 1", "Player 2"), Times.Once);
-        Assert.NotNull(result);
-        Assert.Equal("Index", result.ActionName);
+        Assert.IsNotNull(result);
+        Assert.AreEqual("Index", result.ActionName);
     }
 }

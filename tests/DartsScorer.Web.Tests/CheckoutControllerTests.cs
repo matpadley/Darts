@@ -3,13 +3,13 @@ using DartsScorer.Web.Models;
 using DartsScorer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Xunit;
+using NUnit.Framework;
 
 namespace DartsScorer.Web.Tests;
 
 public class CheckoutControllerTests
 {
-    [Fact]
+    [Test]
     public void Index_ReturnsViewResult()
     {
         // Arrange
@@ -20,10 +20,10 @@ public class CheckoutControllerTests
         var result = controller.Index();
 
         // Assert
-        Assert.IsType<ViewResult>(result);
+        Assert.IsInstanceOf<ViewResult>(result);
     }
 
-    [Fact]
+    [Test]
     public void CheckoutResult_ValidScore_ReturnsViewWithModel()
     {
         // Arrange
@@ -37,13 +37,13 @@ public class CheckoutControllerTests
         var result = controller.CheckoutResult(170) as ViewResult;
 
         // Assert
-        Assert.NotNull(result);
-        Assert.IsType<CheckoutResultModel>(result.Model);
+        Assert.IsNotNull(result);
+        Assert.IsInstanceOf<CheckoutResultModel>(result.Model);
         var model = result.Model as CheckoutResultModel;
-        Assert.Equal(170, model.Score);
+        Assert.AreEqual(170, model.Score);
     }
 
-    [Fact]
+    [Test]
     public void CheckoutResult_Exception_ReturnsNoCheckoutView()
     {
         // Arrange
@@ -56,7 +56,7 @@ public class CheckoutControllerTests
         var result = controller.CheckoutResult(170) as ViewResult;
 
         // Assert
-        Assert.NotNull(result);
-        Assert.Equal("NoCheckout", result.ViewName);
+        Assert.IsNotNull(result);
+        Assert.AreEqual("NoCheckout", result.ViewName);
     }
 }
