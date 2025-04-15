@@ -7,25 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddMemoryCache();
+builder.Services.AddScoped<IRoundTheBoardService, MongoRoundTheBoardService>();
+builder.Services.AddScoped<IPlayerService, MongoPlayerService>();
+builder.Services.AddScoped<IX01Service, MongoX01Service>();
 
-if (!builder.Environment.IsDevelopment())
-{
-    builder.Services.AddScoped<IRoundTheBoardService, MongoRoundTheBoardService>();
-    builder.Services.AddScoped<IPlayerService, MongoPlayerService>();
-    builder.Services.AddScoped<IX01Service, MongoX01Service>();
-} else {
-    builder.Services.AddScoped<IRoundTheBoardService, RoundTheBoardService>();
-    builder.Services.AddScoped<IPlayerService, PlayerService>();
-    builder.Services.AddScoped<IX01Service, X01Service>();
-}
-
-// Add MongoDB configuration for production
-if (!builder.Environment.IsDevelopment())
-{
-    var mongoSettings = builder.Configuration.GetSection("MongoDB");
-    var mongoClient = new MongoClient(mongoSettings["ConnectionString"]);
-    builder.Services.AddSingleton<IMongoClient>(mongoClient);
-}
+var mongoSettings = builder.Configuration.GetSection("MongoDB");
+var mongoClient = new MongoClient(mongoSettings["ConnectionString"]);
+builder.Services.AddSingleton<IMongoClient>(mongoClient);
 
 var app = builder.Build();
 

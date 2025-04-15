@@ -55,7 +55,7 @@ public class MongoX01Service : IX01Service
             return;
         }
 
-        match.AddPlayer(new X01Player(playerName));
+        match.AddPlayer(new X01Player(playerName, match.RequiredScore));
         _matchCollection.ReplaceOne(m => m.Id == match.Id, match);
     }
 
