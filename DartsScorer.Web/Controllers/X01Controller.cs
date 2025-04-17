@@ -130,8 +130,10 @@ public class X01Controller : Controller
         }
         catch (Exception ex)
         {
+            var sanitizedMultiplier = model?.Multiplier?.Replace("\n", "").Replace("\r", "");
+            var sanitizedThrowValue = model?.ThrowValue?.Replace("\n", "").Replace("\r", "");
             _logger.LogError(ex, "Error occurred while processing throw: {MultiplierValue} {ThrowValue}", 
-                model?.Multiplier, model?.ThrowValue);
+                sanitizedMultiplier, sanitizedThrowValue);
             
             if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
