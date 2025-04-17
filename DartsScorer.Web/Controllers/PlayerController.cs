@@ -59,7 +59,8 @@ public class PlayerController : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occurred while adding player: {Name}", name);
+            var sanitizedName = name.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
+            _logger.LogError(ex, "Error occurred while adding player: {Name}", sanitizedName);
             TempData["ErrorMessage"] = "Failed to add player";
             return RedirectToAction("Index");
         }
@@ -88,7 +89,8 @@ public class PlayerController : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occurred while deleting player: {Name}", model?.Name);
+            var sanitizedModelName = model?.Name?.Replace(Environment.NewLine, "").Replace("\n", "").Replace("\r", "");
+            _logger.LogError(ex, "Error occurred while deleting player: {Name}", sanitizedModelName);
             return StatusCode(500, "Failed to delete player");
         }
     }
