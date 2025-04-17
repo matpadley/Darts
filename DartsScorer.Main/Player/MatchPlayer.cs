@@ -4,22 +4,50 @@ using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Player;
 
+/// <summary>
+/// Represents a player participating in a match.
+/// </summary>
 public abstract class MatchPlayer(Player player) : Player(player.Name)
 {  
+    /// <summary>
+    /// Gets or sets the current leg of the match for the player.
+    /// </summary>
     public Leg? CurrentLeg;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the player has won the match.
+    /// </summary>
     public bool HasWon { get; set; }
     
+    /// <summary>
+    /// Determines whether the player has finished the match.
+    /// </summary>
+    /// <returns>True if the player has finished; otherwise, false.</returns>
     public abstract bool Finished();
 
+    /// <summary>
+    /// Updates the required board number based on the new throw.
+    /// </summary>
+    /// <param name="newThrow">The new throw score.</param>
     public abstract void UpdateRequiredBoardNumber(ThrowScore newThrow);
     
+    /// <summary>
+    /// Gets or sets the collection of legs played by the player.
+    /// </summary>
     public ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
+    /// <summary>
+    /// Returns the legs ordered by creation date in descending order.
+    /// </summary>
+    /// <returns>An ordered enumerable of legs.</returns>
     public IOrderedEnumerable<Leg?> OrderedDescendingLegs()
     {
         return Legs.OrderByDescending(leg => leg!.CreationDate.Ticks);
     }
+
+    /// <summary>
+    /// Ends the current throw and adds the current leg to the collection of legs.
+    /// </summary>
     public void EndThrow()
     {
         if (CurrentLeg != null)
@@ -29,6 +57,10 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
         CurrentLeg = null;
     }
     
+    /// <summary>
+    /// Processes a dart throw based on the input string.
+    /// </summary>
+    /// <param name="dartThrow">The string representation of the dart throw.</param>
     public void Throw(string dartThrow)
     {
         if (int.TryParse(dartThrow, out _)) dartThrow = "S" + dartThrow;
@@ -88,6 +120,11 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
         Throw(boardScore, boardMultiplier);
     }
     
+    /// <summary>
+    /// Processes a dart throw based on the board score and multiplier.
+    /// </summary>
+    /// <param name="boardScore">The board score of the throw.</param>
+    /// <param name="multiplier">The multiplier of the throw.</param>
     public void Throw(BoardScore boardScore, Multiplier multiplier)
     {
         if (HasWon)
@@ -119,6 +156,4 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
                 break;
         }
     }
-    
-    
 }

@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace DartsScorer.Tests.Team;
 
 public class TeamTests
@@ -24,7 +26,7 @@ public class TeamTests
         team.AddNewPlayer(player);
 
         Assert.That(team.Players.Count, Is.EqualTo(1));
-        Assert.That(team.Players[0].Name, Is.EqualTo(player.Name));
+        Assert.That(team.Players.First().Name, Is.EqualTo(player.Name));
     }
 
     [Test]
@@ -47,8 +49,9 @@ public class TeamTests
         team.AddNewPlayer(player2);
 
         Assert.That(team.Count, Is.EqualTo(2));
-        Assert.That(team.Players[0].Name, Is.EqualTo(player1.Name));
-        Assert.That(team.Players[1].Name, Is.EqualTo(player2.Name));
+        var players = team.Players.ToList();
+        Assert.That(players[0].Name, Is.EqualTo(player1.Name));
+        Assert.That(players[1].Name, Is.EqualTo(player2.Name));
     }
 
     [Test]
@@ -61,6 +64,6 @@ public class TeamTests
         team.AddNewPlayer(player2);
 
         Assert.That(team.Count, Is.EqualTo(1));
-        Assert.That(team.Players[0].Name, Is.EqualTo(player1.Name));
+        Assert.That(team.Players.First().Name, Is.EqualTo(player1.Name));
     }
 }

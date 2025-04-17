@@ -1,24 +1,47 @@
 using DartsScorer.Main.Player;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace DartsScorer.Main.Match;
 
 public abstract class CommonMatch
 {
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; } = ObjectId.GenerateNewId().ToString();
+
+    [BsonElement("IsMatchComplete")]
     public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
-    public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
+
+    [BsonElement("Winner")]
+    public MatchPlayer? Winner => Players.FirstOrDefault(f => f.Finished());
+
+    [BsonElement("DartsMatchType")]
     public abstract DartsMatchType DartsMatchType { get; }
 
-    private  List<Player.MatchPlayer> _players = [];
+    [BsonElement("Players")]
+    private List<MatchPlayer> _players = new();
     
+    [BsonElement("Name")]
     public abstract string Name { get; }
+
+    [BsonElement("MatchInProgress")]
+    public bool MatchInProgress { get; set; }
+
+    [BsonElement("CurrentPlayer")]
+    public Player.Player? CurrentPlayer { get; private set; }
+
+    [BsonIgnore]
+    public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();
 
     public abstract void StartMatch();
 
-    public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();
+    public bool HasPlayer(string playerName)
+    {
+        return _players.Any(p => p.Name == playerName);
+    }
     
-    public bool MatchInProgress { get; set; }
-
-    public Player.Player? CurrentPlayer { get; private set; }
+    public int PlayerCount => _players.Count;
 
     public void AddPlayer(Player.MatchPlayer player)
     {

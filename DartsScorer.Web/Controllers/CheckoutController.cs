@@ -1,31 +1,36 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DartsScorer.Web.Models;
+using DartsScorer.Web.Services;
 
 namespace DartsScorer.Web.Controllers;
 
-public class CheckoutController() : Controller
+public class CheckoutController : Controller
 {
+    private readonly ICheckoutService _checkoutService;
+
+    public CheckoutController(ICheckoutService checkoutService)
+    {
+        _checkoutService = checkoutService;
+    }
+
     public IActionResult Index()
     {
         return View();
     }
-    
+
     public IActionResult CheckoutResult(int score)
     {
-        var calculator = new Main.Checkout.CheckoutCalculator();
         try
         {
-            var model = new CheckoutResultModel
-            {
-                Score = score,
-                Results = calculator.Calculate(score)
-            };
-        
+            var model = _checkoutService.GetCheckoutResult(score);
             return View(model);
         }
         catch (Exception e)
         {
+            // Log the exception details
+            Console.Error.WriteLine($"Error occurred: {e.Message}\n{e.StackTrace}");
+            
             ViewBag.Exception = e;
             return View("NoCheckout");
         }

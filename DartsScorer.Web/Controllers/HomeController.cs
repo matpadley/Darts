@@ -4,7 +4,7 @@ using DartsScorer.Web.Models;
 
 namespace DartsScorer.Web.Controllers;
 
-public class HomeController() : Controller
+public class HomeController : Controller
 {
     public IActionResult Index()
     {
