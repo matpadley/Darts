@@ -5,22 +5,54 @@ using DartsScorer.Main.Scoring;
 
 namespace DartsScorer.Main.Player;
 
+/// <summary>
+/// Represents a player participating in a darts match.
+/// This abstract class provides common functionality for different types of match players
+/// and must be extended by game-specific player implementations.
+/// </summary>
+/// <param name="player">The base player information</param>
 public abstract class MatchPlayer(Player player) : Player(player.Name)
 {  
+    /// <summary>
+    /// Gets or sets the current leg being played by this player.
+    /// </summary>
     public Leg? CurrentLeg;
 
+    /// <summary>
+    /// Gets or sets a value indicating whether this player has won the match.
+    /// </summary>
     public bool HasWon { get; set; }
     
+    /// <summary>
+    /// Determines whether this player has finished the match according to game-specific rules.
+    /// </summary>
+    /// <returns>true if the player has finished the match; otherwise, false</returns>
     public abstract bool Finished();
 
+    /// <summary>
+    /// Updates the player's required board number based on the latest throw.
+    /// Game-specific implementations determine how the score affects the player's progress.
+    /// </summary>
+    /// <param name="newThrow">The latest throw made by the player</param>
     public abstract void UpdateRequiredBoardNumber(ThrowScore newThrow);
     
+    /// <summary>
+    /// Gets or sets the collection of completed legs for this player.
+    /// </summary>
     public ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 
+    /// <summary>
+    /// Gets the player's legs ordered by creation date in descending order (newest first).
+    /// </summary>
+    /// <returns>An ordered collection of the player's legs</returns>
     public IOrderedEnumerable<Leg?> OrderedDescendingLegs()
     {
         return Legs.OrderByDescending(leg => leg!.CreationDate.Ticks);
     }
+
+    /// <summary>
+    /// Ends the current throw sequence, adding the current leg to the player's leg history.
+    /// </summary>
     public void EndThrow()
     {
         if (CurrentLeg != null)
@@ -30,6 +62,12 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
         CurrentLeg = null;
     }
     
+    /// <summary>
+    /// Records a throw using standard dart notation (e.g., "S20" for single 20, "D16" for double 16).
+    /// Parses the notation and calls the appropriate method with the corresponding board score and multiplier.
+    /// </summary>
+    /// <param name="dartThrow">A string representing the dart throw in standard notation</param>
+    /// <exception cref="InvalidThrowException">Thrown when the throw notation is invalid</exception>
     public void Throw(string dartThrow)
     {
         if (string.IsNullOrWhiteSpace(dartThrow))
@@ -132,6 +170,13 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
         Throw(boardScore, boardMultiplier);
     }
     
+    /// <summary>
+    /// Records a throw with the specified board score and multiplier.
+    /// Updates the current leg and the player's progress in the game.
+    /// </summary>
+    /// <param name="boardScore">The board score (1-20, BullsEye, etc.)</param>
+    /// <param name="multiplier">The multiplier (Single, Double, Treble)</param>
+    /// <exception cref="InvalidThrowException">Thrown when there is an error processing the throw</exception>
     public void Throw(BoardScore boardScore, Multiplier multiplier)
     {
         if (HasWon)
