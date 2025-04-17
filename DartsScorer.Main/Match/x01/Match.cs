@@ -8,7 +8,7 @@ public sealed class Match : CommonMatch
     public int RequiredScore { get; private set; }
     public override DartsMatchType DartsMatchType => DartsMatchType.X01;
 
-    public Match(int requiredScore = 5)
+    public Match(MatchConfiguration config, int requiredScore = 5) : base(config)
     {
         if (requiredScore < 1 || requiredScore > 5)
         {

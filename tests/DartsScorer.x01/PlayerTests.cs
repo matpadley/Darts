@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.x01;
 using Match = DartsScorer.Main.Match.x01.Match;
 
@@ -16,7 +17,7 @@ public class PlayerTests
     [Test]
     public void X01_Can_Add_Player()
     {
-        var x01Match = new Match();
+        var x01Match = new Match(new MatchConfiguration());
 
         x01Match.AddPlayer(new X01Player("Fancy New Player Name", 501));
         
@@ -26,7 +27,7 @@ public class PlayerTests
     [Test]
     public void X01_Match_Can_Get_Current_Player()
     {
-        var x01Match = new Match();
+        var x01Match = new Match(new MatchConfiguration());
 
         var player = new X01Player("Fancy New Player Name", 501);
 

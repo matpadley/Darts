@@ -1,3 +1,4 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Player;
 
@@ -16,7 +17,7 @@ public class PlayerTests
     [Test]
     public void RoundTheBoard_Can_Add_Player()
     {
-        var roundTheBoard = new Match();
+        var roundTheBoard = new Match(new MatchConfiguration());
 
         var roundTheBoardPlayer = new RoundTheBoardPlayer("Fancy New Player Name");
         
@@ -30,7 +31,10 @@ public class PlayerTests
     {
         var player1 = new Player("myName");
         var player2 = new Player("myName");
-        
-        Assert.That(player1.Equals(player2));
+        Assert.Multiple(() =>
+        {
+            Assert.That(player1.Equals(player2));
+            Assert.That(player1.Id, Is.Not.EqualTo(Guid.Empty));
+        });
     }
 }

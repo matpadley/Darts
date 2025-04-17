@@ -6,13 +6,12 @@ namespace DartsScorer.Main.Player;
 
 public abstract class MatchPlayer(Player player) : Player(player.Name)
 {  
+    public abstract bool Finished();
+    public abstract void UpdateRequiredBoardNumber(ThrowScore newThrow);
+    
     public Leg? CurrentLeg;
 
     public bool HasWon { get; set; }
-    
-    public abstract bool Finished();
-
-    public abstract void UpdateRequiredBoardNumber(ThrowScore newThrow);
     
     public ICollection<Leg?> Legs { get; set; } = new List<Leg?>();
 

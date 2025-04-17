@@ -1,6 +1,8 @@
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.x01;
 using DartsScorer.Main.Player;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 
 namespace DartsScorer.Web.Services;
 
@@ -15,10 +17,12 @@ public interface IX01Service
 
 public class X01Service : IX01Service
 {
+    private readonly MatchConfiguration _matchConfiguration;
     private readonly IMemoryCache _cache;
     
-    public X01Service(IMemoryCache cache)
+    public X01Service(IOptions<MatchConfiguration> matchConfiguration,IMemoryCache cache)
     {
+        _matchConfiguration = matchConfiguration.Value;
         _cache = cache;
     }
     
@@ -27,7 +31,7 @@ public class X01Service : IX01Service
         if (reset)
         {
             _cache.Remove("currentMatch");
-            _cache.Set("currentMatch", new Match(requiredScore));
+            _cache.Set("currentMatch", new Match(_matchConfiguration, requiredScore));
         }
         
         var existingMatch = _cache.Get("currentMatch");
@@ -37,7 +41,7 @@ public class X01Service : IX01Service
             return existingMatch as Match;
         }
         
-        var match = new Match();
+        var match = new Match(_matchConfiguration);
         _cache.Set("currentMatch", match);
         return match;
     }

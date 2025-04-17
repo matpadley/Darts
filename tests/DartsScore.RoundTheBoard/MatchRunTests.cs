@@ -1,4 +1,5 @@
 using DartsScore.RoundTheBoard.TestCases;
+using DartsScorer.Main.Match;
 using DartsScorer.Main.Match.RoundTheBoard;
 using DartsScorer.Main.Scoring;
 using static System.Enum;
@@ -12,7 +13,14 @@ public class MatchRunTests
     [SetUp]
     public void Setup()
     {
-        _match = new Match();
+        _match = new Match(new MatchConfiguration());
+    }
+
+    [Test]
+    public void RoundTheBoard_Configuration()
+    {
+        Assert.That(_match.Configuration.NumberOfLegs, Is.EqualTo(1));
+        Assert.That(_match.Configuration.NumberOfSets, Is.EqualTo(1));
     }
 
     [Test, TestCaseSource(nameof(_throwCases))]
@@ -277,14 +285,17 @@ public class MatchRunTests
 
         var player_throw_three = _match.CurrentPlayer as RoundTheBoardPlayer;
         player_throw_three.Throw(BoardScore.Five, Multiplier.Single);
-        Assert.That(player_throw_three.Legs.Last().IsComplete);
         
-        Assert.That(player_throw_three.Legs.Count == 1);
-        Assert.That(player_throw_three.Legs.First().Throws.Count == 3);
-        Assert.That(player_throw_three.Legs.First().Throws.ElementAt(0).NumberScore == 6);
-        Assert.That(player_throw_three.Legs.First().Throws.ElementAt(1).NumberScore == 5);
-        Assert.That(player_throw_three.Legs.First().Throws.ElementAt(2).NumberScore == 5);
-        
+        Assert.Multiple(() =>
+        {
+            Assert.That(player_throw_three.Legs.Last().IsComplete);
+            Assert.That(player_throw_three.Legs.Count == 1);
+            Assert.That(player_throw_three.Legs.First().Throws.Count == 3);
+            Assert.That(player_throw_three.Legs.First().Throws.ElementAt(0).NumberScore == 6);
+            Assert.That(player_throw_three.Legs.First().Throws.ElementAt(1).NumberScore == 5);
+            Assert.That(player_throw_three.Legs.First().Throws.ElementAt(2).NumberScore == 5);
+        });
+
         _match.UpdatePlayer(player_throw_three);
         
         Assert.That(_match.CurrentPlayer.Equals(player2));

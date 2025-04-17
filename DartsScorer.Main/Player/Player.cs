@@ -1,10 +1,12 @@
+using System.Security.Cryptography.X509Certificates;
+
 namespace DartsScorer.Main.Player;
 
 public class Player(string name)
 {
     public string Name { get; } = name;
-    
-    // add an equality override to check on the name
+    public Guid Id { get; } = Guid.NewGuid();
+
     public override bool Equals(object? obj)
     {
         if (obj == null || GetType() != obj.GetType())

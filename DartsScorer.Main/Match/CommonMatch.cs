@@ -2,29 +2,22 @@ using DartsScorer.Main.Player;
 
 namespace DartsScorer.Main.Match;
 
-public abstract class CommonMatch
+public abstract class CommonMatch(MatchConfiguration config)
 {
-    public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
-    public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished());
-    public abstract DartsMatchType DartsMatchType { get; }
-
-    private  List<Player.MatchPlayer> _players = [];
     
+    public abstract DartsMatchType DartsMatchType { get; }
     public abstract string Name { get; }
-
     public abstract void StartMatch();
 
+    private List<MatchPlayer> _players = [];
+    public MatchConfiguration Configuration { get; set; }
+    public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
+    public MatchPlayer? Winner => Players.FirstOrDefault(f => f.Finished());
     public IReadOnlyList<MatchPlayer> Players => _players.AsReadOnly();
-    
     public bool MatchInProgress { get; set; }
 
     public Player.Player? CurrentPlayer { get; private set; }
-
-    public void AddPlayer(Player.MatchPlayer player)
-    {
-        _players.Add(player);
-    }
-
+    
     protected bool CanStartMatch()
     {
         if (Players.Count == 0)
@@ -36,14 +29,16 @@ public abstract class CommonMatch
 
         return true;
     }
-    
-    
-    public void UpdatePlayer(Player.MatchPlayer player)
+    protected void SetCurrentPlayer(Player.Player player)
+    {
+        CurrentPlayer = player;
+    }
+    public void UpdatePlayer(MatchPlayer player)
     {
         var currentInd = _players.FindIndex(p => Equals(p, player));
         if (currentInd != -1)
         {
-            var updatedPlayers = new List<Player.MatchPlayer>(_players)
+            var updatedPlayers = new List<MatchPlayer>(_players)
             {
                 [currentInd] = player
             };
@@ -66,9 +61,8 @@ public abstract class CommonMatch
             CurrentPlayer = _players[nextInd];
         }
     }
-
-    protected void SetCurrentPlayer(Player.Player player)
+    public void AddPlayer(MatchPlayer player)
     {
-        CurrentPlayer = player;
+        _players.Add(player);
     }
 }

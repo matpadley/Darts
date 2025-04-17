@@ -2,7 +2,7 @@
 
 namespace DartsScorer.Main.Match.RoundTheBoard;
 
-public sealed class Match : CommonMatch
+public sealed class Match(MatchConfiguration config) : CommonMatch(config)
 {
     public override string Name => "Round The Board";
     public override DartsMatchType DartsMatchType => DartsMatchType.RoundTheBoard;

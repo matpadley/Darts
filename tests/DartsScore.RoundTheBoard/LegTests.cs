@@ -25,9 +25,11 @@ public class LegTests
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.Throw(BoardScore.One, Multiplier.Single);
         roundTheBoardPlayer.EndThrow();
-        
-        Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo( 2));
-        Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(1));
+        Assert.Multiple(() =>
+        {
+            Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo(2));
+            Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(1));
+        });
     }
 
     [Test]
@@ -41,8 +43,11 @@ public class LegTests
         roundTheBoardPlayer.Throw(BoardScore.Three, Multiplier.Single);
         roundTheBoardPlayer.EndThrow();
         
-        Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo( 4));
-        Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(1));
+        Assert.Multiple(() =>
+        {
+            Assert.That(roundTheBoardPlayer.RequiredBoardNumber, Is.EqualTo(4));
+            Assert.That(roundTheBoardPlayer.Legs.Count, Is.EqualTo(1));
+        });
     }
 
     [Test]

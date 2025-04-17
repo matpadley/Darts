@@ -6,8 +6,8 @@ namespace DartsScorer.Main.Match.x01;
 
 public class X01Player(string name, int winningNumber) : MatchPlayer(new Player.Player(name))
 {
-    private CheckoutCalculator _checkoutCalculator = new CheckoutCalculator();
-    public int WinningNumber { get; set; } = winningNumber;
+    private readonly CheckoutCalculator _checkoutCalculator = new();
+    public int WinningNumber { get; init; } = winningNumber;
 
     public int RemainingScore { get; private set; } = winningNumber;
     
