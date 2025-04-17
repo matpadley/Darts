@@ -20,12 +20,8 @@ public class Player(string name) : IEquatable<Player>
     /// <returns>true if the specified object has the same name as this player; otherwise, false</returns>
     public override bool Equals(object? obj)
     {
-        if (obj == null || GetType() != obj.GetType())
-        {
-            return false;
-        }
-
-        return Name == ((Player)obj).Name;
+        // Using pattern matching with type pattern and declaration pattern
+        return obj is Player other && Name == other.Name;
     }
 
     /// <summary>

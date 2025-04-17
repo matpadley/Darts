@@ -75,16 +75,17 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
             throw new InvalidThrowException("Throw cannot be empty");
         }
         
-        if (int.TryParse(dartThrow, out _)) dartThrow = "S" + dartThrow;
+        // Prepend "S" if the throw is just a number
+        dartThrow = dartThrow is var d && int.TryParse(d, out _) ? "S" + d : dartThrow;
         
-        if (dartThrow == "S25" || dartThrow == "S50")
+        // Using pattern matching with constant patterns
+        if (dartThrow is "S25" or "S50")
         {
-            Throw(dartThrow == "S25" ? BoardScore.OuterBull : BoardScore.BullsEye, Multiplier.Single);
+            Throw(dartThrow is "S25" ? BoardScore.OuterBull : BoardScore.BullsEye, Multiplier.Single);
             return;
         }
         
         var regEx = new Regex("^(S|D|T)(1[0-9]|[0-9]|20|25|50)$");
-        
         var regExMatch = regEx.Match(dartThrow);
         
         if (!regExMatch.Success)
@@ -101,8 +102,8 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
             throw new InvalidThrowException($"Invalid score: {scoreString}");
         }
         
-        // Check valid score range
-        if (score < 0 || score > 20 && score != 25 && score != 50)
+        // Using improved pattern matching with relational and logical patterns
+        if (score is < 0 or > 20 and not 25 and not 50)
         {
             throw new InvalidThrowException($"Score must be between 1 and 20, or 25 or 50, got: {score}");
         }
@@ -191,30 +192,43 @@ public abstract class MatchPlayer(Player player) : Player(player.Name)
         
         try
         {
-            switch (CurrentLeg?.NextThrow)
+            // Using pattern matching with switch expression and property pattern
+            _ = CurrentLeg?.NextThrow switch
             {
-                case 1:
-                    CurrentLeg.ThrowFirst(newThrow);
-                    UpdateRequiredBoardNumber(newThrow);
-                    if (HasWon) EndThrow();
-                    break;
-                case 2:
-                    CurrentLeg.ThrowSecond(newThrow);
-                    UpdateRequiredBoardNumber(newThrow);
-                    if (HasWon) EndThrow();
-                    break;
-                case 3:
-                    CurrentLeg.ThrowThird(newThrow);
-                    UpdateRequiredBoardNumber(newThrow);
-                    EndThrow(); 
-                    break;
-                default:
-                    throw new InvalidOperationException($"Invalid throw number: {CurrentLeg?.NextThrow}");
-            }
+                1 => ProcessFirstThrow(newThrow),
+                2 => ProcessSecondThrow(newThrow),
+                3 => ProcessThirdThrow(newThrow),
+                _ => throw new InvalidOperationException($"Invalid throw number: {CurrentLeg?.NextThrow}")
+            };
         }
         catch (Exception ex) when (ex is not DartsScorerException)
         {
             throw new InvalidThrowException("Error processing throw", ex);
         }
+    }
+    
+    // Helper methods to simplify the switch expression and improve readability
+    private bool ProcessFirstThrow(ThrowScore newThrow)
+    {
+        CurrentLeg!.ThrowFirst(newThrow);
+        UpdateRequiredBoardNumber(newThrow);
+        if (HasWon) EndThrow();
+        return true;
+    }
+    
+    private bool ProcessSecondThrow(ThrowScore newThrow)
+    {
+        CurrentLeg!.ThrowSecond(newThrow);
+        UpdateRequiredBoardNumber(newThrow);
+        if (HasWon) EndThrow();
+        return true;
+    }
+    
+    private bool ProcessThirdThrow(ThrowScore newThrow)
+    {
+        CurrentLeg!.ThrowThird(newThrow);
+        UpdateRequiredBoardNumber(newThrow);
+        EndThrow();
+        return true;
     }
 }

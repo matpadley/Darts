@@ -30,7 +30,8 @@ public class Leg : CommonLeg
     /// <exception cref="InvalidOperationException">Thrown when attempting to record the first throw after it has already been thrown</exception>
     public override void ThrowFirst(ThrowScore throwScore)
     {
-        if (NextThrow != 1)
+        // Using pattern matching with discard pattern
+        if (NextThrow is not 1)
         {
             throw new InvalidOperationException("First throw already thrown");
         }
@@ -47,7 +48,8 @@ public class Leg : CommonLeg
     /// <exception cref="InvalidOperationException">Thrown when attempting to record the second throw out of sequence</exception>
     public override void ThrowSecond(ThrowScore throwScore)
     {
-        if (NextThrow != 2)
+        // Using pattern matching with discard pattern
+        if (NextThrow is not 2)
         {
             throw new InvalidOperationException("Second can only be thrown on the next throw of 2");
         }
@@ -65,7 +67,8 @@ public class Leg : CommonLeg
     /// <exception cref="InvalidOperationException">Thrown when attempting to record the third throw out of sequence</exception>
     public override void ThrowThird(ThrowScore throwScore)
     {
-        if (NextThrow != 3)
+        // Using pattern matching with discard pattern
+        if (NextThrow is not 3)
         {
             throw new InvalidOperationException("Third can only be thrown on the next throw of 3");
         }

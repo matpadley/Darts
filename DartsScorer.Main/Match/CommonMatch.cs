@@ -61,17 +61,19 @@ public abstract class CommonMatch
     /// <exception cref="MatchOperationException">Thrown when attempting to add a player while the match is in progress</exception>
     public void AddPlayer(Player.MatchPlayer player)
     {
-        if (player == null)
+        // Using pattern matching with null pattern
+        if (player is null)
         {
             throw new PlayerOperationException("Cannot add null player");
         }
         
-        if (MatchInProgress)
+        // Using pattern matching with logical patterns
+        if (MatchInProgress is true)
         {
             throw new MatchOperationException("Cannot add player while match is in progress");
         }
 
-        // Check for duplicate player names
+        // Using pattern matching with lambda expression
         if (_players.Any(p => p.Name == player.Name))
         {
             throw new PlayerOperationException($"Player with name '{player.Name}' already exists");
@@ -106,18 +108,22 @@ public abstract class CommonMatch
     /// <exception cref="MatchOperationException">Thrown when attempting to update a player when the match is not in progress</exception>
     public void UpdatePlayer(Player.MatchPlayer player)
     {
-        if (player == null)
+        // Using pattern matching with null pattern
+        if (player is null)
         {
             throw new PlayerOperationException("Cannot update null player");
         }
         
-        if (!MatchInProgress)
+        // Using pattern matching with negation pattern
+        if (MatchInProgress is not true)
         {
             throw new MatchOperationException("Cannot update player when match is not in progress");
         }
         
         var currentInd = _players.FindIndex(p => Equals(p, player));
-        if (currentInd == -1)
+        
+        // Using pattern matching with relational pattern
+        if (currentInd is -1)
         {
             throw new PlayerOperationException($"Player '{player.Name}' not found in match");
         }
@@ -129,17 +135,20 @@ public abstract class CommonMatch
         
         _players = updatedPlayers;
 
+        // Early return if the player has finished
         if (player.Finished())
         {
             return;
         }
 
-        if (player.CurrentLeg != null && !player.CurrentLeg.IsComplete) return;
+        // Using pattern matching with property pattern and logical patterns
+        if (player.CurrentLeg is { IsComplete: false }) return;
         
         // Get the next player
         var nextInd = currentInd + 1 == _players.Count ? 0 : currentInd + 1;
         
-        if (nextInd < _players.Count)
+        // Standard conditional - pattern matching isn't suitable here
+        if (nextInd >= 0 && nextInd < _players.Count)
         {
             CurrentPlayer = _players[nextInd];
         }
@@ -152,7 +161,8 @@ public abstract class CommonMatch
     /// <exception cref="PlayerOperationException">Thrown when the player is null</exception>
     protected void SetCurrentPlayer(Player.Player player)
     {
-        if (player == null)
+        // Using pattern matching with null pattern
+        if (player is null)
         {
             throw new PlayerOperationException("Cannot set null current player");
         }
