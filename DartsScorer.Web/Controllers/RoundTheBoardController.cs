@@ -88,7 +88,8 @@ public class RoundTheBoardController : Controller
         }
         catch (ArgumentException)
         {
-            _logger.LogWarning("Invalid player name: {PlayerName}", playerName);
+            var sanitizedPlayerName = playerName.Replace("\n", "").Replace("\r", "").Trim();
+            _logger.LogWarning("Invalid player name: {PlayerName}", sanitizedPlayerName);
             TempData["ErrorMessage"] = "Invalid player name";
             return RedirectToAction("Index");
         }
