@@ -116,8 +116,10 @@ public class PlayerController : Controller
         }
         catch (Exception ex)
         {
+            var sanitizedOldName = model?.OldName?.Replace("\n", "").Replace("\r", "");
+            var sanitizedNewName = model?.Name?.Replace("\n", "").Replace("\r", "");
             _logger.LogError(ex, "Error occurred while editing player: {OldName} to {NewName}", 
-                model?.OldName, model?.Name);
+                sanitizedOldName, sanitizedNewName);
             return StatusCode(500, "Failed to edit player");
         }
     }
