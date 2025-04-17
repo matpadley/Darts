@@ -5,7 +5,7 @@ namespace DartsScorer.Main.Player;
 /// This is the base class for all player types in the darts scoring system.
 /// </summary>
 /// <param name="name">The name of the player</param>
-public class Player(string name)
+public class Player(string name) : IEquatable<Player>
 {
     /// <summary>
     /// Gets the player's name.
@@ -33,8 +33,9 @@ public class Player(string name)
     /// </summary>
     /// <param name="other">The player to compare with the current player</param>
     /// <returns>true if the specified player has the same name as this player; otherwise, false</returns>
-    protected bool Equals(Player other)
+    public bool Equals(Player? other)
     {
+        if (other is null) return false;
         return Name == other.Name;
     }
 
