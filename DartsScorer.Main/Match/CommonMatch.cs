@@ -14,7 +14,7 @@ public abstract class CommonMatch
     public bool IsMatchComplete => Players.Count(f => f.Finished()) == 1;
 
     [BsonElement("Winner")]
-    public MatchPlayer Winner => Players.FirstOrDefault(f => f.Finished())!;
+    public MatchPlayer? Winner => Players.FirstOrDefault(f => f.Finished());
 
     [BsonElement("DartsMatchType")]
     public abstract DartsMatchType DartsMatchType { get; }
