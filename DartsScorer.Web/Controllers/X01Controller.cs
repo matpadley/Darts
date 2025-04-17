@@ -90,7 +90,8 @@ public class X01Controller : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error occurred while adding player: {PlayerName}", playerName);
+            var sanitizedPlayerName = playerName.Replace("\n", "").Replace("\r", "");
+            _logger.LogError(ex, "Error occurred while adding player: {PlayerName}", sanitizedPlayerName);
             TempData["ErrorMessage"] = "Failed to add player";
             return RedirectToAction("Index");
         }
