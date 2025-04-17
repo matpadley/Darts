@@ -3,6 +3,7 @@ using DartsScorer.Web.Models;
 using DartsScorer.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Text.RegularExpressions;
 
 namespace DartsScorer.Web.Controllers;
 
@@ -61,23 +62,34 @@ public class RoundTheBoardController : Controller
     }
     
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult AddPlayer(string playerName)
     {
         try
         {
             if (string.IsNullOrWhiteSpace(playerName))
             {
-                throw new ArgumentException("Player name cannot be empty");
+                ModelState.AddModelError("playerName", "Player name cannot be empty");
+                return RedirectToAction("Index");
+            }
+            
+            // Validate player name contains only safe characters (alphanumeric, spaces, and common punctuation)
+            var safeNamePattern = new Regex(@"^[a-zA-Z0-9\s\.\-_]{1,50}$");
+            if (!safeNamePattern.IsMatch(playerName))
+            {
+                ModelState.AddModelError("playerName", "Player name contains invalid characters");
+                TempData["ErrorMessage"] = "Player name can only contain letters, numbers, spaces, and simple punctuation";
+                return RedirectToAction("Index");
             }
             
             _dartsMatchService.AddPlayer(playerName);
             _playerService.Add(playerName);
             return RedirectToAction("Index");
         }
-        catch (ArgumentException ex)
+        catch (ArgumentException)
         {
-            _logger.LogWarning(ex, "Invalid player name: {PlayerName}", playerName);
-            TempData["ErrorMessage"] = ex.Message;
+            _logger.LogWarning("Invalid player name: {PlayerName}", playerName);
+            TempData["ErrorMessage"] = "Invalid player name";
             return RedirectToAction("Index");
         }
         catch (Exception ex)
@@ -89,6 +101,7 @@ public class RoundTheBoardController : Controller
     }
     
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult StartMatch()
     {
         try
@@ -111,6 +124,7 @@ public class RoundTheBoardController : Controller
     }
     
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public IActionResult Throw([FromBody] ThrowModel model)
     {
         try
